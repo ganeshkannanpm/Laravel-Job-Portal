@@ -31,10 +31,10 @@
         <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
             <div
                 class="grid grid-cols-1 gap-x-8 gap-y-6 text-lg font-semibold text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-                <a href="#">Browse Jobs <span aria-hidden="true">&rarr;</span></a>
-                <a href="#">Post a Job <span aria-hidden="true">&rarr;</span></a>
-                <a href="#">Top Companies <span aria-hidden="true">&rarr;</span></a>
-                <a href="#">Career Advice <span aria-hidden="true">&rarr;</span></a>
+                <a href="#" class="no-underline hover:underline">Browse Jobs <span aria-hidden="true">&rarr;</span></a>
+                <a href="#" class="no-underline hover:underline">Post a Job <span aria-hidden="true">&rarr;</span></a>
+                <a href="#" class="no-underline hover:underline">Top Companies <span aria-hidden="true">&rarr;</span></a>
+                <a href="#" class="no-underline hover:underline">Career Advice <span aria-hidden="true">&rarr;</span></a>
             </div>
         </div>
     </div>
