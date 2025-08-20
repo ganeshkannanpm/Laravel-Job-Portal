@@ -9,8 +9,12 @@
         <x-forms.button>Submit</x-forms.button>
       </div>
     </x-forms.form>
+    <p class="text-center text-md text-gray-100 mt-6">
+      Don’t have an account?
+      <a href="/register" class="text-gray-100 hover:underline font-medium">Create one</a>
+    </p>
   </div>
-  <div class="mt-50 border-t border-gray-700 pt-6 text-center text-white">
+  <div class="mt-40 border-t border-gray-700 pt-6 text-center text-white">
     <p>&copy; 2025 Workly. All rights reserved.</p>
   </div>
 </x-layout>

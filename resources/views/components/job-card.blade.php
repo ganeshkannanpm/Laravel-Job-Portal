@@ -28,9 +28,10 @@
 
     <!-- Apply Button -->
     <div class="mt-4">
-        <button class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-800 text-sm transition-colors duration-300">
+        {{-- <button class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-800 text-sm transition-colors duration-300">
             Apply Now
-        </button>
+        </button> --}}
+        <x-forms.button>Apply Now</x-forms.button>
     </div>
 
 </div>

@@ -3,7 +3,7 @@
         <!-- Logo & About -->
         <div>
             <a href="/" class="text-2xl font-bold mb-4 hover:text-blue-500 transition">Workly</a>
-            <p class="text-gray-400">
+            <p class="text-gray-400 mt-8">
                 Find your dream job with us. Connecting talented professionals with top employers worldwide.
             </p>
         </div>
