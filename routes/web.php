@@ -9,8 +9,8 @@ Route::get('/', function () {
 });
 
 Route::get('/register', [RegisteredUserController::class, 'create']);
-// Route::get('/register', [RegisteredUserController::class, 'store']);
+Route::get('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'create']);
-// Route::get('/login', [SessionController::class, 'store']);
-// Route::get('/logout', [SessionController::class, 'destroy']);
+Route::get('/login', [SessionController::class, 'store']);
+Route::get('/logout', [SessionController::class, 'destroy']);
