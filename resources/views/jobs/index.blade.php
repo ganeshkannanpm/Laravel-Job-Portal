@@ -11,9 +11,9 @@
             Latest Jobs
         </h2>
         <div class="grid lg:grid-cols-3 gap-8">
-            <x-job-card />
-            <x-job-card />
-            <x-job-card />
+            @foreach ( $featuredJobs as $job )
+                 <x-job-card :$job />
+            @endforeach
         </div>
 
         <div class="mt-8">
@@ -21,7 +21,11 @@
                 <span class="w-4 h-4 bg-white inline-block rounded-full"></span>
                 Recent Jobs
             </h2>
-            <x-recent-jobs />
+            <div class="space-y-3">
+                @foreach ( $jobs as $job )
+                <x-recent-jobs :$job />
+            @endforeach
+            </div>
         </div>
 
         <div>
@@ -32,5 +36,4 @@
             <x-footer />
         </div>
     </section>
-
 </x-layout>
