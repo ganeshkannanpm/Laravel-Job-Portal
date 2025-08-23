@@ -29,7 +29,7 @@ class SessionController extends Controller
 
         request()->session()->regenerate();
 
-        return redirect()->route('user.dashboard');
+        return redirect()->route('user.index');
     }
 
     public function destroy() {
