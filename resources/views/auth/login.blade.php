@@ -2,7 +2,7 @@
   <x-header />
   <div class="max-w-xl mx-auto mt-30 mb-10 px-6">
     <x-page-heading>Login</x-page-heading>
-    <x-forms.form method="POST" action="/register" enctype="multipart/form-data" class="space-y-6">
+    <x-forms.form method="POST" action="{{ route('login.store') }}" enctype="multipart/form-data" class="space-y-6">
       <x-forms.input label="Email" name="email" type="email" />
       <x-forms.input label="Password" name="password" type="password" />
       <div class="pt-4">

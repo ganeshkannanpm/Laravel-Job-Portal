@@ -37,7 +37,8 @@
         <a href="#" class="px-3 py-2 font-semibold rounded hover:bg-gray-200 hover:text-gray-900">Companies</a>
         <a href="#" class="px-3 py-2 font-semibold rounded hover:bg-gray-200 hover:text-gray-900">Contact Us</a>
         <hr class="border-gray-600">
-        <a href="/register" class="px-3 py-2 rounded hover:bg-gray-200 hover:text-gray-900">Sign Up</a>
-        <a href="/login" class="px-3 py-2 rounded hover:bg-gray-200 hover:text-gray-900">Log In</a>
+        
+        <a href="{{ route('register.create') }}" class="px-3 py-2 rounded hover:bg-gray-200 hover:text-gray-900">Sign Up</a>
+        <a href="{{ route('login.create') }}" class="px-3 py-2 rounded hover:bg-gray-200 hover:text-gray-900">Log In</a>
     </div>
 </div>
