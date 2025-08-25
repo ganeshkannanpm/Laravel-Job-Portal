@@ -14,4 +14,10 @@ class Job extends Model
 
         return $this->belongsTo(Employer::class);
     }
+
+    public function savedByUsers()
+{
+    return $this->belongsToMany(User::class, 'saved_jobs')->withTimestamps();
+}
+
 }
