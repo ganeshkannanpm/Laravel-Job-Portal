@@ -26,3 +26,5 @@ Route::middleware('auth')->group(function () {
 //User Dashboard - Job Management
 Route::get('/joblist',[JobManagementController::class, 'index'])->name('user.joblist');
 Route::get('/job-application',[JobManagementController::class, 'jobApplication'])->name('user.job-application');
+Route::post('/save-job/{id}', [JobManagementController::class, 'save'])->name('jobs.save');
+Route::get('/saved-jobs',[JobManagementController::class, 'savedJobs'])->name('user.saved-jobs');
