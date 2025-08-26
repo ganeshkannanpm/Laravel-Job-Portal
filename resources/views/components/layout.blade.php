@@ -7,6 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Workly</title>
     @vite(['resources/css/app.css', 'resources/css/app.js'])
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body class="bg-gray-800 pb-10">

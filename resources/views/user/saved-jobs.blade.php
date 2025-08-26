@@ -35,30 +35,24 @@
                 <div class="flex items-center space-x-4">
                     <input type="text" placeholder="Search"
                         class="border rounded-lg px-3 py-1 w-40 md:w-64 focus:outline-none focus:ring-2 focus:ring-gray-400">
-                    {{-- <button
-                        class="bg-gray-900 text-white px-3 py-1 rounded-lg hover:bg-gray-600 text-sm md:text-base">+
-                        Add New
-                        Job</button> --}}
                     <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full">
                 </div>
             </header>
 
             <x-layout>
-                <section>
-                    <h1 class="text-2xl text-white font-bold mb-4">My Jobs</h1>
-                    <div class="grid gap-4">
+                    <h1 class="text-2xl text-white font-bold mb-6">My Jobs</h1>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                         @forelse($savedJobs as $saved)
-                            <div class="p-4 border rounded-lg bg-white shadow">
-                                <h2 class="font-semibold">{{ $saved->job->title }}</h2>
+                            <div class="relative p-5 border rounded-xl bg-white shadow-md hover:shadow-lg transition">
+                                <h2 class="font-semibold text-lg text-gray-900">{{ $saved->job->title }}</h2>
                                 <p class="text-sm text-gray-600">{{ $saved->job->employer->name }}</p>
-                                <p class="text-sm">💰 {{ $saved->job->salary }}</p>
-                                <p class="text-sm">📍 {{ $saved->job->location }}</p>
+                                <p class="text-sm text-gray-700 mt-2">💰 {{ $saved->job->salary }}</p>
+                                <p class="text-sm text-gray-700">📍 {{ $saved->job->location }}</p>
                             </div>
                         @empty
                             <p class="text-white">No saved jobs yet.</p>
                         @endforelse
                     </div>
-                </section>
             </x-layout>
 
         </div>
