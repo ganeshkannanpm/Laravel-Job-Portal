@@ -50,10 +50,6 @@
               My Jobs
             </a>
           </li>
-
-
-          {{-- <li><a href="#" class="block p-2 rounded-lg text-gray-100 hover:bg-gray-700">Apply Job</a></li> --}}
-          {{-- <li><a href="#" class="block p-2 rounded-lg text-gray-100 hover:bg-gray-700">My Jobs</a></li> --}}
         </ul>
       </li>
 

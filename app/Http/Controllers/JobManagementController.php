@@ -55,7 +55,7 @@ class JobManagementController extends Controller
             ->where('user_id', $user->id)
             ->get();
 
-        return view('user.saved-jobs', compact('saved-jobs'));
+        return view('user.saved-jobs', compact('savedJobs', 'user'));
 
     }
 }
