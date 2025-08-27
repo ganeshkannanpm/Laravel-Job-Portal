@@ -61,21 +61,34 @@
                                 </span>
                             </div>
                             <div class="mt-4">
-                               
-                                <button type="button" onclick="window.location.href='{{ route('user.apply-job') }}'"
-                                    class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
-                                    Apply
-                                </button>
 
+                                @php
+                                    $alreadyApplied =
+                                        Auth::check() && $job->JobApplication()->where('user_id', Auth::id())->exists();
+                                @endphp
+
+                                @if ($alreadyApplied)
+                                    <button disabled
+                                        class="px-4 py-2 bg-gray-400 text-white py-3 rounded-lg font-semibold cursor-not-allowed">
+                                        Applied
+                                    </button>
+                                @else
+                                    <button type="button"
+                                        onclick="window.location.href='{{ route('user.apply-job', $job->id) }}'"
+                                        class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
+                                        Apply
+                                    </button>
+                                @endif
                                 @php
                                     $isSaved = Auth::check() && Auth::user()->savedJobs->contains($job->id);
                                 @endphp
 
-                                <form action="{{ route('jobs.save', $job->id) }}" method="POST" style="display:inline;">
+                                <form action="{{ route('jobs.save', $job->id) }}" method="POST"
+                                    style="display:inline;">
                                     @csrf
                                     <button type="submit"
                                         class="ms-4 {{ $isSaved ? 'text-green-600' : 'text-gray-600 hover:text-gray-800' }}">
-                                        @if($isSaved)
+                                        @if ($isSaved)
                                             <i class="fa-solid fa-bookmark"></i> Saved
                                         @else
                                             <i class="fa-regular fa-bookmark"></i> Save

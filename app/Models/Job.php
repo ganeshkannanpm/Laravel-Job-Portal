@@ -10,14 +10,20 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
-    public function employer(){
+    public function employer()
+    {
 
         return $this->belongsTo(Employer::class);
     }
 
     public function savedByUsers()
-{
-    return $this->belongsToMany(User::class, 'saved_jobs')->withTimestamps();
-}
+    {
+        return $this->belongsToMany(User::class, 'saved_jobs')->withTimestamps();
+    }
+
+    public function jobApplication(){
+
+        return $this->hasMany(JobApplication::class,'job_id');
+    }
 
 }

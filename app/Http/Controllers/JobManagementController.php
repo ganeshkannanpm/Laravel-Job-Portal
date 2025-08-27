@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\SavedJob;
 use Illuminate\Http\Request;
 use App\Models\Job;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 
 class JobManagementController extends Controller
@@ -20,10 +21,49 @@ class JobManagementController extends Controller
         ]);
     }
 
-    public function applyJob(){
-
+    public function applyJob($jobId)
+    {
+        
         $user = auth()->user();
-        return view('user.apply-job',compact('user'));
+        $job = Job::findOrFail($jobId);
+        return view('user.apply-job', compact('user', 'job'));
+    }
+
+    public function storeJob(Request $request, $jobId)
+    {
+
+        $job = Job::findOrFail($jobId);
+
+        // check if user already applied
+        $alreadyApplied = JobApplication::where('user_id', Auth::id())
+            ->where('job_id', $job->id)
+            ->exists();
+
+        if ($alreadyApplied) {
+            return redirect()->back()->with('error', 'You have already applied for "' . $job->title . '".');
+        }
+
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'cover_letter' => 'required|string',
+            'resume' => 'required|mimes:pdf,doc,docx|max:5120', // 5MB
+        ]);
+
+        // store resume
+        $resumePath = $request->file('resume')->store('resumes', 'public');
+
+        JobApplication::create([
+            'user_id' => Auth::id(),
+            'job_id' => $job->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'cover_letter' => $request->cover_letter,
+            'resume' => $resumePath,
+        ]);
+
+        return redirect()->back()->with('success', 'Your application for "' . $job->title . '" has been submitted!');
+
     }
 
     public function appliedJobs()

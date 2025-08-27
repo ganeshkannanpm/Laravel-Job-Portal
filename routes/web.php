@@ -29,4 +29,6 @@ Route::get('/applied-jobs',[JobManagementController::class, 'appliedJobs'])->nam
 Route::post('/save-job/{id}', [JobManagementController::class, 'save'])->name('jobs.save');
 Route::delete('/unsave-job/{id}', [JobManagementController::class, 'unsave'])->name('jobs.unsave');
 Route::get('/saved-jobs',[JobManagementController::class, 'savedJobs'])->name('user.saved-jobs');
-Route::get('/apply-job',[JobManagementController::class,'applyJob'])->name('user.apply-job');
+Route::get('/jobs/{job}/apply-job',[JobManagementController::class,'applyJob'])->name('user.apply-job');
+Route::post('/jobs/{job}/store',[JobManagementController::class,'storeJob'])->name('user.store-job');
+
