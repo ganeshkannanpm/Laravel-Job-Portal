@@ -61,7 +61,12 @@
                                 </span>
                             </div>
                             <div class="mt-4">
-                                <x-forms.button>Apply</x-forms.button>
+                               
+                                <button type="button" onclick="window.location.href='{{ route('user.apply-job') }}'"
+                                    class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
+                                    Apply
+                                </button>
+
                                 @php
                                     $isSaved = Auth::check() && Auth::user()->savedJobs->contains($job->id);
                                 @endphp
@@ -77,12 +82,13 @@
                                         @endif
                                     </button>
                                 </form>
-                                
+
                             </div>
                         </div>
                     @endforeach
                 </div>
             </section>
+
         </div>
     </div>
 

@@ -20,6 +20,12 @@ class JobManagementController extends Controller
         ]);
     }
 
+    public function applyJob(){
+
+        $user = auth()->user();
+        return view('user.apply-job',compact('user'));
+    }
+
     public function jobApplication()
     {
 
