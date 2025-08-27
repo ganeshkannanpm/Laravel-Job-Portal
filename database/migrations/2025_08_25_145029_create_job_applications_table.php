@@ -12,12 +12,12 @@ return new class extends Migration {
     {
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('job_id')->constrained('jobs')->onDelete('cascade');
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('job_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('email');
-            $table->string('resume')->nullable();
-            $table->enum('status', ['pending', 'shortlisted', 'rejected'])->default('pending');
+            $table->text('cover_letter');
+            $table->string('resume'); // store path
             $table->timestamps();
         });
 
