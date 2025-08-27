@@ -38,9 +38,9 @@
               Job List
             </a>
           </li>
-          <li><a href="{{ route('user.job-application') }}"
+          <li><a href="{{ route('user.applied-jobs') }}"
               class="block p-2 rounded-lg 
-            {{ request()->routeIs('user.job-application') ? 'bg-gray-700 text-white' : 'text-gray-100 hover:bg-gray-700'}}">
+            {{ request()->routeIs('user.applied-jobs') ? 'bg-gray-700 text-white' : 'text-gray-100 hover:bg-gray-700'}}">
               Job Applications
             </a>
           </li>

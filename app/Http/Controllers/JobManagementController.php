@@ -26,10 +26,10 @@ class JobManagementController extends Controller
         return view('user.apply-job',compact('user'));
     }
 
-    public function jobApplication()
+    public function appliedJobs()
     {
 
-        return view('user.job-application');
+        return view('user.applied-jobs');
     }
 
     public function save(Request $request, $jobId)
