@@ -28,22 +28,42 @@ class JobManagementController extends Controller
 
     public function save(Request $request, $jobId)
     {
-
         $user = Auth::user();
 
-        $alreadySaved = SavedJob::where('user_id', $user->id)
+        $savedJob = SavedJob::where('user_id', $user->id)
             ->where('job_id', $jobId)
-            ->exists();
+            ->first();
 
-        if (!$alreadySaved) {
-
+        if ($savedJob) {
+            // If already saved, remove it (unsave)
+            $savedJob->delete();
+            $status = 'unsaved';
+        } else {
+            // Otherwise, save it
             SavedJob::create([
                 'user_id' => $user->id,
                 'job_id' => $jobId
             ]);
+            $status = 'saved';
         }
 
-        return response()->json(['success' => true]);
+        return redirect()->back()->with('status', $status);
+    }
+
+    public function unsave(Request $request, $jobId)
+    {
+        $user = Auth::user();
+
+        $savedJob = SavedJob::where('user_id', $user->id)
+            ->where('job_id', $jobId)
+            ->first();
+
+        if ($savedJob) {
+            $savedJob->delete();
+            return redirect()->back()->with('success', 'Job unsaved successfully');
+        }
+
+        return redirect()->back()->with('success', 'Job not found');
     }
 
     public function savedJobs()

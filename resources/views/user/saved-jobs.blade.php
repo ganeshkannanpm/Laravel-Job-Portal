@@ -7,6 +7,8 @@
     <title>User Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/alpinejs" defer></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-gray-600 font-sans">
@@ -39,22 +41,27 @@
                 </div>
             </header>
 
-            <x-layout>
-                    <h1 class="text-2xl text-white font-bold mb-6">My Jobs</h1>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <section class="ms-5 mt-10">
+                    <div class="grid lg:grid-cols-3 gap-8">
                         @forelse($savedJobs as $saved)
                             <div class="relative p-5 border rounded-xl bg-white shadow-md hover:shadow-lg transition">
                                 <h2 class="font-semibold text-lg text-gray-900">{{ $saved->job->title }}</h2>
                                 <p class="text-sm text-gray-600">{{ $saved->job->employer->name }}</p>
                                 <p class="text-sm text-gray-700 mt-2">💰 {{ $saved->job->salary }}</p>
                                 <p class="text-sm text-gray-700">📍 {{ $saved->job->location }}</p>
+                                <form action="{{ route('jobs.unsave', $saved->job->id) }}" method="POST" class="mt-2">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="px-3 py-1 bg-gray-800 text-white rounded">
+                                        <i class="fa-solid fa-bookmark"></i> Unsave
+                                    </button>
+                                </form>
                             </div>
                         @empty
                             <p class="text-white">No saved jobs yet.</p>
                         @endforelse
                     </div>
-            </x-layout>
-
+                </section>
         </div>
     </div>
 
