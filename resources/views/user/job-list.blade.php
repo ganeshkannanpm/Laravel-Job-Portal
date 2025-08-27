@@ -69,13 +69,13 @@
 
                                 @if ($alreadyApplied)
                                     <button disabled
-                                        class="px-4 py-2 bg-gray-400 text-white py-3 rounded-lg font-semibold cursor-not-allowed">
+                                        class="px-3 py-2 bg-gray-400 text-white rounded-lg font-semibold cursor-not-allowed">
                                         Applied
                                     </button>
                                 @else
                                     <button type="button"
                                         onclick="window.location.href='{{ route('user.apply-job', $job->id) }}'"
-                                        class="px-4 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
+                                        class="px-3 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
                                         Apply
                                     </button>
                                 @endif
