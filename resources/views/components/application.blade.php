@@ -1,5 +1,5 @@
 <main class="p-4 md:p-6 flex-1 overflow-auto">
-    <h3 class="text-xl text-white font-semibold mb-4">Job Applications</h3>
+    <h3 class="text-xl text-white font-semibold mb-4">Applications</h3>
     <div class="bg-white rounded-lg shadow-md overflow-x-auto w-full">
         <table class="w-full border-collapse text-sm md:text-base">
             <thead class="bg-gray-50 text-gray-600">
@@ -13,25 +13,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr class="border-b">
-                    <td class="p-3">1</td>
-                    <td class="p-3">Database Analyst</td>
-                    <td class="p-3">
-                        <a href="/storage/resumes/resume1.pdf" target="_blank" class="text-blue-600 hover:underline">
-                            View
-                        </a>
-                    </td>
-                    <td class="p-3">
-                        <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">Pending</span>
-                    </td>
-                    <td class="p-3 flex space-x-2">
-                        <button class="text-green-600 hover:text-green-800">✔</button>
-                        <button class="text-red-600 hover:text-red-800">✘</button>
-                        <button class="text-gray-600 hover:text-gray-800">👁</button>
-                    </td>
-                    <td class="p-3">24-01-2024</td>
-                </tr>
-
+                @forelse ($applications as $application)
+                    <tr class="border-b">
+                        <td class="p-3">{{ $index + 1 }}</td>
+                        <td class="p-3">{{ $application->job->title ?? 'N/A' }}</td>
+                        <td class="p-3">
+                            @if ($application->resume)
+                                <a href="/storage/resumes/resume1.pdf" target="_blank"
+                                    class="text-blue-600 hover:underline">
+                                    View
+                                </a>
+                            @else
+                                <span class="text-gray-400">No Resume</span>
+                            @endif
+                        </td>
+                        <td class="p-3">
+                            <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">
+                                {{ ucfirst($application->status ?? 'pending') }}
+                            </span>
+                        </td>
+                        <td class="p-3">
+                            {{ $application->created_at->format('d-m-Y') }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="5" class="p-3 text-center text-gray-500">
+                            No applications found.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>

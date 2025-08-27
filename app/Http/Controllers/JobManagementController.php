@@ -23,7 +23,7 @@ class JobManagementController extends Controller
 
     public function applyJob($jobId)
     {
-        
+
         $user = auth()->user();
         $job = Job::findOrFail($jobId);
         return view('user.apply-job', compact('user', 'job'));
@@ -68,8 +68,13 @@ class JobManagementController extends Controller
 
     public function appliedJobs()
     {
+        $applications = auth()->user()
+            ->jobApplication()
+            ->with('job')
+            ->latest()
+            ->get();
 
-        return view('user.applied-jobs');
+        return view('user.applied-jobs', compact('applications'));
     }
 
     public function save(Request $request, $jobId)

@@ -45,6 +45,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function jobs(){
+
+        return $this->hasMany(Job::class);
+    }
 
     public function employer()
     {
@@ -56,6 +60,11 @@ class User extends Authenticatable
     {
         
         return $this->belongsToMany(Job::class, 'saved_jobs', 'user_id', 'job_id')->withTimestamps();
+    }
+
+    public function jobApplication(){
+
+        return $this->hasMany(JobApplication::class,'user_id');
     }
 
 }
