@@ -129,4 +129,17 @@ class JobManagementController extends Controller
         return view('user.saved-jobs', compact('savedJobs', 'user'));
 
     }
+
+    public function destroy(JobApplication $application)
+    {
+    
+        if ($application->user_id !== auth()->id()) {
+            abort(403);
+        }
+
+        $application->delete();
+
+        return redirect()->back()->with('success', 'Application withdrawn successfully.');
+    }
+
 }
