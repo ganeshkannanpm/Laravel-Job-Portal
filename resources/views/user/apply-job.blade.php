@@ -26,21 +26,8 @@
         <!-- Main Content -->
         <div class="flex-1 flex flex-col overflow-y-auto ">
             <!-- Navbar -->
-            <header class="flex items-center justify-between bg-white p-4 shadow-sm sticky top-0 z-10">
-                <div class="flex items-center space-x-3">
-                    <!-- Hamburger -->
-                    <button class="md:hidden text-gray-600" @click="sidebarOpen = true">
-                        <span class="material-icons">menu</span>
-                    </button>
-                    <h2 class="font-bold text-lg">User Dashboard</h2>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <input type="text" placeholder="Search"
-                        class="border rounded-lg px-3 py-1 w-40 md:w-64 focus:outline-none focus:ring-2 focus:ring-gray-400">
-                    <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full">
-                </div>
-            </header>
-
+            <x-user-dashboard-header />
+            
             <section class="ms-5 mt-10">
                 <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-xl p-8 mt-8">
                     <h2 class="text-2xl font-bold text-gray-800 mb-6">Apply for this Job</h2>

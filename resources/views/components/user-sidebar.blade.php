@@ -1,5 +1,5 @@
 <aside
-  class="fixed inset-y-0 left-0 z-30 w-64 bg-gray-800 shadow-md transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:inset-0 overflow-y-auto"
+  class="fixed inset-y-0 left-0 z-30 w-64 bg-blue-950 shadow-md transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:inset-0 overflow-y-auto"
   aria-label="Sidebar">
 
   <!-- Logo -->
@@ -44,8 +44,7 @@
               Job Applications
             </a>
           </li>
-          <li><a href="{{ route('user.saved-jobs') }}"
-              class="block p-2 rounded-lg 
+          <li><a href="{{ route('user.saved-jobs') }}" class="block p-2 rounded-lg 
             {{ request()->routeIs('user.saved-jobs') ? 'bg-gray-700 text-white' : 'text-gray-100 hover:bg-gray-700'}}">
               My Jobs
             </a>
@@ -58,7 +57,13 @@
         <div class="flex items-center justify-between px-2 py-2 text-gray-400 uppercase text-xs font-semibold">Profile
         </div>
         <ul class="ml-6 mt-2 space-y-2">
-          <li><a href="#" class="block p-2 rounded-lg text-gray-100 hover:bg-gray-700">Personal Info</a></li>
+
+          <li><a href="{{ route('user.personal-info') }}"
+              class="block p-2 rounded-lg
+            {{ request()->routeIs('user.personal-info') ? 'bg-gray-700 text-white' : 'text-gray-100 hover:bg-gray-700'}}">
+              Personal Info
+            </a>
+          </li>
           <li><a href="#" class="block p-2 rounded-lg text-gray-100 hover:bg-gray-700">Resume Upload</a></li>
           <li><a href="#" class="block p-2 rounded-lg text-gray-100 hover:bg-gray-700">Skills & Experience</a></li>
         </ul>
