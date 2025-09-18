@@ -1,8 +1,6 @@
 # Job Portal - Laravel
 
-A fully functional job portal built with Laravel, allowing employers to post jobs and job seekers to apply.  
-
-This project is under development.
+A fully functional job portal built with Laravel, allowing employers to post jobs and job seekers to apply. 
 
 ## 🚀 Features
 - User authentication (Job Seekers & Employers)
