@@ -42,12 +42,6 @@
                                 </a>
                             </div>
 
-                            @if(session('success'))
-                                <div class="mb-4 p-3 bg-green-100 text-green-700 rounded">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-
                             {{-- Personal Information --}}
 
                             <div class="grid grid-cols-2 gap-6">
@@ -187,10 +181,6 @@
 
                                 <!-- Willing to Relocate -->
                                 <div>
-                                    {{-- <input type="checkbox" name="willing_to_relocate" readonly value="1" {{
-                                        old('willing_to_relocate', $personalInfo->willing_to_relocate ?? false) ? 'checked' : ''
-                                    }}
-                                    class="h-4 w-4 text-blue-600 border-gray-300 rounded cursor-not-allowed"> --}}
                                     <label class="ml-2 text-gray-900">Willing to Relocate</label>
                                     <p class="mt-1 block w-full border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed">
                                         {{ $personalInfo->willing_to_relocate ? 'Yes' : 'No' }}

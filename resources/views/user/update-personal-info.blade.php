@@ -33,20 +33,27 @@
                 <div class="w-full mx-auto  rounded-lg p-8">
                     <h2 class="text-2xl font-bold mb-6 text-gray-800">Update Personal Information</h2>
 
-                    @if(session('success'))
-                        <div class="mb-4 p-3 bg-green-100 text-green-700 rounded">
+                    @if (session('success'))
+                        <div class="bg-green-100 text-green-800 p-2 rounded">
                             {{ session('success') }}
                         </div>
                     @endif
 
-                    <form action="" method="POST" class="grid grid-cols-2 gap-6">
-                        @csrf
+                    @if (session('error'))
+                        <div class="bg-red-100 text-red-800 p-2 rounded">
+                            {{ session('error') }}
+                        </div>
+                    @endif
 
+                    <form action="{{ route('user.update-personal-info', $personalInfo->id) }}" method="POST"
+                        class="grid grid-cols-2 gap-6">
+                        @csrf
+                        @method('PUT')
                         <!-- Full Name -->
                         <div>
                             <label class="block text-gray-900 font-medium">Full Name</label>
-                            <input type="text" name="full_name" class="mt-1 block w-full border-gray-300 rounded-lg p-2"
-                                required>
+                            <input type="text" name="full_name"
+                                class="mt-1 block w-full border-gray-300 rounded-lg p-2">
                         </div>
 
                         <!-- Date of Birth -->
@@ -61,10 +68,9 @@
                             <label class="block text-gray-900 font-medium">Gender</label>
                             <select name="gender" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
                                 <option value="">Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                                <option value="prefer_not_to_say">Prefer not to say</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Other">Other</option>
                             </select>
                         </div>
 
@@ -78,21 +84,19 @@
                         <!-- Email -->
                         <div>
                             <label class="block text-gray-900 font-medium">Email</label>
-                            <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg p-2"
-                                required>
+                            <input type="email" name="email" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
                         </div>
 
                         <!-- Phone -->
                         <div>
                             <label class="block text-gray-900 font-medium">Phone</label>
-                            <input type="text" name="phone" class="mt-1 block w-full border-gray-300 rounded-lg p-2"
-                                required>
+                            <input type="text" name="phone" class="mt-1 block w-full border-gray-300 rounded-lg p-2">
                         </div>
 
                         <!-- Address -->
                         <div>
                             <label class="block text-gray-900 font-medium">Address</label>
-                            <textarea name="career_objective" rows="4"
+                            <textarea name="address" rows="4"
                                 class="mt-1 block w-full border-gray-300 rounded-lg p-2"></textarea>
                         </div>
 
@@ -180,12 +184,12 @@
                         <div class="col-span-2">
                             <button type="submit"
                                 class=" bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
-                                Update 
+                                Update
                             </button>
                             <a href="{{ route('user.personal-info') }}"
-                            class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
-                            Cancel
-                        </a>
+                                class="bg-blue-600 text-white py-2 px-4 rounded-lg shadow hover:bg-blue-700 transition">
+                                Cancel
+                            </a>
                         </div>
                     </form>
 

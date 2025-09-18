@@ -31,8 +31,9 @@ class PersonalInfoController extends Controller
     public function show()
     {
         $user = Auth::user();
+        $personalInfo = $user->personalInfo;
 
-        return view('user.update-personal-info', compact(['user']));
+        return view('user.update-personal-info', compact(['user','personalInfo']));
     }
 
     public function store(PersonalInfoRequest $request)
@@ -47,6 +48,17 @@ class PersonalInfoController extends Controller
         PersonalInfo::create($validated);
 
         return redirect()->back()->with('success', 'Your profile created successfully!');
+    }
+
+    public function update(PersonalInfoRequest $request, $id) {
+
+        $validated = $request->validated();
+
+        $personalInfo = PersonalInfo::where('user_id',auth()->id())->firstOrFail($id);
+
+        $personalInfo->update($validated);
+
+        return redirect()->back()->with('success', 'Your profile updated successfully!',);
     }
 
 }

@@ -39,6 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/create-personal-info',[PersonalInfoController::class,'create'])->name('user.create-personal-info');
     Route::get('/show-personal-info', [PersonalInfoController::class, 'show'])->name('user.show-personal-info');
     Route::post('/store-personal-info', [PersonalInfoController::class, 'store'])->name('user.store-personal-info');
-    
+    Route::put('/update-personal-info/{id}',[PersonalInfoController::class, 'update'])->name('user.update-personal-info');
 });
 
