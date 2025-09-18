@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
+use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\UserController;
@@ -33,3 +34,5 @@ Route::get('/jobs/{job}/apply-job',[JobManagementController::class,'applyJob'])-
 Route::post('/jobs/{job}/store',[JobManagementController::class,'storeJob'])->name('user.store-job');
 Route::delete('/applications/{application}', [JobManagementController::class, 'destroy'])->name('applications.destroy');
 
+//Personal Info
+Route::get('/personal-info', [PersonalInfoController::class, 'index'])->name('user.personal-info');
