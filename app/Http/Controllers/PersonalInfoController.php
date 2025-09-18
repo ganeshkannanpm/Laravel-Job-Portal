@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PersonalInfoRequest;
+use App\Models\PersonalInfo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,14 +13,40 @@ class PersonalInfoController extends Controller
     {
 
         $user = Auth::user();
-        return view('user.personal-info', compact(['user']));
+
+        // Check if personal info exists for this user
+        $personalInfo = $user->personalInfo;
+
+        return view('user.personal-info', compact(['personalInfo', 'user']));
     }
 
-    public function update(PersonalInfoRequest $request)
+    public function create()
     {
 
-        $validator = $request->validated();
-        
+        $user = Auth::user();
 
+        return view('user.create-personal-info', compact(['user']));
     }
+
+    public function show()
+    {
+        $user = Auth::user();
+
+        return view('user.update-personal-info', compact(['user']));
+    }
+
+    public function store(PersonalInfoRequest $request)
+    {
+        $validated = $request->validated();
+        $validated['user_id'] = auth()->id();
+
+        if (PersonalInfo::where('user_id', auth()->id())->exists()) {
+            return redirect()->back()->with('error', 'You already created your profile!');
+        }
+
+        PersonalInfo::create($validated);
+
+        return redirect()->back()->with('success', 'Your profile created successfully!');
+    }
+
 }
