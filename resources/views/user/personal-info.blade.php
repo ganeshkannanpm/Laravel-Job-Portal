@@ -181,7 +181,7 @@
 
                                 <!-- Willing to Relocate -->
                                 <div>
-                                    <label class="ml-2 text-gray-900">Willing to Relocate</label>
+                                    <label class="block text-gray-900 font-medium">Willing to Relocate</label>
                                     <p class="mt-1 block w-full border-gray-300 rounded-lg p-2 bg-gray-100 cursor-not-allowed">
                                         {{ $personalInfo->willing_to_relocate ? 'Yes' : 'No' }}
                                     </p>

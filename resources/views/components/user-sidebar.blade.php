@@ -1,5 +1,5 @@
 <aside
-  class="fixed inset-y-0 left-0 z-30 w-64 bg-blue-950 shadow-md transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:inset-0 overflow-y-auto"
+  class="fixed inset-y-0 left-0 z-30 w-64 bg-indigo-800 shadow-md transform transition-transform duration-200 ease-in-out md:translate-x-0 md:static md:inset-0 overflow-y-auto"
   aria-label="Sidebar">
 
   <!-- Logo -->
@@ -22,7 +22,7 @@
 
       <!-- Dashboard -->
       <li>
-        <a href="" class="flex items-center p-2 rounded-lg transition-colors duration-150  text-white">
+        <a href="{{ route('user.dashboard') }}" class="flex items-center p-2 rounded-lg transition-colors duration-150  text-white">
           <span class="material-icons mr-2">dashboard</span> Dashboard
         </a>
       </li>

@@ -68,14 +68,17 @@ class JobManagementController extends Controller
 
     public function appliedJobs()
     {
-        $applications = auth()->user()
+        $user = auth()->user();
+
+        $applications = $user
             ->jobApplication()
             ->with('job')
             ->latest()
             ->get();
 
-        return view('user.applied-jobs', compact('applications'));
+        return view('user.applied-jobs', compact('user', 'applications'));
     }
+
 
     public function save(Request $request, $jobId)
     {
@@ -132,7 +135,7 @@ class JobManagementController extends Controller
 
     public function destroy(JobApplication $application)
     {
-    
+
         if ($application->user_id !== auth()->id()) {
             abort(403);
         }

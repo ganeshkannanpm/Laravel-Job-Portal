@@ -1,4 +1,4 @@
-<header class="flex items-center justify-between bg-blue-950 p-4 shadow-sm sticky top-0 z-10">
+<header class="flex items-center justify-between bg-indigo-600 p-4 shadow-sm sticky top-0 z-10">
     <div class="flex items-center space-x-3">
         <!-- Hamburger -->
         <button class="md:hidden text-gray-600" @click="sidebarOpen = true">
