@@ -22,8 +22,8 @@ Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout')-
 //User Dashboard
 Route::middleware('auth')->group(function () {
 
-    // Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/dashboard',[UserController::class, 'index'])->name('user.dashboard');
+    
     //User Dashboard - Job Management
     Route::get('/joblist', [JobManagementController::class, 'index'])->name('user.joblist');
     Route::get('/applied-jobs', [JobManagementController::class, 'appliedJobs'])->name('user.applied-jobs');

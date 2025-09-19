@@ -1,5 +1,5 @@
 <x-user-dashboard-body>
-    <main class="p-4 md:p-6 flex-1 overflow-auto">
+    <main class="p-4 md:p-6 flex-1">
         <h3 class="text-xl text-white font-semibold mb-4">Applications</h3>
         <div class="bg-white rounded-lg shadow-md overflow-x-auto w-full">
             <table class="w-full border-collapse text-sm md:text-base">
