@@ -3,7 +3,7 @@
     <nav class="flex justify-between items-center py-4 text-gray-300">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-            <a href="/" class="font-sans font-semibold text-3xl hover:text-gray-900 transition">Workly</a>
+            <a href="/" class="font-sans font-semibold text-3xl text-gray-100 hover:text-gray-900 transition">Workly</a>
         </div>
 
         <!-- Desktop Menu -->

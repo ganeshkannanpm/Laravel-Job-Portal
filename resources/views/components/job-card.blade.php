@@ -13,10 +13,13 @@
         </span>
     </div>
     <div class="mt-4">
-        {{-- <x-forms.button>Apply</x-forms.button> --}}
         <a href="{{ route('login.create') }}" type="submit"
             class=" text-gray-100 text-left px-4 py-2 bg-indigo-600 rounded-md hover:bg-gray-800">
             Apply
+        </a>
+        <a href="{{ route('jobs.view') }}" type="submit"
+            class=" text-gray-100 text-left px-4 py-2 ms-4 bg-indigo-600 rounded-md hover:bg-gray-800">
+            View
         </a>
     </div>
 </div>
