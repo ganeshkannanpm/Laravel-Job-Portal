@@ -10,11 +10,11 @@
       <x-forms.input label="Employer Name" name="employer" />
       <x-forms.input label="Employer Logo" name="logo" type="file" />
       <div class="pt-4">
-        <x-forms.button>Create Account</x-forms.button>
+        <button class="bg-indigo-600 rounded-md text-gray-100 px-4 py-2 hover:bg-gray-800" type="submit">Create Account</button>
       </div>
     </x-forms.form>
   </div>
-  <div class="border-t border-gray-700 pt-6 pb-6 text-center text-white">
+  <div class="border-t bg-indigo-600 border-gray-700 pt-6 pb-6 text-center text-white">
     <p>&copy; 2025 Workly. All rights reserved.</p>
   </div>
 </x-layout>

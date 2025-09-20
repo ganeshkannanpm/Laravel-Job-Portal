@@ -1,6 +1,6 @@
-<section class="bg-gray-800 text-white px-6 py-12 sm:px-8 lg:px-16">
+<section class="bg-gray-100  text-gray-900 px-6 py-12 sm:px-8 lg:px-16">
   <div class="max-w-3xl mx-auto">
-    <h2 class="text-3xl sm:text-4xl font-bold mb-8">Frequently asked questions</h2>
+    <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">Frequently asked questions</h2>
 
     <div x-data="{ open: 1 }" class="space-y-4">
       <!-- FAQ Item -->
@@ -19,9 +19,9 @@
           x-show="open === 1" 
           x-transition
           x-cloak
-          class="mt-2 text-gray-400"
+          class="mt-2  text-gray-900"
         >
-          Simply click on the "Sign Up" button, choose "Job Seeker" and fill in your details. Once you verify your email, your account will be ready.
+          Simply click on the "Sign Up" button and fill in your details. Once you verify your email, your account will be ready.
         </p>
       </div>
 
@@ -41,7 +41,7 @@
           x-show="open === 2" 
           x-transition
           x-cloak
-          class="mt-2 text-gray-400"
+          class="mt-2  text-gray-900"
         >
           Employers can log in to their account, navigate to "Post a Job", fill out the form, and submit. Jobs will be visible after approval.
         </p>
@@ -63,7 +63,7 @@
           x-show="open === 3" 
           x-transition
           x-cloak
-          class="mt-2 text-gray-400"
+          class="mt-2  text-gray-900"
         >
          Yes! Applying for jobs is completely free for job seekers on our platform.
         </p>

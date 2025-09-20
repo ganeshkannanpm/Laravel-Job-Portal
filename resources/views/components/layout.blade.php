@@ -10,10 +10,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
-<body class="bg-gray-800 pb-10">
-    
-   
-    <main class="mt-10 max-w-[1500px] mx-auto">
+<body class="bg-gray-100 pb-10">
+    <main class="mt-10 mx-auto">
         {{ $slot }}
     </main>
    

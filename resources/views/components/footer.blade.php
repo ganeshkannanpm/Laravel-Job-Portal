@@ -1,9 +1,9 @@
-<footer class="bg-gray-900 text-white py-10">
+<footer class=" bg-indigo-600 text-white py-5">
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Logo & About -->
         <div>
-            <a href="/" class="text-2xl font-bold mb-4 hover:text-blue-500 transition">Workly</a>
-            <p class="text-gray-400 mt-8">
+            <a href="/" class="text-2xl font-bold mb-4 hover:text-gray-900 transition">Workly</a>
+            <p class="text-gray-100 mt-8">
                 Find your dream job with us. Connecting talented professionals with top employers worldwide.
             </p>
         </div>
@@ -12,10 +12,10 @@
         <div>
             <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Home</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Browse Jobs</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Post a Job</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">About Us</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Home</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Browse Jobs</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Post a Job</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">About Us</a></li>
             </ul>
         </div>
 
@@ -23,11 +23,11 @@
         <div>
             <h3 class="text-lg font-semibold mb-4">Categories</h3>
             <ul class="space-y-2">
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">IT & Software</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Marketing</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Design</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Finance</a></li>
-                <li><a href="#" class="text-gray-400 hover:text-blue-500 transition">Healthcare</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">IT & Software</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Marketing</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Design</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Finance</a></li>
+                <li><a href="#" class="text-gray-100 hover:text-gray-900 transition">Healthcare</a></li>
             </ul>
         </div>
 
@@ -35,17 +35,16 @@
         <div>
             <h3 class="text-lg font-semibold mb-4">Contact</h3>
             <ul class="space-y-2 text-gray-400">
-                <li>Email: <a href="mailto:support@workly.com"
-                        class="hover:text-blue-500 transition">support@workly.com</a></li>
-                <li>Phone: <a href="tel:+1234567890" class="hover:text-blue-500 transition">+1 234 567 890</a></li>
-                <li>Location: <span class="hover:text-blue-500 transition">New York, USA</span></li>
+                <li class="text-gray-100">Email: <a href="mailto:support@workly.com"
+                        class="text-gray-100 hover:text-gray-900 transition">support@workly.com</a></li>
+                <li class="text-gray-100">Phone: <a href="tel:+1234567890"
+                        class="text-gray-100 hover:text-gray-900 transition">+1 234 567 890</a></li>
+                <li class="text-gray-100">Location: <span class="text-gray-100 hover:text-gray-900 transition">New York,
+                        USA</span></li>
             </ul>
-        </div>
-
-        <!-- Social Media -->
-        <div>
-            <h3 class="text-lg font-semibold mb-4">Follow Us</h3>
-            <div class="flex space-x-4">
+            <h3 class="text-lg font-semibold mt-6">Follow Us</h3>
+            <!-- Social Media -->
+            <div class="flex space-x-4 mt-4">
                 <!-- Facebook -->
                 <a href="#" class="p-2 bg-gray-800 rounded-full hover:bg-blue-500 transition">
                     <svg class="w-5 h-5 text-white hover:text-black" fill="currentColor" viewBox="0 0 24 24">
@@ -69,9 +68,11 @@
                 </a>
             </div>
         </div>
+        <div>
+        </div>
     </div>
     <!-- Bottom -->
-    <div class="mt-10 border-t border-gray-700 pt-6 text-center text-white">
+    <div class="border-t border-gray-400 pt-6 text-center text-white">
         <p>&copy; 2025 Workly. All rights reserved.</p>
     </div>
     </div>
