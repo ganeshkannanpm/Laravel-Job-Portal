@@ -26,8 +26,8 @@
         <ul class="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
           <!-- Dashboard -->
           <li>
-            <a href="{{ route('user.dashboard') }}" class="text-gray-700 hover:text-indigo-600 flex items-center">
-              <span class="material-icons mr-1">dashboard</span> Dashboard
+            <a href="{{ route('user.dashboard') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline flex items-center">
+              {{-- <span class="material-icons mr-1">dashboard</span>  --}}Dashboard
             </a>
           </li>
 

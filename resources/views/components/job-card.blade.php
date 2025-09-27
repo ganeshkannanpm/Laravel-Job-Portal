@@ -1,5 +1,6 @@
 <div class="mx-5 bg-white border border-gray-200 rounded-xl shadow-sm p-5 hover:shadow-md transition relative">
     <h2 class="text-lg font-semibold text-gray-900">{{ $job->title }}</h2>
+    <h4 class="text-md font-semibold text-gray-800">{{ $job->company }}</h4>
     <p class="text-sm text-gray-600 mt-1">{{ $job->employer->name }}</p>
     <div class="mt-3 flex items-center text-gray-700 text-sm">
         💰 <span class="ml-2">{{ $job->salary }}</span>

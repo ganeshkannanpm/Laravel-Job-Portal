@@ -7,6 +7,7 @@
                     <tr>
                         <th class="p-3 text-left">No</th>
                         <th class="p-3 text-left">Position</th>
+                        <th class="p-3 text-left">Company</th>
                         <th class="p-3 text-left">Resume</th>
                         <th class="p-3 text-left">Status</th>
                         <th class="p-3 text-left">Actions</th>
@@ -18,6 +19,7 @@
                         <tr class="border-b">
                             <td class="p-3">{{  1 }}</td>
                             <td class="p-3">{{ $application->job->title ?? 'N/A' }}</td>
+                            <td class="p-3">{{ $application->job->company }}</td>
                             <td class="p-3">
                                 @if ($application->resume)
                                     <a href="/storage/resumes/resume1.pdf" target="_blank"

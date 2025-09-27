@@ -2,6 +2,8 @@
     <section class="ms-5 mt-10 overflow-auto">
         <div class="max-w-2xl mx-auto bg-white shadow-lg rounded-xl p-8 mt-8">
             <h2 class="text-2xl font-bold text-gray-800 mb-6">Apply for this Job</h2>
+            <h2 class="text-lg font-semibold text-gray-900">{{ $job->title }}</h2>
+            <h4 class="text-md font-semibold text-gray-800">{{ $job->company }}</h4>
 
             <!-- Show global success/error messages -->
             @if (session('success'))

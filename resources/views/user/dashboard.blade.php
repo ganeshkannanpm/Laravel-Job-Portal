@@ -6,7 +6,7 @@
 
       <!-- Welcome + Profile Completion -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-2xl font-semibold">Welcome, <span class="text-indigo-600">Ganesh</span></h2>
+        <h2 class="text-2xl font-semibold">Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span></h2>
         <p class="text-gray-500">Full Stack Developer</p>
         <div class="mt-4">
           <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
@@ -42,13 +42,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr class="border-t">
-              <td class="py-2">Laravel Developer</td>
-              <td>TechCorp</td>
-              <td>15 Sep 2025</td>
+            @foreach ( $applications as $application )
+              <tr class="border-t">
+              <td class="py-2">{{ $application->job->title }}</td>
+              <td>{{ $application->job->company }}</td>
+              <td>{{ $application->job->created_at }}</td>
               <td><span class="text-green-600 font-medium">Shortlisted</span></td>
             </tr>
-            <tr class="border-t">
+            @endforeach
+            
+            {{-- <tr class="border-t">
               <td class="py-2">React Developer</td>
               <td>CodeWorks</td>
               <td>12 Sep 2025</td>
@@ -59,7 +62,7 @@
               <td>DataSoft</td>
               <td>10 Sep 2025</td>
               <td><span class="text-red-600 font-medium">Rejected</span></td>
-            </tr>
+            </tr> --}}
           </tbody>
         </table>
       </div>
