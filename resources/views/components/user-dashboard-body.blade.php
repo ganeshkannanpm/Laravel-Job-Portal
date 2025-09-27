@@ -26,8 +26,9 @@
         <ul class="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
           <!-- Dashboard -->
           <li>
-            <a href="{{ route('user.dashboard') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline flex items-center">
-              {{-- <span class="material-icons mr-1">dashboard</span>  --}}Dashboard
+            <a href="{{ route('user.dashboard') }}"
+              class="text-gray-700 hover:text-indigo-800 no-underline hover:underline flex items-center">
+              {{-- <span class="material-icons mr-1">dashboard</span> --}}Dashboard
             </a>
           </li>
 
@@ -50,12 +51,12 @@
             <button onclick="toggleDropdown('profile-desktop')" class="text-gray-700 hover:text-indigo-600">
               Profile
             </button>
-            <ul id="profile-desktop"
-              class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
-              <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-100">Personal
-                  Info</a></li>
+            <ul id="profile-desktop" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
+              <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-100">Personal Info</a></li>
+              <li><a href="{{ route('user.skill-index') }}" class="block px-4 py-2 hover:bg-gray-100">Skills</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Experiences</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Resume Upload</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Skills & Experience</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
             </ul>
           </li>
 
@@ -148,8 +149,10 @@
             <ul id="profile-mobile" class="hidden pl-4 mt-1 space-y-1">
               <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-700">Personal
                   Info</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Skills & Experiences</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Skills</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Experiences</a></li>
               <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Resume Upload</a></li>
+              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Education</a></li>
             </ul>
           </li>
           <!-- Repeat for Profile, Notifications, Help, Settings -->

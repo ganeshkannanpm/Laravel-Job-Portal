@@ -5,6 +5,7 @@ use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,5 +42,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/show-personal-info', [PersonalInfoController::class, 'show'])->name('user.show-personal-info');
     Route::post('/store-personal-info', [PersonalInfoController::class, 'store'])->name('user.store-personal-info');
     Route::put('/update-personal-info/{id}',[PersonalInfoController::class, 'update'])->name('user.update-personal-info');
+
+    //Skills
+    Route::get('/profile/skills',[SkillController::class,'index'])->name('user.skill-index');
 });
 

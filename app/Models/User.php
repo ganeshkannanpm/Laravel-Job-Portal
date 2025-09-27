@@ -72,4 +72,9 @@ class User extends Authenticatable
         return $this->hasOne(PersonalInfo::class);
     }
 
+    public function skills() {
+
+        return $this->hasMany(Skill::class);
+    }
+
 }
