@@ -23,23 +23,21 @@ class UserController extends Controller
             ->take(5)
             ->get();
 
-        // Recommended jobs
-        // $recommendedJobs = Job::whereNotIn('id', $applications->pluck('job_id'))
-        //     ->latest()
-        //     ->take(5)
-        //     ->get();
+        // Recommended jobs for user
+        $recommendedJobs = Job::whereNotIn('id', $applications->pluck('job_id'))
+            ->latest()
+            ->take(5)
+            ->get();
 
-        //Saved jobs
-        // $savedJobs = User::savedJobs()->latest()->take(5)->get();
-
+        // Saved jobs of user
+        $savedJobs = Auth::user()->savedJobs()->latest()->take(5)->get();
 
         return view('user.dashboard', compact(
             'user',
             'applications',
-            // 'recommendJobs',
-            // 'savedJobs'
+            'recommendedJobs',
+            'savedJobs'
         ));
     }
-
 
 }

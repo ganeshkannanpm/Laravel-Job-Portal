@@ -19,14 +19,24 @@
 
       <!-- Quick Actions -->
       <div class="bg-white p-6 rounded-lg shadow grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Edit
-          Profile</button>
-        <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Upload
-          Resume</button>
-        <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Search
-          Jobs</button>
-        <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Saved
-          Jobs</button>
+        {{-- <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Saved
+          Jobs</button> --}}
+        <a href="{{ route('user.personal-info') }}"
+          class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
+          Edit Profile
+        </a>
+        <a href="#"
+          class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
+          Upload Resume
+        </a>
+        <a href="#"
+          class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
+          Search Jobs
+        </a>
+        <a href="{{ route('user.saved-jobs') }}"
+          class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
+          Saved Jobs
+        </a>
       </div>
 
       <!-- Recent Applications -->
@@ -42,15 +52,15 @@
             </tr>
           </thead>
           <tbody>
-            @foreach ( $applications as $application )
+            @foreach ($applications as $application)
               <tr class="border-t">
-              <td class="py-2">{{ $application->job->title }}</td>
-              <td>{{ $application->job->company }}</td>
-              <td>{{ $application->job->created_at }}</td>
-              <td><span class="text-green-600 font-medium">Shortlisted</span></td>
-            </tr>
+                <td class="py-2">{{ $application->job->title }}</td>
+                <td>{{ $application->job->company }}</td>
+                <td>{{ $application->job->created_at }}</td>
+                {{-- <td><span class="text-green-600 font-medium">Shortlisted</span></td> --}}
+              </tr>
             @endforeach
-            
+
             {{-- <tr class="border-t">
               <td class="py-2">React Developer</td>
               <td>CodeWorks</td>
@@ -71,20 +81,18 @@
       <div class="bg-white p-6 rounded-lg shadow">
         <h3 class="text-lg font-semibold mb-4">Recommended Jobs</h3>
         <div class="space-y-4">
-          <div class="border p-4 rounded-lg flex justify-between items-center">
-            <div>
-              <h4 class="font-semibold">Full Stack Developer</h4>
-              <p class="text-gray-500 text-sm">InnovateX • Remote</p>
+          @foreach ($recommendedJobs as $recommendedJob)
+            <div class="border p-4 rounded-lg flex justify-between items-center">
+              <div>
+                <h4 class="font-semibold">{{ $recommendedJob->title }}</h4>
+                <p class="text-gray-500 text-sm">{{ $recommendedJob->company }} • {{ $recommendedJob->location }}</p>
+              </div>
+              <a href="{{ route('user.apply-job', $recommendedJob->id) }}"
+                class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
+                Apply
+              </a>
             </div>
-            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Apply</button>
-          </div>
-          <div class="border p-4 rounded-lg flex justify-between items-center">
-            <div>
-              <h4 class="font-semibold">PHP Developer</h4>
-              <p class="text-gray-500 text-sm">WebGen • Chennai</p>
-            </div>
-            <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg">Apply</button>
-          </div>
+          @endforeach
         </div>
       </div>
     </div>
@@ -115,12 +123,15 @@
       <!-- Saved Jobs -->
       <div class="bg-white p-6 rounded-lg shadow">
         <h3 class="text-lg font-semibold mb-4">Saved Jobs</h3>
-        <ul class="space-y-2 text-sm">
-          <li>🔖 UI/UX Designer – PixelWorks</li>
-          <li>🔖 Node.js Developer – DevPro</li>
-          <li>🔖 QA Engineer – Testify</li>
-        </ul>
-        <button class="mt-3 text-indigo-600 hover:underline">View All</button>
+        @foreach ($savedJobs as $savedJob)
+          <ul class="space-y-2 text-sm">
+            <li>🔖 {{ $savedJob->title }} – {{ $savedJob->company }}</li>
+          </ul>
+        @endforeach
+        <a href="{{ route('user.saved-jobs') }}" class="mt-3 text-indigo-600 hover:underline">
+          View All
+        </a>
+
       </div>
     </div>
   </div>
