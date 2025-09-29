@@ -10,7 +10,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index']);
-Route::get('/job-view',[JobController::class, 'show'])->name('jobs.view');
+Route::get('/job-view', [JobController::class, 'show'])->name('jobs.view');
 
 //Register
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
@@ -24,8 +24,8 @@ Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout')-
 //User Dashboard
 Route::middleware('auth')->group(function () {
 
-    Route::get('/dashboard',[UserController::class, 'index'])->name('user.dashboard');
-    
+    Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+
     //User Dashboard - Job Management
     Route::get('/joblist', [JobManagementController::class, 'index'])->name('user.joblist');
     Route::get('/applied-jobs', [JobManagementController::class, 'appliedJobs'])->name('user.applied-jobs');
@@ -38,12 +38,15 @@ Route::middleware('auth')->group(function () {
 
     //Personal Info
     Route::get('/personal-info', [PersonalInfoController::class, 'index'])->name('user.personal-info');
-    Route::get('/create-personal-info',[PersonalInfoController::class,'create'])->name('user.create-personal-info');
+    Route::get('/create-personal-info', [PersonalInfoController::class, 'create'])->name('user.create-personal-info');
     Route::get('/show-personal-info', [PersonalInfoController::class, 'show'])->name('user.show-personal-info');
     Route::post('/store-personal-info', [PersonalInfoController::class, 'store'])->name('user.store-personal-info');
-    Route::put('/update-personal-info/{id}',[PersonalInfoController::class, 'update'])->name('user.update-personal-info');
+    Route::put('/update-personal-info/{id}', [PersonalInfoController::class, 'update'])->name('user.update-personal-info');
 
     //Skills
-    Route::get('/profile/skills',[SkillController::class,'index'])->name('user.skill-index');
+    Route::get('/skills', [SkillController::class, 'index'])->name('user.skill-index');
+    Route::post('/skills-add', [SkillController::class, 'store'])->name('user-skill.store');
+    Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('user-skill.delete');
+
 });
 
