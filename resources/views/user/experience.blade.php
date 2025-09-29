@@ -1,8 +1,17 @@
 <x-user-dashboard-body>
-    <div class="bg-white p-6 rounded-lg shadow mb-6">
-        <h3 class="text-lg font-semibold mb-4">Experience</h3>
-        <div class="space-y-4">
+    <div class="bg-white mt-10 p-6 rounded-lg shadow mb-6">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-lg font-semibold">Experience</h3>
+            {{-- <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+                + Add Experience
+            </button> --}}
+            <a href="{{ route('user.create-experience') }}"
+          class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+         + Add Experience
+        </a>
+        </div>
 
+        <div class="space-y-4">
             <!-- Experience Item -->
             <div class="border-l-4 border-indigo-600 pl-4">
                 <h4 class="text-md font-semibold">Laravel Developer</h4>

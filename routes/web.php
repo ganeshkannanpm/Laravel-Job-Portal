@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\PersonalInfoController;
@@ -47,6 +48,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/skills', [SkillController::class, 'index'])->name('user.skill-index');
     Route::post('/skills-add', [SkillController::class, 'store'])->name('user-skill.store');
     Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('user-skill.delete');
+
+    //Experience
+    Route::get('/exp',[ExperienceController::class,'index'])->name('user.experience');
+    Route::get('/exp-create',[ExperienceController::class,'create'])->name('user.create-experience');
 
 });
 
