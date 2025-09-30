@@ -1,5 +1,5 @@
 <x-user-dashboard-body>
-    <div class="bg-white mt-10 p-6 rounded-lg shadow mb-6">
+    <div class="bg-white max-w-3xl mx-auto mt-10 p-6 rounded-lg shadow mb-6">
         <div class="flex justify-between items-center mb-4">
             <h3 class="text-lg font-semibold">Experience</h3>
             @if(session('message'))

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
@@ -56,5 +57,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/exp-edit/{id}', [ExperienceController::class, 'edit'])->name('user.edit-experience');
     Route::put('/exp-edit/{id}',[ExperienceController::class,'update'])->name('user.update-experience');
     Route::delete('/exp-delete/{experience}',[ExperienceController::class,'destroy'])->name('user.delete-experience');
+
+    //Education
+    Route::get('/edu',[EducationController::class,'index'])->name('user.education');
 });
 
