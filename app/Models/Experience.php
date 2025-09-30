@@ -7,12 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'user_id',
-        'company_name',
         'job_title',
+        'company_name',
         'start_date',
         'end_date',
         'description',

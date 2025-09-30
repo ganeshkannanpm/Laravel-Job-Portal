@@ -52,6 +52,7 @@ Route::middleware('auth')->group(function () {
     //Experience
     Route::get('/exp',[ExperienceController::class,'index'])->name('user.experience');
     Route::get('/exp-create',[ExperienceController::class,'create'])->name('user.create-experience');
-
+    Route::post('/exp-store',[ExperienceController::class,'store'])->name('user.store-experience');
+    
 });
 
