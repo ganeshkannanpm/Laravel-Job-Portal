@@ -51,19 +51,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/skills/{skill}', [SkillController::class, 'destroy'])->name('user-skill.delete');
 
     //Experience
-    Route::get('/exp',[ExperienceController::class,'index'])->name('user.experience');
-    Route::get('/exp-create',[ExperienceController::class,'create'])->name('user.create-experience');
-    Route::post('/exp-store',[ExperienceController::class,'store'])->name('user.store-experience');
+    Route::get('/exp', [ExperienceController::class, 'index'])->name('user.experience');
+    Route::get('/exp-create', [ExperienceController::class, 'create'])->name('user.create-experience');
+    Route::post('/exp-store', [ExperienceController::class, 'store'])->name('user.store-experience');
     Route::get('/exp-edit/{id}', [ExperienceController::class, 'edit'])->name('user.edit-experience');
-    Route::put('/exp-edit/{id}',[ExperienceController::class,'update'])->name('user.update-experience');
-    Route::delete('/exp-delete/{experience}',[ExperienceController::class,'destroy'])->name('user.delete-experience');
+    Route::put('/exp-edit/{id}', [ExperienceController::class, 'update'])->name('user.update-experience');
+    Route::delete('/exp-delete/{experience}', [ExperienceController::class, 'destroy'])->name('user.delete-experience');
 
     //Education
-    Route::get('/edu',[EducationController::class,'index'])->name('user.education');
-    Route::get('/edu-create',[EducationController::class,'create'])->name('user.create-education');
-    Route::post('/edu-store',[EducationController::class,'store'])->name('user.store-education');
+    Route::get('/edu', [EducationController::class, 'index'])->name('user.education');
+    Route::get('/edu-create', [EducationController::class, 'create'])->name('user.create-education');
+    Route::post('/edu-store', [EducationController::class, 'store'])->name('user.store-education');
     Route::get('/edu-edit/{id}', [EducationController::class, 'edit'])->name('user.edit-education');
-    Route::put('/edu-edit/{id}',[EducationController::class,'update'])->name('user.update-education');
-    Route::delete('/edu-delete/{education}',[EducationController::class,'destroy'])->name('user.delete-education');
+    Route::put('/edu-edit/{id}', [EducationController::class, 'update'])->name('user.update-education');
+    Route::delete('/edu-delete/{education}', [EducationController::class, 'destroy'])->name('user.delete-education');
+
+    //Resume upload
+    Route::post('/resume/upload', [UserController::class, 'uploadResume'])->name('resume.upload');
+    Route::get('/resume/download', [UserController::class, 'downloadResume'])->name('resume.download');
+
 });
 

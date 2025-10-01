@@ -40,4 +40,42 @@ class UserController extends Controller
         ));
     }
 
+    public function uploadResume(Request $request)
+    {
+
+        $request->validate([
+            'resume' => 'required|mimes:pdf,doc,docx|max:2048',
+        ]);
+
+        $user = auth()->user();
+
+        if ($request->hasFile('resume')) {
+
+            $file = $request - file('resume');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $file->storeAs('resumes', $filename, 'public');
+
+            //Delete old resume if exists
+            if ($user->resume && \Storage::disk('public')->exists('resumes/' . $user->resume)) {
+                \Storage::disk('public')->delete('resumes/' . $user->resume);
+            };
+
+            // Save new resume
+            $user->resume = $filename;
+            $user->save();
+        }
+
+        return redirect()->route('user.resume')->with('success', 'Experience updated successfully');
+    }
+
+    public function downloadResume()
+    {
+        $user = auth()->user();
+        if (!$user->resume) {
+            return back()->with('error', 'No resume uploaded yet!');
+        }
+
+        return response()->download(storage_path('app/public/resumes/' . $user->resume));
+    }
+
 }
