@@ -6,5 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
-    //
+    protected $table = 'educations';
+    protected $fillable = [
+        'degree',
+        'institution',
+        'start_year',
+        'end_year',
+        'details'
+    ];
+
+    public function user(){
+
+        return $this->belongsTo(User::class);
+    }
 }
