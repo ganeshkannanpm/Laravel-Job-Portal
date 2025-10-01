@@ -40,34 +40,34 @@ class EducationController extends Controller
       
     }
 
-    // public function edit($id){
+    public function edit($id){
 
-    //     $education = Education::findOrFail($id);
-    //     return view('user.edit-education',compact(['education']));
-    // }
+        $education = Education::findOrFail($id);
+        return view('user.edit-education',compact(['education']));
+    }
 
-    // public function update(Request $request, $id){
+    public function update(Request $request, $id){
 
-    //     $request->validate([
-    //         'degree'=> 'required|string|max:255',
-    //         'institution'=>'required|string|max:255',
-    //         'start_date' => 'required|date',
-    //         'end_date'=>'required|date',
-    //         'details'=>'required|string'
-    //     ]);
+        $request->validate([
+            'degree'=> 'required|string|max:255',
+            'institution'=>'required|string|max:255',
+            'start_year' => 'required|date',
+            'end_year'=>'required|date',
+            'details'=>'required|string'
+        ]);
 
-    //     $data = Education::findOrFail($id);
+        $data = Education::findOrFail($id);
 
-    //     $data->update([
-    //         'degree'=> $request->degree,
-    //         'institution'=> $request->institution,
-    //         'start_date' => $request->start_date,
-    //         'end_date' => $request->end_date,
-    //         'details'=> $request->details,
-    //     ]);
+        $data->update([
+            'degree'=> $request->degree,
+            'institution'=> $request->institution,
+            'start_year' => $request->start_year,
+            'end_year' => $request->end_year,
+            'details'=> $request->details,
+        ]);
 
-    //     return redirect()->route('user.education')->with('message', 'Education updated successfully');
-    // }
+        return redirect()->route('user.education')->with('message', 'Education updated successfully');
+    }
 
     public function destroy(Education $education){
 

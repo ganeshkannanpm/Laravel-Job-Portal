@@ -19,7 +19,6 @@
                             ✕
                         </button>
                     </div>
-
                 </div>
             @endif
             <a href="{{ route('user.create-experience') }}"
