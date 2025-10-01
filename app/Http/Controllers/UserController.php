@@ -40,6 +40,11 @@ class UserController extends Controller
         ));
     }
 
+    public function create(){
+
+        return view('user.resume');
+    }
+
     public function uploadResume(Request $request)
     {
 
@@ -51,7 +56,7 @@ class UserController extends Controller
 
         if ($request->hasFile('resume')) {
 
-            $file = $request - file('resume');
+            $file = $request->file('resume');
             $filename = time() . '_' . $file->getClientOriginalName();
             $file->storeAs('resumes', $filename, 'public');
 

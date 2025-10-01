@@ -67,8 +67,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/edu-delete/{education}', [EducationController::class, 'destroy'])->name('user.delete-education');
 
     //Resume upload
+    Route::get('/resume',[UserController::class,'create'])->name('user.resume');
     Route::post('/resume/upload', [UserController::class, 'uploadResume'])->name('resume.upload');
     Route::get('/resume/download', [UserController::class, 'downloadResume'])->name('resume.download');
-
+    
 });
 

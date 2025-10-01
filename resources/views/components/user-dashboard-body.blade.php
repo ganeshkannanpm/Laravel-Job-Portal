@@ -56,7 +56,7 @@
               <li><a href="{{ route('user.skill-index') }}" class="block px-4 py-2 hover:bg-gray-100">Skills</a></li>
               <li><a href="{{ route('user.experience') }}" class="block px-4 py-2 hover:bg-gray-100">Experiences</a></li>
               <li><a href="{{ route('user.education')}}" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Resume Upload</a></li>
+              <li><a href="{{ route('user.resume')}}" class="block px-4 py-2 hover:bg-gray-100">Resume Upload</a></li>
             </ul>
           </li>
 
