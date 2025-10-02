@@ -12,7 +12,8 @@ class Education extends Model
         'institution',
         'start_year',
         'end_year',
-        'details'
+        'details',
+        'user_id'
     ];
 
     public function user(){

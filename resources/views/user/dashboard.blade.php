@@ -6,16 +6,43 @@
 
       <!-- Welcome + Profile Completion -->
       <div class="bg-white p-6 rounded-lg shadow">
-        <h2 class="text-2xl font-semibold">Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span></h2>
-        <p class="text-gray-500">Full Stack Developer</p>
-        <div class="mt-4">
-          <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
-          <div class="w-full bg-gray-200 rounded-full h-3">
-            <div class="bg-indigo-600 h-3 rounded-full w-4/5"></div>
-          </div>
-          <p class="text-xs text-gray-500 mt-1">80% Complete</p>
+    <h2 class="text-2xl font-semibold">
+        Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span>
+    </h2>
+    <p class="text-gray-500">Full Stack Developer</p>
+
+    <div class="mt-4">
+        <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
+
+        @php
+            $completion = Auth::user()->profileCompletion();
+        @endphp
+
+        <div class="w-full bg-gray-200 rounded-full h-3">
+            <div class="bg-indigo-600 h-3 rounded-full" style="width: {{ $completion }}%"></div>
         </div>
-      </div>
+
+        <p class="text-xs text-gray-500 mt-1">{{ $completion }}% Complete</p>
+    </div>
+</div>
+@php
+    $sections = [
+        'Personal Info' => Auth::user()->personalInfo()->exists(),
+        'Skills' => Auth::user()->skills()->exists(),
+        'Education' => Auth::user()->education()->exists(),
+        'Experience' => Auth::user()->experiences()->exists(),
+        'Resume Upload' => Auth::user()->resumeUpload()->exists(),
+    ];
+@endphp
+
+<ul class="mt-2 text-sm">
+    @foreach ($sections as $name => $completed)
+        @if (!$completed)
+            <li class="text-red-500">Fill {{ $name }}</li>
+        @endif
+    @endforeach
+</ul>
+
 
       <!-- Quick Actions -->
       <div class="bg-white p-6 rounded-lg shadow grid grid-cols-2 md:grid-cols-4 gap-4 text-center">

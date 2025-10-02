@@ -45,7 +45,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function jobs(){
+    public function jobs()
+    {
 
         return $this->hasMany(Job::class);
     }
@@ -58,33 +59,55 @@ class User extends Authenticatable
 
     public function savedJobs()
     {
-        
+
         return $this->belongsToMany(Job::class, 'saved_jobs', 'user_id', 'job_id')->withTimestamps();
     }
 
-    public function jobApplication(){
+    public function jobApplication()
+    {
 
-        return $this->hasMany(JobApplication::class,'user_id');
+        return $this->hasMany(JobApplication::class, 'user_id');
     }
 
-    public function personalInfo() {
-        
+    public function personalInfo()
+    {
+
         return $this->hasOne(PersonalInfo::class);
     }
 
-    public function skills() {
+    public function skills()
+    {
 
         return $this->hasMany(Skill::class);
     }
 
-    public function experiences(){
+    public function experiences()
+    {
 
         return $this->hasMany(Experience::class);
     }
 
-    public function education() {
+    public function education()
+    {
 
         return $this->hasMany(Education::class);
     }
+
+    public function profileCompletion()
+    {
+        $sections = [
+            'personalInfo' => $this->personalInfo()->exists(),
+            'skills' => $this->skills()->exists(),
+            'education' => $this->education()->exists(),
+            'experiences' => $this->experiences()->exists(),
+            'resumeUpload' => $this->resumeUpload()->exists(),
+        ];
+
+        $filled = count(array_filter($sections)); // counts truthy values
+        $totalSections = count($sections);
+
+        return round(($filled / $totalSections) * 100);
+    }
+
 
 }

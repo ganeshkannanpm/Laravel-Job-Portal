@@ -32,8 +32,8 @@
             @foreach ($experiences as $experience)
                 <div class="border-l-4 border-indigo-600 pl-4 flex justify-between items-start">
                     <div>
-                        <h4 class="text-md font-semibold">{{ $experience->job_title }}</h4>
-                        <p class="text-gray-600 text-sm">
+                        <h4 class="text-xl font-semibold">{{ $experience->job_title }}</h4>
+                        <p class="text-gray-900 text-md">
                             {{ $experience->company_name }} • {{ $experience->start_date }} –
                             {{ $experience->end_date ?? 'Present' }}
                         </p>
