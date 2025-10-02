@@ -8,20 +8,21 @@ use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
-  
-    public function create() {
 
+    public function create()
+    {
         return view('auth.login');
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $attributes = $request->validate([
-            'email' => ['required','email'],
+            'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if(!Auth::attempt($attributes)){
+        if (!Auth::attempt($attributes)) {
             throw ValidationException::withMessages([
                 'email' => "Sorry, credentials not match"
             ]);
@@ -29,13 +30,20 @@ class SessionController extends Controller
 
         request()->session()->regenerate();
 
-        return redirect()->route('user.dashboard');
+        $user = Auth::user();
+
+        if ($user->role === 'admin') {
+            return redirect()->route('admin.dashboard');
+        } elseif ($user->role === 'employer') {
+            return redirect()->route('employer.dashboard');
+        } else {
+            return redirect()->route('user.dashboard');
+        }
     }
 
-    public function destroy() {
-        
+    public function destroy()
+    {
         Auth::logout();
-
         return redirect('/');
     }
 }

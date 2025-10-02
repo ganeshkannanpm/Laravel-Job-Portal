@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducationController;
+use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
@@ -24,11 +26,11 @@ Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout')->middleware('auth');
 
 //User Dashboard
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'role:user'])->group(function () {
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
 
-    //User Dashboard - Job Management
+    //Job Management
     Route::get('/joblist', [JobManagementController::class, 'index'])->name('user.joblist');
     Route::get('/applied-jobs', [JobManagementController::class, 'appliedJobs'])->name('user.applied-jobs');
     Route::post('/save-job/{id}', [JobManagementController::class, 'save'])->name('jobs.save');
@@ -70,6 +72,15 @@ Route::middleware('auth')->group(function () {
     Route::get('/resume',[UserController::class,'create'])->name('user.resume');
     Route::post('/resume/upload', [UserController::class, 'uploadResume'])->name('resume.upload');
     Route::get('/resume/download', [UserController::class, 'downloadResume'])->name('resume.download');
-    
 });
 
+
+//Employer Dashboard
+Route::middleware(['auth', 'role:employer'])->group(function () {
+    Route::get('/employer/dashboard', [EmployerController::class, 'index'])->name('employer.dashboard');
+});
+
+//Admin Dashboard
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+});
