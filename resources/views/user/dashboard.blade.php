@@ -6,53 +6,51 @@
 
       <!-- Welcome + Profile Completion -->
       <div class="bg-white p-6 rounded-lg shadow">
-    <h2 class="text-2xl font-semibold">
-        Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span>
-    </h2>
-    <p class="text-gray-500">Full Stack Developer</p>
+        <h2 class="text-2xl font-semibold">
+          Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span>
+        </h2>
+        <p class="text-gray-500">Full Stack Developer</p>
 
-    <div class="mt-4">
-        <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
+        <div class="mt-4">
+          <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
 
-        @php
+          @php
             $completion = Auth::user()->profileCompletion();
-        @endphp
+          @endphp
 
-        <div class="w-full bg-gray-200 rounded-full h-3">
+          <div class="w-full bg-gray-200 rounded-full h-3">
             <div class="bg-indigo-600 h-3 rounded-full" style="width: {{ $completion }}%"></div>
+          </div>
+
+          <p class="text-xs text-gray-500 mt-1">{{ $completion }}% Complete</p>
         </div>
+      </div>
+      @php
+        $sections = [
+          'Personal Info' => Auth::user()->personalInfo()->exists(),
+          'Skills' => Auth::user()->skills()->exists(),
+          'Education' => Auth::user()->education()->exists(),
+          'Experience' => Auth::user()->experiences()->exists(),
+          'Resume Upload' => !empty(Auth::user()->resume),
+        ];
+      @endphp
 
-        <p class="text-xs text-gray-500 mt-1">{{ $completion }}% Complete</p>
-    </div>
-</div>
-@php
-    $sections = [
-        'Personal Info' => Auth::user()->personalInfo()->exists(),
-        'Skills' => Auth::user()->skills()->exists(),
-        'Education' => Auth::user()->education()->exists(),
-        'Experience' => Auth::user()->experiences()->exists(),
-        'Resume Upload' => Auth::user()->resumeUpload()->exists(),
-    ];
-@endphp
-
-<ul class="mt-2 text-sm">
-    @foreach ($sections as $name => $completed)
-        @if (!$completed)
+      <ul class="mt-2 text-sm">
+        @foreach ($sections as $name => $completed)
+          @if (!$completed)
             <li class="text-red-500">Fill {{ $name }}</li>
-        @endif
-    @endforeach
-</ul>
+          @endif
+        @endforeach
+      </ul>
 
 
       <!-- Quick Actions -->
       <div class="bg-white p-6 rounded-lg shadow grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        {{-- <button class="bg-indigo-100 text-indigo-700 py-3 rounded-lg font-medium hover:bg-indigo-200">Saved
-          Jobs</button> --}}
         <a href="{{ route('user.personal-info') }}"
           class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
           Edit Profile
         </a>
-        <a href="#"
+        <a href="{{ route('user.resume') }}"
           class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
           Upload Resume
         </a>

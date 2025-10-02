@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -100,7 +101,7 @@ class User extends Authenticatable
             'skills' => $this->skills()->exists(),
             'education' => $this->education()->exists(),
             'experiences' => $this->experiences()->exists(),
-            'resumeUpload' => $this->resumeUpload()->exists(),
+            'Resume Upload' => !empty(Auth::user()->resume),
         ];
 
         $filled = count(array_filter($sections)); // counts truthy values

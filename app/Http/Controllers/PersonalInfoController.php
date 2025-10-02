@@ -47,7 +47,8 @@ class PersonalInfoController extends Controller
 
         PersonalInfo::create($validated);
 
-        return redirect()->back()->with('success', 'Your profile created successfully!');
+        // return redirect()->back()->with('success', 'Your profile created successfully!');
+        return redirect()->route('user.personal-info')->with('success', 'Your profile created successfully!');
     }
 
     public function update(PersonalInfoRequest $request, $id) {
@@ -58,7 +59,7 @@ class PersonalInfoController extends Controller
 
         $personalInfo->update($validated);
 
-        return redirect()->back()->with('success', 'Your profile updated successfully!',);
+        return redirect()->route('user.personal-info')->with('success', 'Your profile updated successfully!',);
     }
 
 }

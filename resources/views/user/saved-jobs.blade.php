@@ -17,7 +17,7 @@
                     </form>
                 </div>
             @empty
-                <p class="text-white">No saved jobs yet.</p>
+                <p class="text-gray-900 text-2xl font-semibold">No saved jobs yet.</p>
             @endforelse
         </div>
     </section>
