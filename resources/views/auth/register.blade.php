@@ -36,7 +36,7 @@
     </x-forms.form>
   </div>
 
-  <div class="border-t bg-indigo-600 border-gray-700 pt-6 pb-6 text-center text-white">
+  <div class="border-t bg-indigo-900 border-gray-700 pt-6 pb-6 text-center text-white">
     <p>&copy; 2025 Workly. All rights reserved.</p>
   </div>
 

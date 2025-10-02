@@ -1,1 +1,3 @@
-<h1>Welcome to employer dashboard</h1>
+<x-employer-dashboard-body>
+
+</x-employer-dashboard-body>

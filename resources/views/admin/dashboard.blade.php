@@ -1,1 +1,3 @@
-<h1>Welcome to admin dashboard</h1>
+<x-admin-dashboard-body>
+    
+</x-admin-dashboard-body>

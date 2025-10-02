@@ -1,4 +1,4 @@
-<footer class=" bg-indigo-600 text-white py-5">
+<footer class=" bg-indigo-900 text-white py-5">
     <div class="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <!-- Logo & About -->
         <div>

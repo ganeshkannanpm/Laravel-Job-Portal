@@ -1,5 +1,5 @@
 
-<div class="bg-indigo-600 px-6 fixed top-0 left-0 right-0 z-50">
+<div class="bg-indigo-900 px-6 fixed top-0 left-0 right-0 z-50">
     <nav class="flex justify-between items-center py-4 text-gray-300">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
