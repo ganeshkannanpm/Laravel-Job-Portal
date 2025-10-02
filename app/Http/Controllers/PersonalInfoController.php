@@ -33,7 +33,7 @@ class PersonalInfoController extends Controller
         $user = Auth::user();
         $personalInfo = $user->personalInfo;
 
-        return view('user.update-personal-info', compact(['user','personalInfo']));
+        return view('user.update-personal-info', compact(['user', 'personalInfo']));
     }
 
     public function store(PersonalInfoRequest $request)
@@ -48,18 +48,21 @@ class PersonalInfoController extends Controller
         PersonalInfo::create($validated);
 
         // return redirect()->back()->with('success', 'Your profile created successfully!');
-        return redirect()->route('user.personal-info')->with('success', 'Your profile created successfully!');
+        return redirect()->route('user.personal-info')->with('message', 'Your profile created successfully!');
     }
 
-    public function update(PersonalInfoRequest $request, $id) {
+    public function update(PersonalInfoRequest $request, $id)
+    {
 
         $validated = $request->validated();
 
-        $personalInfo = PersonalInfo::where('user_id',auth()->id())->firstOrFail($id);
+        $personalInfo = PersonalInfo::where('id', $id)
+            ->where('user_id', auth()->id())
+            ->firstOrFail();
 
         $personalInfo->update($validated);
 
-        return redirect()->route('user.personal-info')->with('success', 'Your profile updated successfully!',);
+        return redirect()->route('user.personal-info')->with('message', 'Your profile updated successfully!', );
     }
 
 }
