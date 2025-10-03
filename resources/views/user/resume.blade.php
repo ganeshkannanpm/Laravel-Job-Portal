@@ -27,15 +27,19 @@
             @csrf
             <div class="mb-3">
                 <label>Upload Resume (PDF/DOC)</label>
-                <input type="file" name="resume" class="form-control" required>
+                <input type="file" name="resume" accept=".pdf,.doc,.docx"
+                    class="border border-gray-300 rounded-lg px-3 py-2 w-full" required>
             </div>
-            <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Upload</button>
+            <button type="submit"
+                class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Upload</button>
         </form>
 
         <!-- Show Current Resume -->
         @if(auth()->user()->resume)
             <p>Current Resume: <strong>{{ auth()->user()->resume }}</strong></p>
-            <a href="{{ route('resume.download') }}"  class="mt-6 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">Download Resume</a>
+            <a href="{{ route('resume.download') }}"
+                class="mt-6 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">Download
+                Resume</a>
         @else
             <p>No resume uploaded yet.</p>
         @endif

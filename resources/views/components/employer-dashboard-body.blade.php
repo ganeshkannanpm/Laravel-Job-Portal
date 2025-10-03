@@ -26,7 +26,9 @@
     <ul class="hidden md:flex space-x-6">
         <li>
             <a href="{{ route('employer.dashboard') }}"
-                class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">
+                class="{{ request()->routeIs('employer.dashboard') 
+                ? 'text-indigo-700 underline font-bold' 
+                : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
                 Overview
             </a>
         </li>
@@ -40,7 +42,11 @@
     <!-- User Section -->
     <div class="hidden md:flex items-center space-x-4">
         <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
-        <span class="font-semibold text-gray-700">{{ Auth::user()->name }}</span>
+        <span class="font-semibold text-gray-700">Hello, {{ Auth::user()->name }}</span>
+        <button class="relative">
+            <span class="material-icons">🔔</span>
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+          </button>
         <form action="{{ route('logout') }}" method="POST">
             @csrf
             @method('DELETE')
