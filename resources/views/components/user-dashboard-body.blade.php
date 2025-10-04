@@ -27,8 +27,10 @@
           <!-- Dashboard -->
           <li>
             <a href="{{ route('user.dashboard') }}"
-              class="text-gray-700 hover:text-indigo-800 no-underline hover:underline flex items-center">
-              {{-- <span class="material-icons mr-1">dashboard</span> --}}Dashboard
+              class="{{ request()->routeIs('user.dashboard') 
+                ? 'text-indigo-700 underline font-bold' 
+                : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
+              Dashboard
             </a>
           </li>
 
@@ -51,10 +53,13 @@
             <button onclick="toggleDropdown('profile-desktop')" class="text-gray-700 hover:text-indigo-600">
               Profile
             </button>
-            <ul id="profile-desktop" class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
-              <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-100">Personal Info</a></li>
+            <ul id="profile-desktop"
+              class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
+              <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-100">Personal
+                  Info</a></li>
               <li><a href="{{ route('user.skill-index') }}" class="block px-4 py-2 hover:bg-gray-100">Skills</a></li>
-              <li><a href="{{ route('user.experience') }}" class="block px-4 py-2 hover:bg-gray-100">Experiences</a></li>
+              <li><a href="{{ route('user.experience') }}" class="block px-4 py-2 hover:bg-gray-100">Experiences</a>
+              </li>
               <li><a href="{{ route('user.education')}}" class="block px-4 py-2 hover:bg-gray-100">Education</a></li>
               <li><a href="{{ route('user.resume')}}" class="block px-4 py-2 hover:bg-gray-100">Resume Upload</a></li>
             </ul>
@@ -108,6 +113,10 @@
         <div class="hidden md:flex items-center space-x-4">
           <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
           <span class="font-semibold text-gray-700">{{ Auth::user()->name }}</span>
+          <button class="relative">
+            <span class="material-icons">🔔</span>
+            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+          </button>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
             @method('DELETE')
@@ -159,6 +168,10 @@
           <li class="flex items-center space-x-3 pt-4 border-t border-gray-700">
             <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
             <span class="font-semibold">{{ Auth::user()->name }}</span>
+            <button class="relative">
+              <span class="material-icons">🔔</span>
+              <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+            </button>
           </li>
           <li>
             <form action="{{ route('logout') }}" method="POST">

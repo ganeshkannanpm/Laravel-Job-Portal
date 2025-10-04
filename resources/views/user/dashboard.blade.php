@@ -5,7 +5,7 @@
     <div class="lg:col-span-2 space-y-6">
 
       <!-- Welcome + Profile Completion -->
-      <div class="bg-white p-6 rounded-lg shadow">
+      <div class="bg-white p-6 rounded-lg shadow mt-5">
         <h2 class="text-2xl font-semibold">
           Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span>
         </h2>
@@ -126,7 +126,7 @@
     <div class="space-y-6">
 
       <!-- Notifications -->
-      <div class="bg-white p-6 rounded-lg shadow">
+      <div class="bg-white p-6 rounded-lg shadow mt-5">
         <h3 class="text-lg font-semibold mb-4">Notifications</h3>
         <ul class="space-y-3 text-sm text-gray-600">
           <li>✅ Your application for Backend Engineer is shortlisted.</li>
