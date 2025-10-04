@@ -18,7 +18,7 @@
             class=" text-gray-100 text-left px-4 py-2 bg-indigo-600 rounded-md hover:bg-gray-800">
             Apply
         </a>
-        <a href="{{ route('jobs.view') }}" type="submit"
+        <a href="{{ route('jobs.view',$job->id) }}" type="submit"
             class=" text-gray-100 text-left px-4 py-2 ms-4 bg-indigo-600 rounded-md hover:bg-gray-800">
             View
         </a>
