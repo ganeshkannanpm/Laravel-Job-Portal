@@ -14,7 +14,7 @@
       <a href="/register" class=" text-indigo-600 hover:underline font-medium">Create one</a>
     </p>
   </div>
-  <div class="mt-45 bg-indigo-900 border-t border-gray-700 p-8 text-center text-gray-100">
+  <div class="mt-45 bg-gray-100 border-t border-gray-400 p-8 text-center text-gray-900">
     <p>&copy; 2025 Workly. All rights reserved.</p>
   </div>
 </x-layout>

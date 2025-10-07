@@ -1,4 +1,4 @@
-<section class="bg-gray-100  text-gray-900 px-6 py-12 sm:px-8 lg:px-16">
+<section class="bg-gray-200  text-gray-900 px-6 py-12 sm:px-8 lg:px-16 ">
   <div class="max-w-3xl mx-auto">
     <h2 class="text-3xl sm:text-4xl font-bold mb-8 text-gray-900">Frequently asked questions</h2>
 

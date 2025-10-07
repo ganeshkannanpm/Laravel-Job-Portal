@@ -1,5 +1,6 @@
 <x-user-dashboard-body>
     <section class="ms-5 mt-10">
+        <h3 class="text-xl mt-4 mb-4 font-semibold text-gray-800">Latest Jobs</h3>
         <div class="grid lg:grid-cols-3 gap-8">
             @foreach ($featuredJobs as $job)
                 <div
@@ -31,10 +32,10 @@
                                 Applied
                             </button>
                         @else
-                            <button type="button" onclick="window.location.href='{{ route('user.apply-job', $job->id) }}'"
-                                class="px-3 py-2 rounded-lg bg-blue-600 text-white font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-1 transition">
-                                Apply
-                            </button>
+                            <a href="{{ route('jobs.view', $job->id) }}" type="submit"
+                                class=" text-gray-100 text-left px-4 py-2 ms-4 bg-indigo-600 rounded-md hover:bg-gray-800">
+                                View
+                            </a>
                         @endif
                         @php
                             $isSaved = Auth::check() && Auth::user()->savedJobs->contains($job->id);

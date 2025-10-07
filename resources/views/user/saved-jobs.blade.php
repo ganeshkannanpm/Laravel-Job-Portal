@@ -1,5 +1,6 @@
 <x-user-dashboard-body>
     <section class="ms-5 mt-10 overflow-auto">
+        <h3 class="text-xl mt-2 mb-2 font-semibold text-gray-800">Saved Jobs</h3>
         <div class="grid lg:grid-cols-3 gap-8">
             @forelse($savedJobs as $saved)
                 <div class="relative p-5 border rounded-xl bg-white shadow-md hover:shadow-lg transition">

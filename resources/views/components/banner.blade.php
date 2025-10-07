@@ -21,7 +21,7 @@
                 <input type="text" placeholder="Location"
                     class="col-span-1 sm:col-span-1 border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-brand-primary">
                 <button type="submit"
-                    class="col-span-1 bg-brand-secondary text-gray-500 font-semibold px-4 py-2 rounded hover:bg-gray-800 hover:text-white transition-colors duration-300">
+                    class="col-span-1 bg-brand-secondary text-gray-500 font-semibold px-4 py-2 rounded hover:bg-indigo-600 hover:text-white transition-colors duration-300">
                     Search Jobs
                 </button>
             </form>

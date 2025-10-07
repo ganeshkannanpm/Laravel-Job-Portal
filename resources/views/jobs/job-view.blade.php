@@ -1,6 +1,5 @@
 <x-layout>
   <x-header />
-
   <section class="mt-10 bg-gray-100">
     <div class="max-w-5xl mx-auto p-10">
       <!-- Header Section -->
@@ -17,9 +16,22 @@
             </div>
           </div>
 
-          <a href="{{ route('login.create') }}" class="bg-blue-600 hover:bg-blue-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-            Apply Now
-          </a>
+          @auth
+            {{-- If user is logged in --}}
+            <a href="{{ route('user.apply-job', $job->id) }}"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+              Apply Now
+            </a>
+          @endauth
+
+          @guest
+            {{-- If user is NOT logged in --}}
+            <a href="{{ route('login.create') }}"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+              Apply Now
+            </a>
+          @endguest
+
         </div>
       </div>
 
@@ -59,7 +71,7 @@
           <h2 class="text-xl font-semibold mb-3">Skills Required</h2>
           <div class="flex flex-wrap gap-2">
             @foreach(explode(',', $job->skills_required) as $skill)
-              <span class="px-3 py-1 bg-blue-100 text-blue-700 rounded-lg text-sm font-medium">
+              <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium">
                 {{ trim($skill) }}
               </span>
             @endforeach
@@ -76,14 +88,11 @@
       <!-- Footer Info -->
       <div class="bg-white shadow-md rounded-2xl p-6 flex justify-between items-center">
         <p class="text-gray-500 text-sm">{{ $job->posted }}</p>
-        <a href="{{ route('login.create') }}" class="bg-green-600 hover:bg-green-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-          Save
-        </a>
       </div>
     </div>
   </section>
 
-  <div class="bg-indigo-600 border-t border-gray-700 p-8 text-center text-gray-100">
+  <div class="bg-gray-100 border-t border-gray-400 p-8 text-center text-gray-900">
     <p>&copy; {{ date('Y') }} Workly. All rights reserved.</p>
   </div>
 </x-layout>
