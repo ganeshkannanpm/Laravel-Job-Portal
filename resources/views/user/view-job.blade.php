@@ -14,23 +14,32 @@
               </p>
             </div>
           </div>
+          @php
+            $alreadyApplied =
+              Auth::check() && $job->JobApplication()->where('user_id', Auth::id())->exists();
+          @endphp
 
-          @auth
-            {{-- If user is logged in --}}
-            <a href="{{ route('user.apply-job', $job->id) }}"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-              Apply Now
-            </a>
-          @endauth
+          @if ($alreadyApplied)
+            <button disabled class="px-3 py-2 bg-gray-400 text-white rounded-lg font-semibold cursor-not-allowed">
+              Applied
+            </button>
+          @else
+            @auth
+              {{-- If user is logged in --}}
+              <a href="{{ route('user.apply-job', $job->id) }}"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+                Apply Now
+              </a>
+            @endauth
 
-          @guest
-            {{-- If user is NOT logged in --}}
-            <a href="{{ route('login.create') }}"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-              Apply Now
-            </a>
-          @endguest
-
+            @guest
+              {{-- If user is NOT logged in --}}
+              <a href="{{ route('login.create') }}"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+                Apply Now
+              </a>
+            @endguest
+          @endif
         </div>
       </div>
 

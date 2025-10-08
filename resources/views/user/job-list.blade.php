@@ -37,20 +37,20 @@
                                 View
                             </a> --}}
                             @auth
-            {{-- If user is logged in --}}
-            <a href="{{ route('user-jobs.view', $job->id) }}"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-              View
-            </a>
-          @endauth
+                                {{-- If user is logged in --}}
+                                <a href="{{ route('user-jobs.view', $job->id) }}"
+                                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+                                    View
+                                </a>
+                            @endauth
 
-          @guest
-            {{-- If user is NOT logged in --}}
-            <a href="{{ route('jobs.view',$job->id) }}"
-              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
-              View
-            </a>
-          @endguest
+                            @guest
+                                {{-- If user is NOT logged in --}}
+                                <a href="{{ route('jobs.view', $job->id) }}"
+                                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+                                    View
+                                </a>
+                            @endguest
                         @endif
                         @php
                             $isSaved = Auth::check() && Auth::user()->savedJobs->contains($job->id);

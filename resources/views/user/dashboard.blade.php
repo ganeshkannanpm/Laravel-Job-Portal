@@ -112,7 +112,7 @@
                 <h4 class="font-semibold">{{ $recommendedJob->title }}</h4>
                 <p class="text-gray-500 text-sm">{{ $recommendedJob->company }} • {{ $recommendedJob->location }}</p>
               </div>
-              <a href="{{ route('jobs.view', $recommendedJob->id) }}"
+              <a href="{{ route('user-jobs.view', $recommendedJob->id) }}"
                 class="mt-3 bg-indigo-100 text--indigo-700 px-6 py-3 rounded-lg hover:bg-indigo-700 hover:text-gray-100">
                 View
               </a>
