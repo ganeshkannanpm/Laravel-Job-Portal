@@ -14,9 +14,24 @@
         </span>
     </div>
     <div class="mt-4">
-        <a href="{{ route('jobs.view',$job->id) }}" type="submit"
+        {{-- <a href="{{ route('jobs.view',$job->id) }}" type="submit"
             class=" text-gray-100 text-left px-4 py-2  bg-indigo-600 rounded-md hover:bg-gray-800">
             View
-        </a>
+        </a> --}}
+        @auth
+            {{-- If user is logged in --}}
+            <a href="{{ route('user-jobs.view', $job->id) }}"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+              View
+            </a>
+          @endauth
+
+          @guest
+            {{-- If user is NOT logged in --}}
+            <a href="{{ route('jobs.view',$job->id) }}"
+              class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
+              View
+            </a>
+          @endguest
     </div>
 </div>

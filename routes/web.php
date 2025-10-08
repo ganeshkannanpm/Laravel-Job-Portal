@@ -32,6 +32,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
     //Job Management
     Route::get('/joblist', [JobManagementController::class, 'index'])->name('user.joblist');
+    Route::get('/user-jobs-view/{job}', [JobManagementController::class, 'viewJob'])->name('user-jobs.view');
     Route::get('/applied-jobs', [JobManagementController::class, 'appliedJobs'])->name('user.applied-jobs');
     Route::post('/save-job/{id}', [JobManagementController::class, 'save'])->name('jobs.save');
     Route::delete('/unsave-job/{id}', [JobManagementController::class, 'unsave'])->name('jobs.unsave');

@@ -1,6 +1,5 @@
-<x-layout>
-  <x-header />
-  <section class="mt-10 bg-gray-100">
+<x-user-dashboard-body>
+  <section class=" bg-gray-100">
     <div class="max-w-5xl mx-auto p-10">
       <!-- Header Section -->
       <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
@@ -92,7 +91,7 @@
     </div>
   </section>
 
-  <div class="bg-gray-100 border-t border-gray-300 p-8 text-center text-gray-900">
+  <div class="bg-gray-100 border-t border-gray-200 p-8 text-center text-gray-900">
     <p>&copy; {{ date('Y') }} Workly. All rights reserved.</p>
   </div>
-</x-layout>
+</x-user-dashboard-body>

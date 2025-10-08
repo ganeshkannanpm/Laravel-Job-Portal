@@ -20,6 +20,10 @@ class JobManagementController extends Controller
             'user' => auth()->user(),
         ]);
     }
+    public function viewJob(Job $job)
+    {
+        return view('user.view-job', compact(['job']));
+    }
 
     public function applyJob($jobId)
     {
