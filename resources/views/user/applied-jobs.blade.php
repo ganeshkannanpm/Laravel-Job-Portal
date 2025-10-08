@@ -17,12 +17,12 @@
                 <tbody>
                     @forelse ($applications as $application)
                         <tr class="border-b">
-                            <td class="p-3">{{  1 }}</td>
+                            <td class="p-3">{{ $loop->iteration }}</td>
                             <td class="p-3">{{ $application->job->title ?? 'N/A' }}</td>
                             <td class="p-3">{{ $application->job->company }}</td>
                             <td class="p-3">
                                 @if ($application->resume)
-                                    <a href="/storage/resumes/resume1.pdf" target="_blank"
+                                    <a href="{{ asset('storage/resumes/' . auth()->user()->resume) }}" target="_blank"
                                         class="text-blue-600 hover:underline">
                                         View
                                     </a>
