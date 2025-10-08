@@ -29,17 +29,20 @@
                 <label>Upload Resume (PDF/DOC)</label>
                 <input type="file" name="resume" accept=".pdf,.doc,.docx"
                     class="border border-gray-300 rounded-lg px-3 py-2 w-full" required>
+                <button type="submit"
+                    class="bg-indigo-600 mt-4 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-700">Upload
+                    Resume</button>
             </div>
-            <button type="submit"
-                class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Upload</button>
         </form>
 
         <!-- Show Current Resume -->
         @if(auth()->user()->resume)
             <p>Current Resume: <strong>{{ auth()->user()->resume }}</strong></p>
             <a href="{{ route('resume.download') }}"
-                class="mt-6 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">Download
-                Resume</a>
+                class="inline-flex items-center mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out">
+                Download Resume
+            </a>
+
         @else
             <p>No resume uploaded yet.</p>
         @endif
