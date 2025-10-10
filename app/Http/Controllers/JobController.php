@@ -24,9 +24,14 @@ class JobController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function latestJobs()
     {
-        
+        $jobs = Job::all()->groupBy('featured');
+
+        return view('jobs.latest-jobs', [
+            'featuredJobs' => $jobs[0],
+            'jobs'=> $jobs[1]
+        ]);
     }
 
     /**

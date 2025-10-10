@@ -14,6 +14,7 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index']);
+Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.latest');
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
 
 //Register
