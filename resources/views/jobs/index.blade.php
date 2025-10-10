@@ -15,32 +15,15 @@
                 <x-job-card :$job />
             @endforeach
         </div>
-        <div>
+        
             <x-job-categories />
-        </div>
-        <div>
+       
+        
             <x-popular-companies />
-        </div>
-
-
-        {{-- <div class="mt-8">
-            <h2 class=" mb-4 ms-4 text-white font-bold text-2xl">
-                <span class="w-4 h-4 bg-white inline-block rounded-full"></span>
-                Recent Jobs
-            </h2>
-            <div class="space-y-3">
-                @foreach ( $jobs as $job )
-                <x-recent-jobs :$job />
-                @endforeach
-            </div>
-        </div> --}}
-
-        {{-- <div>
-            <x-how-it-works />
-        </div>
-        <div>
-            <x-faq />
-        </div> --}}
+       
+        
+            <x-get-the-app />
+       
         <x-footer />
     </section>
 </x-layout>
