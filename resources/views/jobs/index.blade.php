@@ -15,6 +15,10 @@
                 <x-job-card :$job />
             @endforeach
         </div>
+        <div>
+            <x-job-categories />
+        </div>
+
 
         {{-- <div class="mt-8">
             <h2 class=" mb-4 ms-4 text-white font-bold text-2xl">
@@ -28,12 +32,12 @@
             </div>
         </div> --}}
 
-        <div>
+        {{-- <div>
             <x-how-it-works />
         </div>
         <div>
             <x-faq />
-        </div>
+        </div> --}}
         <x-footer />
     </section>
 </x-layout>
