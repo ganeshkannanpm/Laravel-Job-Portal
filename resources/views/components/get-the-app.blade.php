@@ -1,5 +1,5 @@
 <section
-    class="relative overflow-hidden py-20 bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-500 text-white">
+    class="relative overflow-hidden py-20 bg-gradient-to-r from-indigo-600 via-indigo-600 to-indigo-500 text-white">
     <div class="max-w-7xl mx-auto px-6 lg:px-8 flex flex-col-reverse md:flex-row items-center gap-12">
 
         <!-- Left Content -->
