@@ -9,42 +9,6 @@
             <p class="text-gray-900 mt-8">
                 Find your dream job with us. Connecting talented professionals with top employers worldwide.
             </p>
-        </div>
-
-        <!-- Quick Links -->
-        <div>
-            <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
-            <ul class="space-y-2">
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Careers</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Browse Jobs</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Post a Job</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">About Us</a></li>
-            </ul>
-        </div>
-
-        <!-- Job Categories -->
-        <div>
-            <h3 class="text-lg font-semibold mb-4">Categories</h3>
-            <ul class="space-y-2">
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">IT & Software</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Marketing</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Design</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Finance</a></li>
-                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Healthcare</a></li>
-            </ul>
-        </div>
-
-        <!-- Contact -->
-        <div>
-            <h3 class="text-lg font-semibold mb-4">Contact</h3>
-            <ul class="space-y-2 text-gray-400">
-                <li class="text-gray-900">Email: <a href="mailto:support@workly.com"
-                        class="text-gray-900 hover:text-indigo-600 transition">support@workly.com</a></li>
-                <li class="text-gray-900">Phone: <a href="tel:+1234567890"
-                        class="text-gray-900 hover:text-indigo-600 transition">+1 234 567 890</a></li>
-                <li class="text-gray-900">Location: <span class="text-gray-900 hover:text-indigo-600 transition">New York,
-                        USA</span></li>
-            </ul>
             <h3 class="text-lg font-semibold mt-6">Follow Us</h3>
             <!-- Social Media -->
             <div class="flex space-x-4 mt-4">
@@ -70,6 +34,54 @@
                     </svg>
                 </a>
             </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Job Seekers</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Career Advice</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Browse Jobs</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Company Profile</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Help</a></li>
+            </ul>
+        </div>
+
+        <!-- Job Categories -->
+        <div>
+            <h3 class="text-lg font-semibold mb-4">Employers</h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Post of a job</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Solutions</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Resources</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Pricing</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Help</a></li>
+            </ul>
+        </div>
+
+        <div>
+            <h3 class="text-lg font-semibold mb-4"></h3>
+            <ul class="space-y-2">
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Privacy policy</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Terms & conditions</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Report issue</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Fraud alert</a></li>
+                <li><a href="#" class="text-gray-900 no-underline hover:underline hover:text-indigo-600 transition">Service center</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact -->
+        <div>
+            {{-- <h3 class="text-lg font-semibold mb-4">Contact</h3>
+            <ul class="space-y-2 text-gray-400">
+                <li class="text-gray-900">Email: <a href="mailto:support@workly.com"
+                        class="text-gray-900 hover:text-indigo-600 transition">support@workly.com</a></li>
+                <li class="text-gray-900">Phone: <a href="tel:+1234567890"
+                        class="text-gray-900 hover:text-indigo-600 transition">+1 234 567 890</a></li>
+                <li class="text-gray-900">Location: <span class="text-gray-900 hover:text-indigo-600 transition">New York,
+                        USA</span></li>
+            </ul> --}}
+            
         </div>
         <div>
         </div>
