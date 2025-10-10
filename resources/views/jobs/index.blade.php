@@ -18,6 +18,9 @@
         <div>
             <x-job-categories />
         </div>
+        <div>
+            <x-popular-companies />
+        </div>
 
 
         {{-- <div class="mt-8">
