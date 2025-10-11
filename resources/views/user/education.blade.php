@@ -1,7 +1,7 @@
 <x-user-dashboard-body>
     <div class="bg-white max-w-3xl mx-auto mt-10 p-6 rounded-lg shadow mb-6">
         <div class="flex justify-between items-center mb-4">
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">Education</h2>
+            <h2 class="text-lg font-semibold mb-4">Education</h2>
             @if(session('message'))
                 <div
                     class="mb-4 rounded-lg bg-green-50 border border-green-300 text-green-800 px-4 py-3 relative shadow-md">

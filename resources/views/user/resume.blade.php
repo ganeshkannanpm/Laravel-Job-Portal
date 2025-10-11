@@ -1,6 +1,6 @@
 <x-user-dashboard-body>
     <div class="container mx-auto mt-20 max-w-lg bg-white shadow-md rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-6">My Resume</h2>
+        <h2 class="text-lg font-semibold mb-6">My Resume</h2>
 
         <!-- Success Message -->
         @if(session('success'))

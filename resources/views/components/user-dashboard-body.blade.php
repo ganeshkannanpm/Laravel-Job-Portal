@@ -26,17 +26,18 @@
         <ul class="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
           <!-- Dashboard -->
           <li>
-            <a href="{{ route('user.dashboard') }}"
-              class="{{ request()->routeIs('user.dashboard') 
-                ? 'text-indigo-700 underline font-bold' 
-                : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
+            <a href="{{ route('user.dashboard') }}" class="{{ request()->routeIs('user.dashboard')
+  ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+  : 'text-gray-900 hover:text-indigo-800' }}">
               Dashboard
             </a>
           </li>
 
           <!-- Jobs Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('jobs-desktop')" class="text-gray-700 hover:text-indigo-600">
+            <button onclick="toggleDropdown('jobs-desktop')" class="{{ request()->routeIs('user.joblist', 'user.applied-jobs', 'user.saved-jobs')
+  ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+  : 'text-gray-700 hover:text-indigo-600' }}">
               Jobs
             </button>
             <ul id="jobs-desktop"
@@ -50,7 +51,9 @@
 
           <!-- Profile Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('profile-desktop')" class="text-gray-700 hover:text-indigo-600">
+            <button onclick="toggleDropdown('profile-desktop')" class="{{ request()->routeIs('user.personal-info', 'user.skill-index', 'user.experience', 'user.education', 'user.resume')
+  ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+  : 'text-gray-700 hover:text-indigo-600' }}">
               Profile
             </button>
             <ul id="profile-desktop"
