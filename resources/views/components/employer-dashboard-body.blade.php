@@ -17,92 +17,99 @@
         <div class="flex-1 flex flex-col ">
 
             <!-- Navbar -->
-<nav class="fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
+            <nav class="fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
 
-    <!-- Logo -->
-    <h1 class="text-3xl font-bold text-indigo-600">Workly</h1>
+                <!-- Logo -->
+                <div class="flex items-center space-x-2">
+                    <img src="{{asset('images/Workly_logo_dashboard.jpg')}}" alt="Logo" class="h-12 w-12">
+                    <h1 class="text-3xl font-bold text-indigo-600">Workly</h1>
+                </div>
 
-    <!-- Center Nav Links -->
-    <ul class="hidden md:flex space-x-6">
-        <li>
-            <a href="{{ route('employer.dashboard') }}"
-                class="{{ request()->routeIs('employer.dashboard') 
-                ? 'text-indigo-700 underline font-bold' 
-                : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
-                Overview
-            </a>
-        </li>
-        <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Post a Job</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage Jobs</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Company Profile</a></li>
-        <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Billing</a></li>
-    </ul>
+                <!-- Center Nav Links -->
+                <ul class="hidden md:flex space-x-6">
+                    <li>
+                        <a href="{{ route('employer.dashboard') }}" class="{{ request()->routeIs('employer.dashboard')
+    ? 'text-indigo-700 underline font-bold'
+    : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
+                            Overview
+                        </a>
+                    </li>
+                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Post a
+                            Job</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage
+                            Jobs</a></li>
+                    <li><a href="#"
+                            class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Company
+                            Profile</a></li>
+                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Billing</a>
+                    </li>
+                </ul>
 
-    <!-- User Section -->
-    <div class="hidden md:flex items-center space-x-4">
-        <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
-        <span class="font-semibold text-gray-700">Hello, {{ Auth::user()->name }}</span>
-        <button class="relative">
-            <span class="material-icons">🔔</span>
-            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
-          </button>
-        <form action="{{ route('logout') }}" method="POST">
-            @csrf
-            @method('DELETE')
-            <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
-                Logout
-            </button>
-        </form>
-    </div>
+                <!-- User Section -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
+                    <span class="font-semibold text-gray-700">Hello, {{ Auth::user()->name }}</span>
+                    <button class="relative">
+                        <span class="material-icons">🔔</span>
+                        <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+                    </button>
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="px-4 py-2 bg-red-600 text-white rounded-md hover:bg-red-700">
+                            Logout
+                        </button>
+                    </form>
+                </div>
 
-    <!-- Hamburger -->
-    <div class="md:hidden">
-        <button id="menu-btn" class="text-gray-700 focus:outline-none">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M4 6h16M4 12h16M4 18h16"></path>
-            </svg>
-        </button>
-    </div>
-</nav>
+                <!-- Hamburger -->
+                <div class="md:hidden">
+                    <button id="menu-btn" class="text-gray-700 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </nav>
 
-<!-- Mobile Menu -->
-<div id="mobile-menu" class="md:hidden hidden bg-gray-800 text-white">
-    <ul class="p-4 space-y-2">
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Overview</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Post a Job</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Manage Jobs</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Applicants</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Company Profile</a></li>
-        <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Billing</a></li>
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="md:hidden hidden bg-gray-800 text-white">
+                <ul class="p-4 space-y-2">
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Overview</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Post a Job</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Manage Jobs</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Applicants</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Company Profile</a></li>
+                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Billing</a></li>
 
-        <li class="flex items-center space-x-3 pt-4 border-t border-gray-700">
-            <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
-            <span class="font-semibold">{{ Auth::user()->name }}</span>
-        </li>
-        <li>
-            <form action="{{ route('logout') }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit"
-                    class="w-full text-left px-4 py-2 bg-red-600 rounded hover:bg-red-700">
-                    Logout
-                </button>
-            </form>
-        </li>
-    </ul>
-</div>
+                    <li class="flex items-center space-x-3 pt-4 border-t border-gray-700">
+                        <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">
+                        <span class="font-semibold">{{ Auth::user()->name }}</span>
+                    </li>
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit"
+                                class="w-full text-left px-4 py-2 bg-red-600 rounded hover:bg-red-700">
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
 
-<!-- Mobile Menu Toggle Script -->
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
+            <!-- Mobile Menu Toggle Script -->
+            <script>
+                const menuBtn = document.getElementById('menu-btn');
+                const mobileMenu = document.getElementById('mobile-menu');
 
-    menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
-</script>
+                menuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                });
+            </script>
 
 
             <div class="p-6 mt-6">
