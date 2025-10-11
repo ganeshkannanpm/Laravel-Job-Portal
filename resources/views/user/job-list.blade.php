@@ -1,5 +1,20 @@
 <x-user-dashboard-body>
-    <section class="ms-5 mt-10">
+    <div class="mt-10">
+        @php
+            $profileRoutes = [
+                'user.joblist' => 'Latest Jobs',
+                'user.applied-jobs' => 'Applications',
+                'user.saved-jobs' => 'Saved Jobs',
+            ];
+
+            $breadcrumbs = getBreadcrumbs([
+                'Job' => $profileRoutes
+            ]);
+        @endphp
+        <x-breadcrumb :links="$breadcrumbs" />
+    </div>
+
+    <section class="ms-5 mt-5">
         <h3 class="text-xl mt-4 mb-4 font-semibold text-gray-800">Latest Jobs</h3>
         <div class="grid lg:grid-cols-3 gap-8">
             @foreach ($featuredJobs as $job)

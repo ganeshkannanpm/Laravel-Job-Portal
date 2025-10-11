@@ -28,7 +28,7 @@
           <li>
             <a href="{{ route('user.dashboard') }}" class="{{ request()->routeIs('user.dashboard')
   ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
-  : 'text-gray-900 hover:text-indigo-800' }}">
+  : 'text-gray-900 hover:text-indigo-700 hover:underline' }}">
               Dashboard
             </a>
           </li>
@@ -37,7 +37,7 @@
           <li class="relative">
             <button onclick="toggleDropdown('jobs-desktop')" class="{{ request()->routeIs('user.joblist', 'user.applied-jobs', 'user.saved-jobs')
   ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
-  : 'text-gray-700 hover:text-indigo-600' }}">
+  : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
               Jobs
             </button>
             <ul id="jobs-desktop"
@@ -53,7 +53,7 @@
           <li class="relative">
             <button onclick="toggleDropdown('profile-desktop')" class="{{ request()->routeIs('user.personal-info', 'user.skill-index', 'user.experience', 'user.education', 'user.resume')
   ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
-  : 'text-gray-700 hover:text-indigo-600' }}">
+  : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
               Profile
             </button>
             <ul id="profile-desktop"
@@ -70,7 +70,7 @@
 
           <!-- Notifications Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('notifications-desktop')" class="text-gray-700 hover:text-indigo-600">
+            <button onclick="toggleDropdown('notifications-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
               Notifications
             </button>
             <ul id="notifications-desktop"
@@ -84,7 +84,7 @@
 
           <!-- Help -->
           <li class="relative">
-            <button onclick="toggleDropdown('help-desktop')" class="text-gray-700 hover:text-indigo-600">
+            <button onclick="toggleDropdown('help-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
               Help & Support
             </button>
             <ul id="help-desktop"
@@ -98,7 +98,7 @@
 
           <!-- Settings -->
           <li class="relative">
-            <button onclick="toggleDropdown('settings-desktop')" class="text-gray-700 hover:text-indigo-600">
+            <button onclick="toggleDropdown('settings-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
               Settings
             </button>
             <ul id="settings-desktop"

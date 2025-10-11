@@ -1,6 +1,20 @@
 <x-user-dashboard-body>
+     <div class="mt-10">
+        @php
+            $profileRoutes = [
+                'user.joblist' => 'Latest Jobs',
+                'user.applied-jobs' => 'Applications',
+                'user.saved-jobs' => 'Saved Jobs',
+            ];
+
+            $breadcrumbs = getBreadcrumbs([
+                'Job' => $profileRoutes
+            ]);
+        @endphp
+        <x-breadcrumb :links="$breadcrumbs" />
+    </div>
     <main class="p-4 md:p-6 flex-1">
-        <h3 class="text-xl mt-4 mb-4 font-semibold text-gray-800">Applications</h3>
+        <h3 class="text-xl mb-4 font-semibold text-gray-800">Applications</h3>
         <div class="bg-white rounded-lg shadow-md overflow-x-auto w-full">
             <table class="w-full border-collapse text-sm md:text-base">
                 <thead class="bg-gray-50 text-gray-600">
