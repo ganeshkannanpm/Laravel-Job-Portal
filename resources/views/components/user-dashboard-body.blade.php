@@ -20,7 +20,11 @@
       <nav class="fixed top-0 left-0 right-0 bg-white shadow-md px-6 py-4 flex justify-between items-center z-50">
 
         <!-- Logo -->
-        <h1 class="text-3xl font-bold text-indigo-600">Workly</h1>
+        <div class="flex items-center space-x-2">
+          <img src="{{asset('images/Workly_logo_dashboard.jpg')}}" alt="Logo" class="h-12 w-12">
+          <h1 class="text-3xl font-bold text-indigo-600">Workly</h1>
+        </div>
+
 
         <!-- Center Nav Links -->
         <ul class="hidden md:flex space-x-6 absolute left-1/2 transform -translate-x-1/2">
@@ -70,7 +74,8 @@
 
           <!-- Notifications Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('notifications-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
+            <button onclick="toggleDropdown('notifications-desktop')"
+              class="text-gray-700 hover:text-indigo-700 hover:underline">
               Notifications
             </button>
             <ul id="notifications-desktop"
@@ -84,7 +89,8 @@
 
           <!-- Help -->
           <li class="relative">
-            <button onclick="toggleDropdown('help-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
+            <button onclick="toggleDropdown('help-desktop')"
+              class="text-gray-700 hover:text-indigo-700 hover:underline">
               Help & Support
             </button>
             <ul id="help-desktop"
@@ -98,7 +104,8 @@
 
           <!-- Settings -->
           <li class="relative">
-            <button onclick="toggleDropdown('settings-desktop')" class="text-gray-700 hover:text-indigo-700 hover:underline">
+            <button onclick="toggleDropdown('settings-desktop')"
+              class="text-gray-700 hover:text-indigo-700 hover:underline">
               Settings
             </button>
             <ul id="settings-desktop"
