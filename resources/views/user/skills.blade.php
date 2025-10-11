@@ -1,5 +1,25 @@
 <x-user-dashboard-body>
-  <body >
+
+  <body>
+    <div class="mt-10">
+      @php
+        $profileRoutes = [
+          'user.personal-info' => 'Personal Info',
+          'user.skill-index' => 'Skills',
+          'user.experience' => 'Experience',
+          'user.education' => 'Education',
+          'user.resume' => 'Resume Upload',
+        ];
+
+        $breadcrumbs = getBreadcrumbs([
+          'Profile' => $profileRoutes
+        ]);
+      @endphp
+
+      <x-breadcrumb :links="$breadcrumbs" />
+
+
+    </div>
     <div class="container mx-auto mt-20 max-w-lg bg-white shadow-md rounded-lg p-6">
       <h2 class="text-xl font-semibold mb-6">My Skills</h2>
 
