@@ -3,8 +3,8 @@
         <!-- Logo & About -->
         <div>
             <div class="flex items-center space-x-2">
-                <img src="{{asset('images/logo.png')}}" alt="Logo" class="h-12 w-12">
-                <a href="/" class="font-bold  text-3xl text-indigo-600 hover:text-indigo-800 transition">Workly</a>
+                <img src="{{asset('images/Workly_logo.jpg')}}" alt="Logo" class="h-18 w-18">
+                <a href="/" class="font-bold  text-4xl text-indigo-600 hover:text-indigo-800 transition">Workly</a>
             </div>
             <p class="text-gray-900 mt-8">
                 Find your dream job with us. Connecting talented professionals with top employers worldwide.

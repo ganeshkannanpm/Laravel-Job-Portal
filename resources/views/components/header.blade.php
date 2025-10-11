@@ -3,7 +3,7 @@
     <nav class="flex justify-between items-center py-4 text-gray-900">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-            <img src="{{asset('images/logo.png')}}" alt="Logo" class="h-12 w-12">
+            <img src="{{asset('images/Workly_logo.jpg')}}" alt="Logo" class="h-15 w-15">
             <a href="/" class="font-sans font-bold text-3xl text-indigo-600 hover:text-indigo-800 transition">Workly</a>
         </div>
 
