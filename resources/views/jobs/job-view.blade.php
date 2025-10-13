@@ -1,6 +1,6 @@
 <x-layout>
   <x-header />
-  <section class="mt-10 bg-gray-100">
+  <section class="mt-20 bg-gray-100">
     <div class="max-w-5xl mx-auto p-10">
       <!-- Header Section -->
       <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
@@ -9,9 +9,10 @@
             <img src="https://picsum.photos/200" class="w-16 h-16 rounded-xl border" alt="Company Logo">
             <div>
               <h1 class="text-2xl font-bold text-gray-800">{{ $job->title }}</h1>
-              <p class="text-gray-600">{{ $job->company }}</p>
-              <p class="text-sm text-gray-500">
-                📍 {{ $job->location }} • {{ $job->schedule }} • {{ $job->salary }}
+              <p class="text-gray-900">{{ $job->company }}</p>
+              <p class="text-sm text-gray-900">
+                📍 {{ $job->location }} • {{ $job->schedule }} • ₹ {{ $job->salary_min }} - ₹ {{ $job->salary_max }}
+                 • {{ $job->experience_level }} Level • Last date for apply: {{ $job->deadline }}
               </p>
             </div>
           </div>
@@ -87,7 +88,7 @@
 
       <!-- Footer Info -->
       <div class="bg-white shadow-md rounded-2xl p-6 flex justify-between items-center">
-        <p class="text-gray-500 text-sm">{{ $job->posted }}</p>
+        <p class="text-gray-900 text-sm">Posted On {{ $job->created_at }}</p>
       </div>
     </div>
   </section>

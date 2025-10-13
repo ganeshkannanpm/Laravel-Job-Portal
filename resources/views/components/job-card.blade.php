@@ -3,7 +3,7 @@
     <h4 class="text-md font-semibold text-gray-800">{{ $job->company }}</h4>
     <p class="text-sm text-gray-600 mt-1">{{ $job->employer->name }}</p>
     <div class="mt-3 flex items-center text-gray-700 text-sm">
-        💰 <span class="ml-2">{{ $job->salary }}</span>
+        💰 <span class="ml-2">₹ {{ $job->salary_min }} - ₹ {{ $job->salary_max }} • {{ $job->experience_level }} Level</span>
     </div>
     <div class="mt-1 flex items-center text-gray-700 text-sm">
         📍 <span class="ml-2">{{ $job->location }}</span>

@@ -16,10 +16,10 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employer::class);
             $table->string('title');
-            $table->string('salary');
+            // $table->string('salary');
             $table->string('location');
             $table->string('schedule')->default('Full Time');
-            $table->string('url');
+            // $table->string('url');
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });

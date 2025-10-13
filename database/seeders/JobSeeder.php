@@ -12,13 +12,31 @@ class JobSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
+     public function run(): void
     {
         Job::factory()
-            ->count(20)
+            ->count(10)
             ->state(new Sequence(
-                ['featured' => false, 'schedule' => 'Full Time'],
-                ['featured' => true, 'schedule' => 'Part Time'],
+                [
+                    'featured' => false,
+                    'schedule' => 'Full-time',
+                    'experience_level' => 'Entry',
+                ],
+                [
+                    'featured' => true,
+                    'schedule' => 'Part-time',
+                    'experience_level' => 'Mid',
+                ],
+                [
+                    'featured' => false,
+                    'schedule' => 'Contract',
+                    'experience_level' => 'Senior',
+                ],
+                [
+                    'featured' => true,
+                    'schedule' => 'Internship',
+                    'experience_level' => 'Entry',
+                ]
             ))
             ->create();
     }

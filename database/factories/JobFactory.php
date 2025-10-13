@@ -12,25 +12,30 @@ class JobFactory extends Factory
         return [
             'employer_id' => Employer::factory(),
             'title' => $this->faker->jobTitle(),
-            'company' => $this->faker->company(),
-            'salary' => $this->faker->randomElement(['$50,000 USD', '$90,000 USD', '$150,000 USD']),
+            'company'=> $this->faker->company(),
+            'schedule' => $this->faker->randomElement(['Full-time', 'Part-time', 'Contract', 'Internship']),
             'location' => $this->faker->randomElement([
                 $this->faker->city(),
                 $this->faker->state(),
                 $this->faker->country(),
                 'Remote'
             ]),
-            'schedule' => 'Full Time',
-            'url' => $this->faker->url(),
-            'featured' => $this->faker->boolean(20), // 20% chance featured job
-
-            // 🆕 New columns
+            'experience_level' => $this->faker->randomElement(['Entry', 'Mid', 'Senior', 'Lead']),
+            'salary_min' => $this->faker->numberBetween(30000, 70000),
+            'salary_max' => $this->faker->numberBetween(70001, 150000),
+            'apply_type' => $this->faker->randomElement(['email', 'external']),
+            'apply_link' => $this->faker->randomElement([
+                $this->faker->email(),
+                $this->faker->url()
+            ]),
             'description' => $this->faker->paragraphs(3, true),
             'responsibilities' => implode("\n", $this->faker->sentences(5)),
             'requirements' => implode("\n", $this->faker->sentences(5)),
-            'skills_required' => implode(", ", $this->faker->words(6)),
-            'about_company' => $this->faker->paragraphs(2, true),
-            'posted' => "Posted " . $this->faker->numberBetween(1, 10) . " days ago • 👥 " . $this->faker->numberBetween(1, 50) . " applicants",
+            'skills_required' => json_encode($this->faker->words(5)), // store as JSON array
+            'about_company' => implode("\n", $this->faker->sentences(5)),
+            'deadline' => $this->faker->dateTimeBetween('now', '+3 months')->format('Y-m-d'),
+            'featured' => $this->faker->boolean(20), // 20% chance featured
         ];
     }
+
 }
