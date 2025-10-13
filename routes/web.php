@@ -80,6 +80,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 //Employer Dashboard
 Route::middleware(['auth', 'role:employer'])->group(function () {
     Route::get('/employer/dashboard', [EmployerController::class, 'index'])->name('employer.dashboard');
+    Route::get('/employer/post-job',[EmployerController::class,'create'])->name('employer.post-job');
 });
 
 //Admin Dashboard
