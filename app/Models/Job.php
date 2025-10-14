@@ -10,6 +10,25 @@ class Job extends Model
     /** @use HasFactory<\Database\Factories\JobFactory> */
     use HasFactory;
 
+    protected $fillable = [
+        'title',
+        'company',
+        'schedule',
+        'location',
+        'experience_level',
+        'salary_min',
+        'salary_max',
+        'apply_type',
+        'apply_link',
+        'description',
+        'responsibilities',
+        'about_company',
+        'skills_required',
+        'deadline',
+        'posted',
+        'featured',
+    ];
+
     public function employer()
     {
 
@@ -21,9 +40,10 @@ class Job extends Model
         return $this->belongsToMany(User::class, 'saved_jobs')->withTimestamps();
     }
 
-    public function jobApplication(){
+    public function jobApplication()
+    {
 
-        return $this->hasMany(JobApplication::class,'job_id');
+        return $this->hasMany(JobApplication::class, 'job_id');
     }
 
 }

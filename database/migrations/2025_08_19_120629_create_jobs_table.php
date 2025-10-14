@@ -5,8 +5,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -16,10 +15,20 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Employer::class);
             $table->string('title');
-            // $table->string('salary');
+            $table->string('company');
             $table->string('location');
+            $table->integer('salary_min')->nullable();
+            $table->integer('salary_max')->nullable();
+            $table->string('experience_level')->nullable();
+            $table->text('description')->nullable();
+            $table->text('responsibilities')->nullable();
+            $table->text('skills_required')->nullable();
+            $table->text('about_company')->nullable();
             $table->string('schedule')->default('Full Time');
-            // $table->string('url');
+            $table->enum('apply_type', ['email', 'external'])->default('email');
+            $table->string('apply_link')->after('apply_type')->nullable();
+            $table->date('deadline')->nullable();
+            $table->string('posted')->nullable();
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });

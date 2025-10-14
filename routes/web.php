@@ -71,7 +71,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
     Route::delete('/edu-delete/{education}', [EducationController::class, 'destroy'])->name('user.delete-education');
 
     //Resume upload
-    Route::get('/resume',[UserController::class,'create'])->name('user.resume');
+    Route::get('/resume', [UserController::class, 'create'])->name('user.resume');
     Route::post('/resume/upload', [UserController::class, 'uploadResume'])->name('resume.upload');
     Route::get('/resume/download', [UserController::class, 'downloadResume'])->name('resume.download');
 });
@@ -80,7 +80,11 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 //Employer Dashboard
 Route::middleware(['auth', 'role:employer'])->group(function () {
     Route::get('/employer/dashboard', [EmployerController::class, 'index'])->name('employer.dashboard');
-    Route::get('/employer/post-job',[EmployerController::class,'create'])->name('employer.post-job');
+
+    //Post Job
+    Route::get('/employer/jobs/create', [EmployerController::class, 'create'])->name('employer.jobs.create');
+    Route::post('/employer/jobs', [EmployerController::class, 'store'])->name('employer.jobs.store');
+
 });
 
 //Admin Dashboard

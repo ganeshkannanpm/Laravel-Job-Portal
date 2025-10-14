@@ -12,7 +12,7 @@ class JobFactory extends Factory
         return [
             'employer_id' => Employer::factory(),
             'title' => $this->faker->jobTitle(),
-            'company'=> $this->faker->company(),
+            'company' => $this->faker->company(),
             'schedule' => $this->faker->randomElement(['Full-time', 'Part-time', 'Contract', 'Internship']),
             'location' => $this->faker->randomElement([
                 $this->faker->city(),
@@ -30,7 +30,6 @@ class JobFactory extends Factory
             ]),
             'description' => $this->faker->paragraphs(3, true),
             'responsibilities' => implode("\n", $this->faker->sentences(5)),
-            'requirements' => implode("\n", $this->faker->sentences(5)),
             'skills_required' => json_encode($this->faker->words(5)), // store as JSON array
             'about_company' => implode("\n", $this->faker->sentences(5)),
             'deadline' => $this->faker->dateTimeBetween('now', '+3 months')->format('Y-m-d'),
