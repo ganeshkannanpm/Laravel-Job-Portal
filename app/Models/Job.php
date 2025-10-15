@@ -29,6 +29,11 @@ class Job extends Model
         'featured',
     ];
 
+    protected $casts = [
+        'skills' => 'array',
+    ];
+
+
     public function employer()
     {
 

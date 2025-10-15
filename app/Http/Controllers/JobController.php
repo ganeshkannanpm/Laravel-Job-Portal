@@ -13,13 +13,12 @@ class JobController extends Controller
      */
     public function index()
     {
-        // $jobs = Job::all()->groupBy('featured');
+        $jobs = Job::all()->groupBy('featured');
 
-        // return view('jobs.index', [
-        //     'featuredJobs' => $jobs[0],
-        //     'jobs'=> $jobs[1]
-        // ]);
-        return view('jobs.index');
+        return view('jobs.index', [
+            'featuredJobs' => $jobs->get(1, collect()), // default empty collection if missing
+            'jobs' => $jobs->get(0, collect())
+        ]);
     }
 
     /**
@@ -30,8 +29,8 @@ class JobController extends Controller
         $jobs = Job::all()->groupBy('featured');
 
         return view('jobs.latest-jobs', [
-            'featuredJobs' => $jobs[0],
-            'jobs'=> $jobs[1]
+            'featuredJobs' => $jobs->get(1, collect()),
+            'jobs' => $jobs->get(0, collect())
         ]);
     }
 
@@ -48,7 +47,7 @@ class JobController extends Controller
      */
     public function show(Job $job)
     {
-        return view('jobs.job-view',compact(['job']));
+        return view('jobs.job-view', compact(['job']));
     }
 
     /**

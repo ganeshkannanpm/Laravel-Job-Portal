@@ -10,7 +10,8 @@
               <h1 class="text-2xl font-bold text-gray-800">{{ $job->title }}</h1>
               <p class="text-gray-600">{{ $job->company }}</p>
               <p class="text-sm text-gray-500">
-                📍 {{ $job->location }} • {{ $job->schedule }} • {{ $job->salary }}
+                📍 {{ $job->location }} • {{ $job->schedule }} • ₹ {{ $job->salary_min }} - ₹ {{ $job->salary_max }}
+                 • {{ $job->experience_level }} Level • Last date for apply: {{ $job->deadline }}
               </p>
             </div>
           </div>
@@ -95,7 +96,7 @@
 
       <!-- Footer Info -->
       <div class="bg-white shadow-md rounded-2xl p-6 flex justify-between items-center">
-        <p class="text-gray-500 text-sm">{{ $job->posted }}</p>
+        <p class="text-gray-700 text-sm">Posted on: {{ $job->posted }}</p>
       </div>
     </div>
   </section>
