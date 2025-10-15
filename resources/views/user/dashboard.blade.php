@@ -7,7 +7,7 @@
       <!-- Welcome + Profile Completion -->
       <div class="bg-white p-6 rounded-lg shadow mt-5">
         <h2 class="text-2xl font-semibold">
-          Welcome, <span class="text-indigo-600">{{ Auth::user()->name }}</span>
+          Welcome, <span class="text-indigo-600">{{ Auth::guard('web')->user()->name }}</span>
         </h2>
         <p class="text-gray-500">Full Stack Developer</p>
 

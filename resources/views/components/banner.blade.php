@@ -32,7 +32,7 @@
             <div
                 class="grid grid-cols-1 gap-x-8 gap-y-6 text-lg font-semibold text-white sm:grid-cols-2 md:flex lg:gap-x-10">
                 <a href="{{ route('jobs.latest') }}" class="no-underline hover:underline">Latest Jobs <span aria-hidden="true">&rarr;</span></a>
-                <a href="{{ route('login.create')}}" class="no-underline hover:underline">Post a Job <span aria-hidden="true">&rarr;</span></a>
+                <a href="{{ route('login')}}" class="no-underline hover:underline">Post a Job <span aria-hidden="true">&rarr;</span></a>
                 <a href="#" class="no-underline hover:underline">Top Companies <span aria-hidden="true">&rarr;</span></a>
                 <a href="#" class="no-underline hover:underline">Career Advice <span aria-hidden="true">&rarr;</span></a>
             </div>

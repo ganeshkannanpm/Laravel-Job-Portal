@@ -8,7 +8,6 @@ use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
-
     public function create()
     {
         return view('auth.login');
@@ -16,34 +15,49 @@ class SessionController extends Controller
 
     public function store(Request $request)
     {
-
         $attributes = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required']
         ]);
 
-        if (!Auth::attempt($attributes)) {
-            throw ValidationException::withMessages([
-                'email' => "Sorry, credentials not match"
-            ]);
+        // First, try employer login
+        if (Auth::guard('employer')->attempt($attributes)) {
+            $request->session()->regenerate();
+            return redirect()->route('employer.dashboard');
         }
 
-        request()->session()->regenerate();
+        // Then try normal user/admin login
+        if (Auth::guard('web')->attempt($attributes)) {
+            $request->session()->regenerate();
 
-        $user = Auth::user();
+            $user = Auth::guard('web')->user();
 
-        if ($user->role === 'admin') {
-            return redirect()->route('admin.dashboard');
-        } elseif ($user->role === 'employer') {
-            return redirect()->route('employer.dashboard');
-        } else {
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            }
+
             return redirect()->route('user.dashboard');
         }
+
+        // If neither guard succeeds
+        throw ValidationException::withMessages([
+            'email' => "Sorry, credentials do not match our records."
+        ]);
     }
 
     public function destroy()
     {
-        Auth::logout();
+        if (Auth::guard('employer')->check()) {
+            Auth::guard('employer')->logout();
+        }
+
+        if (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
+
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+
         return redirect('/');
     }
 }

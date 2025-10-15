@@ -7,8 +7,12 @@
       <!-- Top Bar -->
       <header class="flex justify-between items-center mt-6 mb-6">
         <h2 class="text-2xl font-bold">Employer Dashboard</h2>
+        <h3 class="text-2xl font-semibold">
+          Welcome, <span class="text-indigo-600">{{ Auth::guard('employer')->user()->name }}</span>
+        </h3>
       </header>
 
+       
       <!-- Stats Cards -->
       <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="bg-white p-4 shadow rounded-lg text-center">

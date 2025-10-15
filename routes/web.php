@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmployerController;
+use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
@@ -17,17 +18,21 @@ Route::get('/', [JobController::class, 'index']);
 Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.latest');
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
 
-//Register
+// User registration
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
 Route::post('/register', [RegisteredUserController::class, 'store'])->name('register.store');
 
+// Employer registration
+Route::get('/employer-register', [EmployerRegisterController::class, 'create'])->name('employer-register.create');
+Route::post('/employer-register-store',[EmployerRegisterController::class,'store'])->name('employer-register.store');
+
 //Login
-Route::get('/login', [SessionController::class, 'create'])->name('login.create');
+Route::get('/login', [SessionController::class, 'create'])->name('login');
 Route::post('/login', [SessionController::class, 'store'])->name('login.store');
 Route::delete('/logout', [SessionController::class, 'destroy'])->name('logout')->middleware('auth');
 
 //User Dashboard
-Route::middleware(['auth', 'role:user'])->group(function () {
+Route::middleware(['auth:web', 'role:user,web'])->group(function () {
 
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
 
@@ -78,7 +83,7 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 
 
 //Employer Dashboard
-Route::middleware(['auth', 'role:employer'])->group(function () {
+Route::middleware(['auth:employer', 'role:employer,employer'])->group(function () {
     Route::get('/employer/dashboard', [EmployerController::class, 'index'])->name('employer.dashboard');
 
     //Post Job
