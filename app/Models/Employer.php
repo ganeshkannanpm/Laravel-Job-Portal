@@ -2,21 +2,36 @@
 
 namespace App\Models;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class Employer extends Model
+class Employer extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\EmployerFactory> */
-    use HasFactory;
 
-    protected $fillable = ['employer', 'logo'];
-    public function user(){
+    use Notifiable;
+    protected $fillable = [
+        'name',
+        'email',
+        'company_name',
+        'password',
+        'company_logo',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    public function user()
+    {
 
         return $this->belongsTo(User::class);
     }
 
-    public function jobs(){
+    public function jobs()
+    {
 
         return $this->hasMany(Job::class);
     }

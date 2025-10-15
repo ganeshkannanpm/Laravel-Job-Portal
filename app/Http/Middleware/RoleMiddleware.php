@@ -4,25 +4,28 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class RoleMiddleware
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
-    public function handle(Request $request, Closure $next,$role): Response
+    public function handle(Request $request, Closure $next, $role, $guard = 'web'): Response
     {
-        if (!Auth::check()) {
-            return redirect('/login');
+        // Check authentication for the specific guard
+        if (!Auth::guard($guard)->check()) {
+            // Redirect to login based on guard
+            $loginRoute = $guard === 'employer' ? '/employer/login' : '/login';
+            return redirect($loginRoute);
         }
 
-        if (Auth::user()->role !== $role) {
-            abort(403, "Unauthorized.");
+        $user = Auth::guard($guard)->user();
+
+        // Check role only for users (admins & normal users)
+        if ($guard === 'web' && $user->role !== $role) {
+            abort(403, 'Unauthorized.');
         }
+
         return $next($request);
     }
 }
+
