@@ -18,14 +18,14 @@
             <div>
                 <label for="job_title" class="block text-sm font-medium text-gray-700">Job Title</label>
                 <input type="text" name="job_title" id="job_title" value="{{ old('job_title') }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Company -->
             <div>
                 <label for="company_name" class="block text-sm font-medium text-gray-700">Company Name</label>
                 <input type="text" name="company_name" id="company_name" value="{{ old('company_name') }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Starting -->
@@ -33,7 +33,7 @@
                 <label for="start_date" class="block text-sm font-medium text-gray-700">Start</label>
                 <input type="text" name="start_date" id="start_date" value="{{ old('start_date') }}"
                     placeholder="Jan 2023 - Present"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Ending -->
@@ -41,14 +41,14 @@
                 <label for="end_date" class="block text-sm font-medium text-gray-700">End</label>
                 <input type="text" name="end_date" id="end_date" value="{{ old('end_date') }}"
                     placeholder="Jan 2023 - Present"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Description -->
             <div>
                 <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                 <textarea name="description" id="description" rows="4"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
+                    class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('description') }}</textarea>
             </div>
 
             <!-- Submit -->

@@ -22,6 +22,7 @@ class UserController extends Controller
             ->latest()
             ->take(5)
             ->get();
+            
 
         // Recommended jobs for user
         $recommendedJobs = Job::whereNotIn('id', $applications->pluck('job_id'))
@@ -70,7 +71,7 @@ class UserController extends Controller
             $user->save();
         }
 
-        return redirect()->route('user.resume')->with('success', 'Experience updated successfully');
+        return redirect()->route('user.resume')->with('success', 'Resume updated successfully');
     }
 
     public function downloadResume()

@@ -9,7 +9,7 @@
         <h2 class="text-2xl font-semibold">
           Welcome, <span class="text-indigo-600">{{ Auth::guard('web')->user()->name }}</span>
         </h2>
-        <p class="text-gray-500">Full Stack Developer</p>
+        {{-- <p class="text-gray-500">Full Stack Developer</p> --}}
 
         <div class="mt-4">
           <p class="text-sm text-gray-600 mb-2">Profile Completion</p>
@@ -72,7 +72,7 @@
             <tr class="text-gray-600">
               <th class="pb-2">Job Title</th>
               <th class="pb-2">Company</th>
-              <th class="pb-2">Date</th>
+              <th class="pb-2">Applied on</th>
               <th class="pb-2">Status</th>
             </tr>
           </thead>

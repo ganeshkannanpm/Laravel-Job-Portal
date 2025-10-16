@@ -18,14 +18,14 @@
             <div>
                 <label for="degree" class="block text-sm font-medium text-gray-700">Degree</label>
                 <input type="text" name="degree" id="degree" value="{{ old('degree') }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Institution -->
             <div>
                 <label for="institution" class="block text-sm font-medium text-gray-700">Institution</label>
                 <input type="text" name="institution" id="institution" value="{{ old('institution') }}"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Starting -->
@@ -33,7 +33,7 @@
                 <label for="start_year" class="block text-sm font-medium text-gray-700">Start</label>
                 <input type="text" name="start_year" id="start_year" value="{{ old('start_year') }}"
                     placeholder="Jan 2023 - Present"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Ending -->
@@ -41,14 +41,14 @@
                 <label for="end_year" class="block text-sm font-medium text-gray-700">End</label>
                 <input type="text" name="end_year" id="end_year" value="{{ old('end_year') }}"
                     placeholder="Jan 2023 - Present"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 
             <!-- Details -->
             <div>
                 <label for="details" class="block text-sm font-medium text-gray-700">Details</label>
                 <textarea name="details" id="details" rows="4"
-                    class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('details') }}</textarea>
+                    class="mt-1 block w-full py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">{{ old('details') }}</textarea>
             </div>
 
             <!-- Submit -->
