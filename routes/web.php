@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
+use App\Http\Controllers\ManageJobsController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -89,6 +90,8 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     //Post Job
     Route::get('/employer/jobs/create', [EmployerController::class, 'create'])->name('employer.jobs.create');
     Route::post('/employer/jobs', [EmployerController::class, 'store'])->name('employer.jobs.store');
+    //Manage Jobs
+    Route::get('/employer/manage-jobs',[ManageJobsController::class,'index'])->name('employer.manage.jobs');
 
 });
 

@@ -36,7 +36,7 @@
                     </li>
                     <li><a href="{{ route('employer.jobs.create') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Post a
                             Job</a></li>
-                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage
+                    <li><a href="{{ route('employer.manage.jobs') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage
                             Jobs</a></li>
                     <li><a href="#"
                             class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li>
