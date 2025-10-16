@@ -27,7 +27,7 @@
 
           @guest
             {{-- If user is NOT logged in --}}
-            <a href="{{ route('login.create') }}"
+            <a href="{{ route('login') }}"
               class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-xl font-medium shadow">
               Apply Now
             </a>
