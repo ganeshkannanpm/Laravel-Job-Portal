@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\View;
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
                 $view->with('user', auth()->user());
             }
         });
+
+        Paginator::useTailwind();
     }
 }

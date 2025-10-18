@@ -92,6 +92,7 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::post('/employer/jobs', [EmployerController::class, 'store'])->name('employer.jobs.store');
     //Manage Jobs
     Route::get('/employer/manage-jobs',[ManageJobsController::class,'index'])->name('employer.manage.jobs');
+    Route::get('/employer/view-applications',[ManageJobsController::class,'create'])->name('employer.view.applications');
 
 });
 
