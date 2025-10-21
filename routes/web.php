@@ -25,7 +25,7 @@ Route::post('/register', [RegisteredUserController::class, 'store'])->name('regi
 
 // Employer registration
 Route::get('/employer-register', [EmployerRegisterController::class, 'create'])->name('employer-register.create');
-Route::post('/employer-register-store',[EmployerRegisterController::class,'store'])->name('employer-register.store');
+Route::post('/employer-register-store', [EmployerRegisterController::class, 'store'])->name('employer-register.store');
 
 //Login
 Route::get('/login', [SessionController::class, 'create'])->name('login');
@@ -91,10 +91,13 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/employer/jobs/create', [EmployerController::class, 'create'])->name('employer.jobs.create');
     Route::post('/employer/jobs', [EmployerController::class, 'store'])->name('employer.jobs.store');
     //Manage Jobs
-    Route::get('/employer/manage-jobs',[ManageJobsController::class,'index'])->name('employer.manage.jobs');
-    Route::get('/employer/view-applications',[ManageJobsController::class,'create'])->name('employer.view.applications');
+    Route::get('/employer/manage-jobs', [ManageJobsController::class, 'index'])->name('employer.manage.jobs');
+    Route::get('/employer/{job}/view-applications', [ManageJobsController::class, 'viewApplicants'])->name('employer.view.applications');
+    Route::post('/applications/{id}/update-status', [ManageJobsController::class, 'updateStatus'])->name('applications.updateStatus');
+
 
 });
+
 
 //Admin Dashboard
 Route::middleware(['auth', 'role:admin'])->group(function () {

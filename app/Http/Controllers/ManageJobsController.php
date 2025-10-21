@@ -12,12 +12,28 @@ class ManageJobsController extends Controller
     {
         $manageJobs = Job::withCount('jobApplication')
             ->has('jobApplication')
-            ->paginate(6);
+            ->paginate(5);
+
         return view('employer.manage-jobs', compact(['manageJobs']));
     }
-    public function create()
+    public function viewApplicants($jobId)
+    {
+        $job = Job::with('jobApplication.user')->findOrFail($jobId);
+
+        return view('employer.view-applications', compact(['job']));
+    }
+
+    public function updateStatus(Request $request, $id)
     {
 
-        return view('employer.view-applications');
+        $request->validate([
+            'status' => 'required|string|in:Pending,Reviewed,Shortlisted,Rejected,Hired'
+        ]);
+
+        $application = JobApplication::findOrFail($id);
+        $application->status = $request->status;
+        $application->save();
+
+        return response()->json(['success' => True, 'status' => $application->status]);
     }
 }
