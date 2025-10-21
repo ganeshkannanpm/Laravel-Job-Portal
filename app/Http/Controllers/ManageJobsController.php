@@ -36,4 +36,13 @@ class ManageJobsController extends Controller
 
         return response()->json(['success' => True, 'status' => $application->status]);
     }
+
+    public function destroy($id)
+    {
+
+        $job = Job::findOrFail($id);
+        $job->delete();
+
+        return redirect()->back()->with('message', 'Job deleted successfully');
+    }
 }

@@ -94,7 +94,7 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/employer/manage-jobs', [ManageJobsController::class, 'index'])->name('employer.manage.jobs');
     Route::get('/employer/{job}/view-applications', [ManageJobsController::class, 'viewApplicants'])->name('employer.view.applications');
     Route::post('/applications/{id}/update-status', [ManageJobsController::class, 'updateStatus'])->name('applications.updateStatus');
-
+    Route::delete('/applications/{id}/delete',[ManageJobsController::class,'destroy'])->name('applications.delete');
 
 });
 
