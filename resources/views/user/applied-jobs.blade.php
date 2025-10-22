@@ -45,9 +45,10 @@
                                 @endif
                             </td>
                             <td class="p-3">
-                                <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">
+                                {{-- <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">
                                     {{ ucfirst($application->status ?? 'pending') }}
-                                </span>
+                                </span> --}}
+                                {{ $application->status }}
                             </td>
                             <td class="p-3">
                                 <form action="{{ route('applications.destroy', $application->id) }}" method="POST"

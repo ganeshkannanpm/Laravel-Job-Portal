@@ -82,22 +82,9 @@
                 <td class="py-2">{{ $application->job->title }}</td>
                 <td>{{ $application->job->company }}</td>
                 <td>{{ $application->job->created_at }}</td>
-                {{-- <td><span class="text-green-600 font-medium">Shortlisted</span></td> --}}
+                <td>{{ $application->status }}</span></td>
               </tr>
             @endforeach
-
-            {{-- <tr class="border-t">
-              <td class="py-2">React Developer</td>
-              <td>CodeWorks</td>
-              <td>12 Sep 2025</td>
-              <td><span class="text-yellow-600 font-medium">Interview</span></td>
-            </tr>
-            <tr class="border-t">
-              <td class="py-2">Backend Engineer</td>
-              <td>DataSoft</td>
-              <td>10 Sep 2025</td>
-              <td><span class="text-red-600 font-medium">Rejected</span></td>
-            </tr> --}}
           </tbody>
         </table>
       </div>
@@ -139,7 +126,7 @@
       <div class="bg-white p-6 rounded-lg shadow">
         <h3 class="text-lg font-semibold mb-4">Your Stats</h3>
         <div class="space-y-3">
-          <p>📄 <span class="font-bold">12</span> Applications this month</p>
+          <p>📄 <span class="font-bold">{{ $totalApplications }}</span> Applications this month</p>
           <p>👀 <span class="font-bold">34</span> Profile Views</p>
           <p>📥 <span class="font-bold">5</span> Resume Downloads</p>
         </div>

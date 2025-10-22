@@ -16,6 +16,8 @@ class UserController extends Controller
 
         $user = Auth::user();
 
+        $totalApplications = JobApplication::where('user_id', $user->id)->count();
+
         //Recent job application of user
         $applications = JobApplication::with('job')
             ->where('user_id', $user->id)
@@ -36,6 +38,7 @@ class UserController extends Controller
         return view('user.dashboard', compact(
             'user',
             'applications',
+            'totalApplications',
             'recommendedJobs',
             'savedJobs'
         ));
