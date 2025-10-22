@@ -1,5 +1,5 @@
 <x-user-dashboard-body>
-     <div class="mt-10">
+    <div class="mt-10">
         @php
             $profileRoutes = [
                 'user.joblist' => 'Latest Jobs',
@@ -45,10 +45,17 @@
                                 @endif
                             </td>
                             <td class="p-3">
-                                {{-- <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs">
-                                    {{ ucfirst($application->status ?? 'pending') }}
-                                </span> --}}
-                                {{ $application->status }}
+                                @if ($application->status === 'Hired')
+                                    <span class="text-green-600 font-medium">{{ $application->status }}</span>
+                                @elseif ($application->status === 'Pending')
+                                    <span class="text-yellow-600 font-medium">{{ $application->status }}</span>
+                                @elseif ($application->status === 'Reviewed')
+                                    <span class="text-gray-600 font-medium">{{ $application->status }}</span>
+                                @elseif ($application->status === 'Rejected')
+                                    <span class="text-red-600 font-medium">{{ $application->status }}</span>
+                                @elseif ($application->status === 'Shortlisted')
+                                    <span class="text-indigo-600 font-medium">{{ $application->status }}</span>
+                                @endif
                             </td>
                             <td class="p-3">
                                 <form action="{{ route('applications.destroy', $application->id) }}" method="POST"

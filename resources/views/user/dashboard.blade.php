@@ -82,7 +82,19 @@
                 <td class="py-2">{{ $application->job->title }}</td>
                 <td>{{ $application->job->company }}</td>
                 <td>{{ $application->job->created_at }}</td>
-                <td>{{ $application->status }}</span></td>
+                <td>
+                  @if ($application->status === 'Hired')
+                    <span class="text-green-600 font-medium">{{ $application->status }}</span>
+                  @elseif ($application->status === 'Pending')
+                    <span class="text-yellow-600 font-medium">{{ $application->status }}</span>
+                  @elseif ($application->status === 'Reviewed')
+                    <span class="text-gray-600 font-medium">{{ $application->status }}</span>
+                  @elseif ($application->status === 'Rejected')
+                    <span class="text-red-600 font-medium">{{ $application->status }}</span>
+                  @elseif ($application->status === 'Shortlisted')
+                    <span class="text-indigo-600 font-medium">{{ $application->status }}</span>
+                  @endif
+                </td>
               </tr>
             @endforeach
           </tbody>
