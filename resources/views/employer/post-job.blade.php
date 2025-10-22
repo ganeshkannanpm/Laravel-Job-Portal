@@ -13,13 +13,13 @@
 
     <body class="bg-slate-50 text-slate-900">
         <!-- Main form + preview -->
-        <main class="lg:col-span-9 mt-10">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6">
+        <main class="w-full mt-10">
+            <div class="grid gap-6">
                 <!-- Form -->
                 <section class="bg-white p-6 rounded-lg border">
                     <div class="flex items-center justify-between mb-4">
                         <h2 class="text-lg font-semibold">Post a Job</h2>
-                        <div class="text-sm text-slate-500">Draft autosaved • Preview on the right</div>
+                        {{-- <div class="text-sm text-slate-500">Draft autosaved • Preview on the right</div> --}}
                     </div>
 
                     @if ($errors->any())
@@ -162,7 +162,7 @@
                 </section>
 
                 <!-- Live Preview -->
-                <aside class="bg-white p-6 rounded-lg border">
+                {{-- <aside class="bg-white p-6 rounded-lg border">
                     <h3 class="text-md font-semibold mb-3">Live Preview</h3>
                     <div class="space-y-3">
                         <div class="p-4 border rounded">
@@ -202,7 +202,7 @@
                         <div class="text-xs text-slate-500">Tip: Use short bullet points in description for higher
                             applicant conversions.</div>
                     </div>
-                </aside>
+                </aside> --}}
             </div>
         </main>
 
