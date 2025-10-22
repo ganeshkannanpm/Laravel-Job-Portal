@@ -17,19 +17,19 @@
       <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Jobs Posted</h3>
-          <p class="text-2xl font-bold text-indigo-600">12</p>
+          <p class="text-2xl font-bold text-indigo-600">{{ $totalJobs }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Active Jobs</h3>
-          <p class="text-2xl font-bold text-green-600">5</p>
+          <p class="text-2xl font-bold text-green-600">{{ $activeJobs }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Applications</h3>
-          <p class="text-2xl font-bold text-blue-600">89</p>
+          <p class="text-2xl font-bold text-blue-600">{{ $totalApplications }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Shortlisted</h3>
-          <p class="text-2xl font-bold text-yellow-600">14</p>
+          <p class="text-2xl font-bold text-yellow-600">{{ $shortlisted }}</p>
         </div>
       </section>
 
@@ -47,18 +47,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-t">
-                <td class="px-4 py-2">John Doe</td>
-                <td class="px-4 py-2">Frontend Developer</td>
-                <td class="px-4 py-2 text-green-600">Shortlisted</td>
-                <td class="px-4 py-2">01 Oct 2025</td>
+              @foreach ($applications as $application )
+                <tr class="border-t">
+                <td class="px-4 py-2">{{ $application->name }}</td>
+                <td class="px-4 py-2">{{ $application->job->title }}</td>
+                <td class="px-4 py-2">{{ $application->status }}</td>
+                <td class="px-4 py-2">{{ $application->job->created_at }}</td>
               </tr>
-              <tr class="border-t">
-                <td class="px-4 py-2">Alice Smith</td>
-                <td class="px-4 py-2">Backend Developer</td>
-                <td class="px-4 py-2 text-yellow-600">Under Review</td>
-                <td class="px-4 py-2">30 Sep 2025</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -78,18 +74,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-t">
-                <td class="px-4 py-2">UI/UX Designer</td>
+              @foreach ($postedJobs as $job )
+                 <tr class="border-t">
+                <td class="px-4 py-2">{{ $job->title }}</td>
                 <td class="px-4 py-2 text-green-600">Active</td>
-                <td class="px-4 py-2">23</td>
-                <td class="px-4 py-2">25 Sep 2025</td>
+                <td class="px-4 py-2">{{ $job->job_application_count }}</td>
+                <td class="px-4 py-2">{{ $job->created_at }}</td>
               </tr>
-              <tr class="border-t">
-                <td class="px-4 py-2">PHP Developer</td>
-                <td class="px-4 py-2 text-red-600">Closed</td>
-                <td class="px-4 py-2">40</td>
-                <td class="px-4 py-2">15 Sep 2025</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
