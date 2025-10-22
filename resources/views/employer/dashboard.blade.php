@@ -1,7 +1,7 @@
 <x-employer-dashboard-body>
-<!-- Sidebar + Main Layout -->
-    <div class="flex min-h-screen">
-     <!-- Main Content -->
+  <!-- Sidebar + Main Layout -->
+  <div class="flex min-h-screen">
+    <!-- Main Content -->
     <main class="flex-1 p-6">
 
       <!-- Top Bar -->
@@ -12,7 +12,7 @@
         </h3>
       </header>
 
-       
+
       <!-- Stats Cards -->
       <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="bg-white p-4 shadow rounded-lg text-center">
@@ -47,13 +47,26 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($applications as $application )
+              @foreach ($applications as $application)
                 <tr class="border-t">
-                <td class="px-4 py-2">{{ $application->name }}</td>
-                <td class="px-4 py-2">{{ $application->job->title }}</td>
-                <td class="px-4 py-2">{{ $application->status }}</td>
-                <td class="px-4 py-2">{{ $application->job->created_at }}</td>
-              </tr>
+                  <td class="px-4 py-2">{{ $application->name }}</td>
+                  <td class="px-4 py-2">{{ $application->job->title }}</td>
+                  <td class="px-4 py-2">
+
+                    @if ($application->status === 'Hired')
+                      <span class="text-green-600 font-medium">{{ $application->status }}</span>
+                    @elseif ($application->status === 'Pending')
+                      <span class="text-yellow-600 font-medium">{{ $application->status }}</span>
+                    @elseif ($application->status === 'Reviewed')
+                      <span class="text-gray-600 font-medium">{{ $application->status }}</span>
+                    @elseif ($application->status === 'Rejected')
+                      <span class="text-red-600 font-medium">{{ $application->status }}</span>
+                    @elseif ($application->status === 'Shortlisted')
+                      <span class="text-indigo-600 font-medium">{{ $application->status }}</span>
+                    @endif
+                  </td>
+                  <td class="px-4 py-2">{{ $application->job->created_at }}</td>
+                </tr>
               @endforeach
             </tbody>
           </table>
@@ -74,13 +87,13 @@
               </tr>
             </thead>
             <tbody>
-              @foreach ($postedJobs as $job )
-                 <tr class="border-t">
-                <td class="px-4 py-2">{{ $job->title }}</td>
-                <td class="px-4 py-2 text-green-600">Active</td>
-                <td class="px-4 py-2">{{ $job->job_application_count }}</td>
-                <td class="px-4 py-2">{{ $job->created_at }}</td>
-              </tr>
+              @foreach ($postedJobs as $job)
+                <tr class="border-t">
+                  <td class="px-4 py-2">{{ $job->title }}</td>
+                  <td class="px-4 py-2 text-green-600">Active</td>
+                  <td class="px-4 py-2">{{ $job->job_application_count }}</td>
+                  <td class="px-4 py-2">{{ $job->created_at }}</td>
+                </tr>
               @endforeach
             </tbody>
           </table>
@@ -89,7 +102,7 @@
 
     </main>
   </div>
-</body>
+  </body>
 
 
 </x-employer-dashboard-body>
