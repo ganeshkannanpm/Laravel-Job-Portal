@@ -15,6 +15,7 @@
         <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
           <tr>
             <th class="px-6 py-3">Candidate Name</th>
+            <th class="px-6 py-3">Email</th>
             <th class="px-6 py-3">Applied Date</th>
             <th class="px-6 py-3">Resume</th>
             <th class="px-6 py-3">Status</th>
@@ -26,10 +27,11 @@
           @foreach ($job->jobApplication as $application)
             <tr class="hover:bg-gray-50 border-t">
               <td class="px-6 py-4 font-medium">{{ $application->name }}</td>
+              <td class="px-6 py-4">{{ $application->email }}</td>
               <td class="px-6 py-4">{{ $application->created_at->format('M d, Y') }}</td>
               <td class="px-6 py-4">
                 @if ($application->resume)
-                  <a href="{{ asset('storage/resumes/' . $application->resume) }}" class="text-indigo-600 hover:underline"
+                  <a href="{{ asset('storage/' . $application->resume) }}" class="text-indigo-600 hover:underline"
                     target="_blank">Download Resume</a>
                 @else
                   <span class="text-gray-400">No Resume</span>
@@ -53,7 +55,8 @@
 
               </td>
               <td class="px-6 py-4 text-right space-x-2">
-                <button class="px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white text-xs rounded">View</button>
+                {{-- <button class="px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white text-xs rounded">View</button>
+                --}}
                 <button onclick="openStatusModal({{ $application->id }}, '{{ addslashes($application->user->name) }}')"
                   class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs rounded">
                   Update Status
