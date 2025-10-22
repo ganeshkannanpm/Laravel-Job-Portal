@@ -102,4 +102,5 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
 //Admin Dashboard
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/manage-employers',[AdminController::class,'create'])->name('admin.manage-employers');
 });
