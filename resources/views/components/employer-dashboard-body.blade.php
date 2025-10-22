@@ -29,17 +29,27 @@
                 <ul class="hidden md:flex space-x-6">
                     <li>
                         <a href="{{ route('employer.dashboard') }}" class="{{ request()->routeIs('employer.dashboard')
-    ? 'text-indigo-700 underline font-bold'
-    : 'text-gray-700 hover:text-indigo-800 no-underline hover:underline' }}">
+    ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+    : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                             Overview
                         </a>
                     </li>
-                    <li><a href="{{ route('employer.jobs.create') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Post a
-                            Job</a></li>
-                    <li><a href="{{ route('employer.manage.jobs') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage
-                            Jobs</a></li>
-                    <li><a href="#"
-                            class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li>
+                    <li>
+                        <a href="{{ route('employer.jobs.create') }}" class="{{ request()->routeIs('employer.jobs.create')
+    ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+    : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
+                            Post a Job
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('employer.manage.jobs') }}" class="{{ request()->routeIs('employer.manage.jobs')
+    ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+    : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
+                            Manage Jobs
+                        </a>
+                    </li>
+                    {{-- <li><a href="#"
+                            class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li> --}}
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Company
                             Profile</a></li>
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Billing</a>
