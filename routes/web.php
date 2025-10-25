@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\EmployerRegisterController;
@@ -95,7 +96,8 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/employer/{job}/view-applications', [ManageJobsController::class, 'viewApplicants'])->name('employer.view.applications');
     Route::post('/applications/{id}/update-status', [ManageJobsController::class, 'updateStatus'])->name('applications.updateStatus');
     Route::delete('/applications/{id}/delete',[ManageJobsController::class,'destroy'])->name('applications.delete');
-
+    //Company Profile
+    Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
 });
 
 

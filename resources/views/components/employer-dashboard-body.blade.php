@@ -48,10 +48,13 @@
                             Manage Jobs
                         </a>
                     </li>
-                    {{-- <li><a href="#"
-                            class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Applicants</a></li> --}}
-                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Company
-                            Profile</a></li>
+                    <li>
+                        <a href="{{ route('employer.company.profile') }}" class="{{ request()->routeIs('employer.company.profile')
+    ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+    : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
+                          Company Profile
+                        </a>
+                    </li>
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Billing</a>
                     </li>
                 </ul>
