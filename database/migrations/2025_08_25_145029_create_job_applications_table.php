@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email');
             $table->text('cover_letter');
-            $table->string('resume'); // store path
+            $table->string('resume'); 
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
 

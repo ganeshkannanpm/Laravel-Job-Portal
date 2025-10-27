@@ -11,7 +11,7 @@ class CompanyProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -19,10 +19,20 @@ class CompanyProfileRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'company_name' => 'required|string|max:255',
+            'industry' => 'nullable|string|max:255',
+            'company_size' => 'nullable|string|max:255',
+            'website' => 'nullable|url|max:255',
+            'description' => 'nullable|string',
+            'recruiter_name'=> 'required|string|max:255',
+            'contact_phone' => 'nullable|string|max:20',
+            'recruiter_email'=>'required|email|max:150',
+            'address' => 'nullable|string|max:500',
+            'logo' => 'nullable|image|mimes:jpg,jpeg,png,svg|max:2048',
         ];
     }
+
 }

@@ -26,9 +26,10 @@ return new class extends Migration {
             $table->text('about_company')->nullable();
             $table->string('schedule')->default('Full Time');
             $table->enum('apply_type', ['email', 'external'])->default('email');
-            $table->string('apply_link')->after('apply_type')->nullable();
+            $table->string('apply_link')->nullable();
             $table->date('deadline')->nullable();
             $table->string('posted')->nullable();
+            $table->string('status')->default('Active');
             $table->boolean('featured')->default(false);
             $table->timestamps();
         });

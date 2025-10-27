@@ -98,6 +98,9 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::delete('/applications/{id}/delete',[ManageJobsController::class,'destroy'])->name('applications.delete');
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
+    Route::get('/employer/create-profile', [CompanyProfileController::class, 'create'])->name('employer.create.profile');
+    Route::post('/employer/store-profile',[CompanyProfileController::class, 'store'])->name('employer.store.proflie');
+
 });
 
 

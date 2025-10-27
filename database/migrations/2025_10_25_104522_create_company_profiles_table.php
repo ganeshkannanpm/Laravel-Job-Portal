@@ -19,8 +19,10 @@ return new class extends Migration {
             $table->string('company_size')->nullable();
             $table->string('website')->nullable();
             $table->text('description')->nullable();
+            $table->string('recruiter_name');
             $table->string('contact_phone')->nullable();
             $table->text('address')->nullable();
+             $table->string('recruiter_email')->unique();
             $table->string('logo')->nullable();
             $table->enum('account_status', ['Active', 'Suspended', 'Pending Approval'])->default('Pending Approval');
             $table->enum('verified', ['Yes', 'No'])->default('No');

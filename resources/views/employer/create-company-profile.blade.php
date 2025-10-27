@@ -1,9 +1,8 @@
 <x-employer-dashboard-body>
-<h1 class="text-2xl font-semibold mb-6 text-center">Company Profile</h1>
 
-<form action="#" method="POST" enctype="multipart/form-data"
-  class="bg-white shadow rounded-lg p-6 space-y-8">
-
+<h1 class="text-2xl font-semibold mb-6 text-center mt-20">Create Company Profile</h1>
+<form action="{{ route('employer.store.proflie') }}" method="POST" enctype="multipart/form-data" class="bg-white shadow rounded-lg p-6 space-y-8">
+  @csrf
   <!-- Company Information -->
   <section>
     <h2 class="text-lg font-semibold mb-4 border-b pb-2">Company Information</h2>
@@ -11,27 +10,27 @@
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Company Name</label>
-        <input type="text" name="company_name" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" required />
+        <input type="text" name="company_name" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="Company Name" required />
       </div>
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Industry / Business Type</label>
-        <input type="text" name="industry" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+        <input type="text" name="industry" placeholder="Industry / Business Type" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" />
       </div>
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Company Size</label>
-        <input type="text" name="company_size" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. 50–200 employees" />
+        <input type="text" name="company_size" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="e.g. 50–200 employees" />
       </div>
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Website URL</label>
-        <input type="url" name="website" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com" />
+        <input type="url" name="website" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com" />
       </div>
 
       <div class="sm:col-span-2">
         <label class="block text-sm font-medium text-gray-700">Company Description</label>
-        <textarea name="description" rows="3" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+        <textarea name="description" placeholder="Enter here..." rows="3" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
       </div>
 
     </div>
@@ -43,18 +42,23 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
       <div>
-        <label class="block text-sm font-medium text-gray-700">HR / Recruiter Name</label>
-        <input type="text" name="employer_name" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+        <label class="block text-sm font-medium text-gray-700">Recruiter Name</label>
+        <input type="text" name="recruiter_name" placeholder="Recruiter Name" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" />
       </div>
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Phone Number</label>
-        <input type="text" name="phone" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500" />
+        <input type="text" name="contact_phone" placeholder="Phone Number" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" />
       </div>
 
-      <div class="sm:col-span-2">
+      <div>
         <label class="block text-sm font-medium text-gray-700">Office Address</label>
-        <textarea name="address" rows="2" class="mt-1 w-full border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+        <textarea name="address" placeholder="Enter here..." rows="2" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500"></textarea>
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium text-gray-700">Recruiter Email</label>
+        <input type="email" name="recruiter_email" class="mt-1 w-full py-2 border rounded-lg focus:ring-blue-500 focus:border-blue-500" placeholder="https://example.com" />
       </div>
 
     </div>
@@ -70,6 +74,10 @@
   </section>
 
   <div class="flex justify-end gap-3 pt-4 border-t">
+     <a href="{{ route('employer.company.profile') }}"
+                class=" bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+                Back
+            </a>
     <button type="reset" class="px-4 py-2 bg-gray-100 border rounded-lg">Reset</button>
     <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded-lg">Save Profile</button>
   </div>

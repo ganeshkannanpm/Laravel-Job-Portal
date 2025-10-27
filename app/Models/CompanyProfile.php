@@ -10,6 +10,29 @@ class CompanyProfile extends Model
     use HasFactory;
 
     protected $fillable = [
-
+        'employer_id',
+        'company_name',
+        'industry',
+        'company_size',
+        'website',
+        'description',
+        'recruiter_name',
+        'contact_phone',
+        'address',
+        'recruiter_email',
+        'logo',
+        'account_status',
+        'verified',
+        'jobs_posted',
+        'applicants_received',
+        'last_login',
+        'downloads',
+        'feedback',
     ];
+
+    public function employer(){
+
+        return $this->belongsTo(Employer::class);
+    }
+
 }

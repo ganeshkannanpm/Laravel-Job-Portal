@@ -166,6 +166,10 @@
 
     <!-- Footer actions -->
     <div class="mt-8 flex flex-col sm:flex-row sm:justify-end gap-3">
+        <a href="{{ route('employer.create.profile') }}"
+                class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+                + Create profile
+            </a>
       <button class="px-4 py-2 bg-indigo-600 text-white rounded-lg">Edit Profile</button>
     </div>
   </main>
