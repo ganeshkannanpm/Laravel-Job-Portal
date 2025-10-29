@@ -1,17 +1,23 @@
 <x-employer-dashboard-body>
-
   <body class="bg-gray-100 font-sans">
-    <main class="lg:col-span-9 mt-10">
+    <main class="lg:col-span-9 mt-6">
       <!-- Page Container -->
       <div class="min-h-screen flex flex-col md:flex-row">
         <!-- Main Content -->
         <main class="flex-1 p-6">
           <div class="flex justify-between items-center mb-6">
             <h1 class="text-2xl font-bold text-gray-800">Manage Jobs</h1>
-            <a href="{{ route('employer.jobs.create') }}"
-              class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
-              + Post New Job
-            </a>
+            <div>
+              <a href="{{ route('employer.view.jobs') }}"
+                class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+                View Posted Jobs
+              </a>
+              <a href="{{ route('employer.jobs.create') }}"
+                class="mt-3 ms-4 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
+                + Post New Job
+              </a>
+            </div>
+
           </div>
 
           @if(session('message'))

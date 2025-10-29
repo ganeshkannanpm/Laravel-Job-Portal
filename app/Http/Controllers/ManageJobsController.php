@@ -16,6 +16,28 @@ class ManageJobsController extends Controller
 
         return view('employer.manage-jobs', compact(['manageJobs']));
     }
+
+    public function viewJobs(Request $request)
+    {
+
+        // Get filter value (featured / non-featured / all)
+        $filter = $request->input('filter');
+
+        if ($filter === 'featured') {
+            $featuredJobs = Job::where('featured', 1)->get();
+            $jobs = collect(); // empty
+        } elseif ($filter === 'non-featured') {
+            $jobs = Job::where('featured', 0)->get();
+            $featuredJobs = collect(); // empty
+        } else {
+            // Default: show both
+            $jobs = Job::where('featured', 0)->get();
+            $featuredJobs = Job::where('featured', 1)->get();
+        }
+
+        return view('employer.view-jobs', compact('featuredJobs', 'jobs', 'filter'));
+    }
+
     public function viewApplicants($jobId)
     {
         $job = Job::with('jobApplication.user')->findOrFail($jobId);
