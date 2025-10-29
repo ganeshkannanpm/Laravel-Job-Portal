@@ -100,7 +100,8 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
     Route::get('/employer/create-profile', [CompanyProfileController::class, 'create'])->name('employer.create.profile');
     Route::post('/employer/store-profile',[CompanyProfileController::class, 'store'])->name('employer.store.proflie');
-
+    Route::get('/employer/edit-profile/{id}',[CompanyProfileController::class,'edit'])->name('employer.edit.profile');
+    Route::put('/employer/update-profile/{id}',[CompanyProfileController::class,'update'])->name('employer.update.profile');
 });
 
 

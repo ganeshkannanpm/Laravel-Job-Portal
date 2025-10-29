@@ -11,8 +11,8 @@ class CompanyProfileController extends Controller
 {
     public function index()
     {
-
-        return view('employer.company-profile');
+        $profile = CompanyProfile::where('employer_id', auth('employer')->id())->first();
+        return view('employer.company-profile', compact('profile'));
     }
 
     public function create()
@@ -42,5 +42,25 @@ class CompanyProfileController extends Controller
         CompanyProfile::create($validated);
 
         return redirect()->route('employer.company.profile')->with('message', 'Company profile created successfully');
+    }
+
+    public function edit($id)
+    {
+
+        $profiles = CompanyProfile::findOrFail($id);
+        return view('employer.edit-company-profile', compact('profiles'));
+    }
+
+    public function update(CompanyProfileRequest $request, $id)
+    {
+
+        $validated = $request->validated();
+
+        $companyProfile = CompanyProfile::where('id', $id)->where('employer_id', auth()->id())->firstOrFail();
+
+        $companyProfile->update($validated);
+        
+        return redirect()->route('employer.company.profile')->with('success','Your profile updated successfully');
+
     }
 }
