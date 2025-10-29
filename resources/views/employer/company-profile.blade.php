@@ -27,9 +27,6 @@
               class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
               Update
             </a>
-            <a href="" class="mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition">
-              Suspend
-            </a>
           </div>
         </header>
 
