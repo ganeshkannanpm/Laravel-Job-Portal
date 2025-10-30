@@ -1,5 +1,5 @@
 <x-user-dashboard-body>
-    <div class="mt-10">
+    <div class="mt-8 bg-indigo-600 text-gray-50 px-4 py-2">
         @php
             $profileRoutes = [
                 'user.personal-info' => 'Personal Info',

@@ -1,7 +1,6 @@
 <x-user-dashboard-body>
     <section class="ms-5 overflow-auto">
-
-        <div class="w-full mx-auto  rounded-lg p-8">
+        <div class="w-full mx-auto mt-6  rounded-lg p-8">
             <h2 class="text-2xl font-bold mb-6 text-gray-800">Update Personal Information</h2>
 
             @if (session('success'))
