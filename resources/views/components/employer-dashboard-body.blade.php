@@ -42,7 +42,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employer.manage.jobs') }}" class="{{ request()->routeIs('employer.manage.jobs','employer.view.jobs','employer.view.applications')
+                        <a href="{{ route('employer.manage.jobs') }}" class="{{ request()->routeIs('employer.manage.jobs','employer.view.jobs','employer.view.applications','employer.jobs.view')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                             Manage Jobs

@@ -39,6 +39,20 @@
                                 {{ $job->schedule }}
                             </span>
                         </div>
+                        <!-- Action Buttons -->
+                        <div class="mt-4 flex justify-end gap-2">
+                            <a href="{{ route('employer.jobs.details',$job->id) }}"
+                                class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200">View</a>
+
+                            <a href="#" class="text-yellow-700 px-3 py-1 bg-yellow-100 text-sm  hover:bg-yellow-200">Edit</a>
+
+                            <form action="#" method="POST" onsubmit="return confirm('Are you sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="text-red-700 px-3 py-1 bg-red-100 text-sm  hover:bg-red-200">Delete</button>
+                            </form>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -64,6 +78,20 @@
                             <span class="inline-block px-3 py-1 text-xs font-medium bg-blue-100 text-gray-800 rounded-full">
                                 {{ $job->schedule }}
                             </span>
+                        </div>
+                        <!-- Action Buttons -->
+                        <div class="mt-4 flex justify-end gap-2">
+                            <a href="{{ route('employer.jobs.details',$job->id) }}"
+                                class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200">View</a>
+
+                            <a href="#" class="text-yellow-700 px-3 py-1 bg-yellow-100 text-sm  hover:bg-yellow-200">Edit</a>
+
+                            <form action="#" method="POST" onsubmit="return confirm('Are you sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit"
+                                    class="text-red-700 px-3 py-1 bg-red-100 text-sm  hover:bg-red-200">Delete</button>
+                            </form>
                         </div>
                     </div>
                 @endforeach

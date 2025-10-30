@@ -185,7 +185,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-sm text-center">
-              <a href="#" class="inline-block px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">View
+              <a href="{{ route('employer.view.jobs') }}" class="inline-block px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">View
                 Jobs</a>
             </div>
           </aside>
