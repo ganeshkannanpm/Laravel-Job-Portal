@@ -6,6 +6,12 @@
             <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
                 <div class="flex items-start justify-between">
 
+                    @if (session('success'))
+          <div class="bg-green-100 text-green-800 p-2 rounded">
+            {{ session('success') }}
+          </div>
+        @endif
+
                     <!-- Job Info -->
                     <div class="flex items-center space-x-4">
                         <img src="https://picsum.photos/200" class="w-16 h-16 rounded-xl border" alt="Company Logo">
@@ -29,7 +35,7 @@
                         </a>
 
                         <!-- Edit Button -->
-                        <a href=""
+                        <a href="{{ route('employer.jobs.edit',$job->id) }}"
                             class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
                             ✏️
                         </a>

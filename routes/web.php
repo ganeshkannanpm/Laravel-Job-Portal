@@ -92,14 +92,18 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     //Post Job
     Route::get('/employer/jobs/create', [EmployerController::class, 'create'])->name('employer.jobs.create');
     Route::post('/employer/jobs', [EmployerController::class, 'store'])->name('employer.jobs.store');
+
     //Manage Jobs
     Route::get('/employer/manage-jobs', [ManageJobsController::class, 'index'])->name('employer.manage.jobs');
     Route::get('/employer/view-jobs',[ManageJobsController::class,'viewJobs'])->name('employer.view.jobs');
     Route::get('/employer/{job}/view-applications', [ManageJobsController::class, 'viewApplicants'])->name('employer.view.applications');
     Route::post('/applications/{id}/update-status', [ManageJobsController::class, 'updateStatus'])->name('applications.updateStatus');
     Route::delete('/applications/{id}/delete',[ManageJobsController::class,'destroy'])->name('applications.delete');
+    
     // Employer Jobs
     Route::get('/employer/jobs-details/{id}',[EmployerJobController::class,'index'])->name('employer.jobs.details');
+    Route::get('/employer/jobs-details/edit/{id}',[EmployerJobController::class,'edit'])->name('employer.jobs.edit');
+    Route::put('/employer/jobs-details/update/{id}',[EmployerJobController::class,'update'])->name('employer.jobs.update');
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');

@@ -10,7 +10,10 @@ class ManageJobsController extends Controller
 {
     public function index()
     {
+        $employer = auth('employer')->user();
+
         $manageJobs = Job::withCount('jobApplication')
+            ->where('employer_id', $employer->id)
             ->has('jobApplication')
             ->paginate(5);
 
@@ -20,21 +23,35 @@ class ManageJobsController extends Controller
     public function viewJobs(Request $request)
     {
 
-        // Get filter value (featured / non-featured / all)
+        $employer = auth('employer')->user(); 
         $filter = $request->input('filter');
 
         if ($filter === 'featured') {
-            $featuredJobs = Job::where('featured', 1)->get();
-            $jobs = collect(); // empty
-        } elseif ($filter === 'non-featured') {
-            $jobs = Job::where('featured', 0)->get();
-            $featuredJobs = collect(); // empty
-        } else {
-            // Default: show both
-            $jobs = Job::where('featured', 0)->get();
-            $featuredJobs = Job::where('featured', 1)->get();
-        }
+            // Only featured jobs for this employer
+            $featuredJobs = Job::where('employer_id', $employer->id)
+                ->where('featured', 1)
+                ->get();
 
+            $jobs = collect(); // empty collection
+
+        } elseif ($filter === 'non-featured') {
+            // Only non-featured jobs for this employer
+            $jobs = Job::where('employer_id', $employer->id)
+                ->where('featured', 0)
+                ->get();
+
+            $featuredJobs = collect(); // empty collection
+
+        } else {
+            // Default: show both featured and non-featured jobs for this employer
+            $jobs = Job::where('employer_id', $employer->id)
+                ->where('featured', 0)
+                ->get();
+
+            $featuredJobs = Job::where('employer_id', $employer->id)
+                ->where('featured', 1)
+                ->get();
+        }
         return view('employer.view-jobs', compact('featuredJobs', 'jobs', 'filter'));
     }
 
