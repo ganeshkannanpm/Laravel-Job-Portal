@@ -11,7 +11,7 @@ class CompanyProfileRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return auth('employer')->check();
     }
 
     /**

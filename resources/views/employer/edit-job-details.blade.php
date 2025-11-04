@@ -29,7 +29,7 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('employer.update.profile',$job->id) }}" method="POST" class="space-y-5">
+                    <form action="{{ route('employer.jobs.update',$job->id) }}" method="POST" class="space-y-5">
                         @csrf
                         @method('PUT')
 

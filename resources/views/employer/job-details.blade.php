@@ -2,15 +2,18 @@
     <section class="bg-gray-100">
         <div class="max-w-5xl mx-auto p-10">
 
+            <div class="mb-4 mt-4">
+                 @if (session('success'))
+                        <div class="bg-green-100 text-green-800 p-2 rounded">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+            </div>
             <!-- Header Section -->
             <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
                 <div class="flex items-start justify-between">
 
-                    @if (session('success'))
-          <div class="bg-green-100 text-green-800 p-2 rounded">
-            {{ session('success') }}
-          </div>
-        @endif
+                   
 
                     <!-- Job Info -->
                     <div class="flex items-center space-x-4">
@@ -35,7 +38,7 @@
                         </a>
 
                         <!-- Edit Button -->
-                        <a href="{{ route('employer.jobs.edit',$job->id) }}"
+                        <a href="{{ route('employer.jobs.edit', $job->id) }}"
                             class="px-4 py-2 bg-blue-600 text-white rounded-lg text-sm hover:bg-blue-700 transition">
                             ✏️
                         </a>

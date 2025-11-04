@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\PostJobRequest;
+use App\Http\Requests\UpdateJobRequest;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -20,14 +21,14 @@ class EmployerJobController extends Controller
         return view('employer.edit-job-details',compact('job'));
     }
 
-    public function update(PostJobRequest $request, $id){
+    public function update(UpdateJobRequest $request, $id){
 
         $validated = $request->validated();
-        $postedJob = Job::findOrFail($id);
+        $job = Job::findOrFail($id);
 
-        $postedJob->update($validated);
+        $job->update($validated);
 
-        return redirect()->route('employer.jobs.details')->with('success','Job updated successfully');
+        return redirect()->route('employer.jobs.details',$job->id)->with('success','Job updated successfully');
     }
 
 }
