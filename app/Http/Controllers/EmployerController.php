@@ -59,12 +59,12 @@ class EmployerController extends Controller
     public function store(PostJobRequest $request)
     {
         $data = $request->validated();
-
         $data['employer_id'] = Auth::id();
 
-        // Convert skills to JSON if needed
         if (isset($data['skills_required'])) {
-            $data['skills_required'] = json_encode(explode(',', $data['skills_required']));
+            // decode JSON string sent from hidden input
+            $decoded = json_decode($data['skills_required'], true);
+            $data['skills_required'] = is_array($decoded) ? $decoded : [];
         }
 
         $data['posted'] = now()->format('Y-m-d');
@@ -73,5 +73,6 @@ class EmployerController extends Controller
 
         return redirect()->route('employer.jobs.create')->with('success', 'Job posted successfully!');
     }
+
 
 }

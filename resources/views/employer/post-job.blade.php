@@ -256,7 +256,9 @@
                         tag.querySelector('button').addEventListener('click', () => removeSkill(skill));
                         skillsContainer.appendChild(tag);
                     });
-                    hiddenInput.value = skills.join(', ');
+
+                    hiddenInput.value = JSON.stringify(skills);
+
                 }
             });
         </script>

@@ -95,27 +95,28 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
 
     //Manage Jobs
     Route::get('/employer/manage-jobs', [ManageJobsController::class, 'index'])->name('employer.manage.jobs');
-    Route::get('/employer/view-jobs',[ManageJobsController::class,'viewJobs'])->name('employer.view.jobs');
+    Route::get('/employer/view-jobs', [ManageJobsController::class, 'viewJobs'])->name('employer.view.jobs');
     Route::get('/employer/{job}/view-applications', [ManageJobsController::class, 'viewApplicants'])->name('employer.view.applications');
     Route::post('/applications/{id}/update-status', [ManageJobsController::class, 'updateStatus'])->name('applications.updateStatus');
-    Route::delete('/applications/{id}/delete',[ManageJobsController::class,'destroy'])->name('applications.delete');
-    
+    Route::delete('/applications/{id}/delete', [ManageJobsController::class, 'destroy'])->name('applications.delete');
+
     // Employer Jobs
-    Route::get('/employer/jobs-details/{id}',[EmployerJobController::class,'index'])->name('employer.jobs.details');
-    Route::get('/employer/jobs-details/edit/{id}',[EmployerJobController::class,'edit'])->name('employer.jobs.edit');
-    Route::put('/employer/jobs-details/update/{id}',[EmployerJobController::class,'update'])->name('employer.jobs.update');
+    Route::get('/employer/jobs-details/{id}', [EmployerJobController::class, 'index'])->name('employer.jobs.details');
+    Route::get('/employer/jobs-details/edit/{id}', [EmployerJobController::class, 'edit'])->name('employer.jobs.edit');
+    Route::put('/employer/jobs-details/update/{id}', [EmployerJobController::class, 'update'])->name('employer.jobs.update');
+    Route::delete('/employer/jobs-details/{id}/delete', [EmployerJobController::class, 'destroy'])->name('employer.jobs.delete');
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
     Route::get('/employer/create-profile', [CompanyProfileController::class, 'create'])->name('employer.create.profile');
-    Route::post('/employer/store-profile',[CompanyProfileController::class, 'store'])->name('employer.store.proflie');
-    Route::get('/employer/edit-profile/{id}',[CompanyProfileController::class,'edit'])->name('employer.edit.profile');
-    Route::put('/employer/update-profile/{id}',[CompanyProfileController::class,'update'])->name('employer.update.profile');
+    Route::post('/employer/store-profile', [CompanyProfileController::class, 'store'])->name('employer.store.proflie');
+    Route::get('/employer/edit-profile/{id}', [CompanyProfileController::class, 'edit'])->name('employer.edit.profile');
+    Route::put('/employer/update-profile/{id}', [CompanyProfileController::class, 'update'])->name('employer.update.profile');
 });
 
 
 //Admin Dashboard
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
-    Route::get('/manage-employers',[AdminController::class,'create'])->name('admin.manage-employers');
+    Route::get('/manage-employers', [AdminController::class, 'create'])->name('admin.manage-employers');
 });

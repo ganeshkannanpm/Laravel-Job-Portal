@@ -137,9 +137,9 @@
                                     class="px-3 py-2 text-sm rounded-md border hover:bg-slate-50">Add</button>
                             </div>
                             <div id="skills" class="mt-3 flex flex-wrap gap-2">
-                                @foreach (explode(',', $job->skills_required) as $skill)
-                                    <span class="tag">{{ trim($skill) }} <button class="ml-1 text-xs">✕</button></span>
-                                @endforeach
+                              @foreach ($job->skills_required as $skill)
+                                <span class="tag">{{ trim($skill) }} <button class="ml-1 text-xs">✕</button></span>
+                            @endforeach
                             </div>
                         </div>
                         </div>
@@ -185,7 +185,7 @@
                 hiddenInput.name = 'skills_required';
                 input.closest('form').appendChild(hiddenInput);
 
-                let skills = @json(explode(',', $job->skills_required));
+                let skills = @json($job->skills_required);
 
                 input.addEventListener('keydown', (e) => {
                     if (e.key === 'Enter') {
@@ -220,7 +220,7 @@
                         tag.querySelector('button').addEventListener('click', () => removeSkill(skill));
                         skillsContainer.appendChild(tag);
                     });
-                    hiddenInput.value = skills.join(', ');
+                     hiddenInput.value = JSON.stringify(skills);
                 }
 
                 renderSkills();

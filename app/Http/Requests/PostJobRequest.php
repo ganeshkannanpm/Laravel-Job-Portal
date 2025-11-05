@@ -57,4 +57,10 @@ class PostJobRequest extends FormRequest
             'deadline.after_or_equal' => 'Deadline must be today or a future date.',
         ];
     }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'featured' => $this->has('featured'), // true if checked, false if not
+        ]);
+    }
 }

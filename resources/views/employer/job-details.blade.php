@@ -3,17 +3,17 @@
         <div class="max-w-5xl mx-auto p-10">
 
             <div class="mb-4 mt-4">
-                 @if (session('success'))
-                        <div class="bg-green-100 text-green-800 p-2 rounded">
-                            {{ session('success') }}
-                        </div>
-                    @endif
+                @if (session('success'))
+                    <div class="bg-green-100 text-green-800 p-2 rounded">
+                        {{ session('success') }}
+                    </div>
+                @endif
             </div>
             <!-- Header Section -->
             <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
                 <div class="flex items-start justify-between">
 
-                   
+
 
                     <!-- Job Info -->
                     <div class="flex items-center space-x-4">
@@ -44,7 +44,7 @@
                         </a>
 
                         <!-- Delete Button -->
-                        <form action="" method="POST"
+                        <form action="{{ route('employer.jobs.delete', $job->id) }}" method="POST"
                             onsubmit="return confirm('Are you sure you want to delete this job?');">
                             @csrf
                             @method('DELETE')
@@ -92,7 +92,7 @@
                 <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
                     <h2 class="text-xl font-semibold mb-3">Skills Required</h2>
                     <div class="flex flex-wrap gap-2">
-                        @foreach(explode(',', $job->skills_required) as $skill)
+                        @foreach($job->skills_required as $skill)
                             <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium">
                                 {{ trim($skill) }}
                             </span>

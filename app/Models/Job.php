@@ -28,10 +28,27 @@ class Job extends Model
         'posted',
         'featured',
     ];
+    protected $attributes = [
+        'status' => 'Active',
+    ];
 
     protected $casts = [
-        'skills' => 'array',
+        'skills_required' => 'array',
     ];
+
+    //helper for safe access
+    public function getSkillsRequiredAttribute($value)
+    {
+        if (empty($value))
+            return [];
+        if (is_array($value))
+            return $value;
+        if (is_string($value)) {
+            $decoded = json_decode($value, true);
+            return is_array($decoded) ? $decoded : explode(',', $value);
+        }
+        return [];
+    }
 
 
     public function employer()
