@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
+use App\Http\Controllers\ManageEmployersController;
 use App\Http\Controllers\ManageJobsController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
@@ -119,4 +120,6 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/manage-employers', [AdminController::class, 'create'])->name('admin.manage-employers');
+    Route::get('/employer-profile/{id}',[ManageEmployersController::class,'index'])->name('admin.employer.profile');
+    Route::get('/edit-account-info/{id}',[ManageEmployersController::class,'create'])->name('admin.edit.account.info');
 });

@@ -16,4 +16,6 @@ class AdminController extends Controller
         $employers = Employer::all();
         return view('admin.manage-employers',compact(['employers']));
     }
+
+    
 }

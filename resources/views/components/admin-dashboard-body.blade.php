@@ -30,17 +30,17 @@
                         <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') 
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                            Dashboard
+                        Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.manage-employers') }}" class="{{ request()->routeIs('admin.manage-employers')
+                        <a href="{{ route('admin.manage-employers') }}" 
+                        class="{{ request()->routeIs('admin.manage-employers','admin.employer.profile','admin.edit.account.info')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                            Manage Employers
+                        Manage Employers
                         </a>
                     </li>
-                    <li><a href="{{ route('admin.manage-employers') }}" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline"></a></li>
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Manage
                             Candidates</a></li>
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Jobs
