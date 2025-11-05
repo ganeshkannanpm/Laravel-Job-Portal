@@ -4,7 +4,7 @@
     <div class="flex items-center justify-between mb-6">
       <div>
         <h2 class="text-2xl font-semibold text-gray-800">Applications for: {{ $job->title }}</h2>
-        <p class="text-gray-500 text-sm mt-4">Total Applicants: 4</p>
+        <p class="text-gray-500 text-sm mt-4">Total Applicants: {{ $totalApplicants }}</p>
       </div>
       <a href="{{ route('employer.manage.jobs') }}" class="text-indigo-600 hover:underline text-sm">← Back to Jobs</a>
     </div>
@@ -14,6 +14,7 @@
       <table class="w-full text-sm text-left border border-gray-200">
         <thead class="bg-gray-100 text-gray-700 uppercase text-xs">
           <tr>
+            <th class="px-6 py-3">No</th>
             <th class="px-6 py-3">Candidate Name</th>
             <th class="px-6 py-3">Email</th>
             <th class="px-6 py-3">Applied Date</th>
@@ -26,6 +27,7 @@
           <!-- Candidate Row Example -->
           @foreach ($job->jobApplication as $application)
             <tr class="hover:bg-gray-50 border-t">
+              <td class="px-6 py-4 font-medium">{{ $loop->iteration }}</td>
               <td class="px-6 py-4 font-medium">{{ $application->name }}</td>
               <td class="px-6 py-4">{{ $application->email }}</td>
               <td class="px-6 py-4">{{ $application->created_at->format('M d, Y') }}</td>

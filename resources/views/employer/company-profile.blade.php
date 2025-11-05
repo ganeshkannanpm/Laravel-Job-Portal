@@ -42,7 +42,7 @@
           </div>
           <div class="bg-white p-4 rounded-lg shadow-sm">
             <p class="text-xs text-gray-500">Jobs Posted</p>
-            <p class="mt-1 font-medium">{{ $profile->job_posted }}</p>
+            <p class="mt-1 font-medium">{{ $totalJobs }}</p>
           </div>
         </section>
 
@@ -131,7 +131,7 @@
               <dl class="grid grid-cols-2 gap-3 text-sm">
                 <div>
                   <dt class="text-xs text-gray-500">Total Applicants</dt>
-                  <dd class="font-medium">389</dd>
+                  <dd class="font-medium">{{ $totalApplicants }}</dd>
                 </div>
                 <div>
                   <dt class="text-xs text-gray-500">Resume Downloads</dt>
@@ -165,7 +165,7 @@
                 </div>
                 <div>
                   <dt class="text-xs text-gray-500">Total Jobs Posted</dt>
-                  <dd class="font-medium">12</dd>
+                  <dd class="font-medium">{{ $totalJobs }}</dd>
                 </div>
               </dl>
             </div>

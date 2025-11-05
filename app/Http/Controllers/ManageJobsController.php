@@ -52,14 +52,20 @@ class ManageJobsController extends Controller
                 ->where('featured', 1)
                 ->get();
         }
-        return view('employer.view-jobs', compact('featuredJobs', 'jobs', 'filter'));
+
+        return view('employer.view-jobs', compact('featuredJobs', 'jobs', 'filter',));
     }
 
     public function viewApplicants($jobId)
     {
+        $employer = auth('employer')->user();
         $job = Job::with('jobApplication.user')->findOrFail($jobId);
 
-        return view('employer.view-applications', compact(['job']));
+        $totalApplicants = JobApplication::whereHas('job', function ($query) use ($employer) {
+            $query->where('employer_id', $employer->id);
+        })->count();
+
+        return view('employer.view-applications', compact(['job','totalApplicants']));
     }
 
     public function updateStatus(Request $request, $id)

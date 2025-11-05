@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CompanyProfileRequest;
 use App\Models\CompanyProfile;
+use App\Models\Job;
+use App\Models\JobApplication;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,8 +13,16 @@ class CompanyProfileController extends Controller
 {
     public function index()
     {
+        $employer = auth('employer')->user();
+
+        $totalJobs = Job::where('employer_id', $employer->id)->count();
         $profile = CompanyProfile::where('employer_id', auth('employer')->id())->first();
-        return view('employer.company-profile', compact('profile'));
+
+        $totalApplicants = JobApplication::whereHas('job', function ($query) use ($employer) {
+            $query->where('employer_id', $employer->id);
+        })->count();
+
+        return view('employer.company-profile', compact('profile','totalJobs','totalApplicants'));
     }
 
     public function create()
