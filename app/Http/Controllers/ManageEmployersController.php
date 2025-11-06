@@ -30,4 +30,15 @@ class ManageEmployersController extends Controller
         $profile = CompanyProfile::where('employer_id', $employer->id)->first();
         return view('admin.edit-account-info',compact('profile'));
     }
+
+    public function show($id){
+
+        $employer = Employer::findOrFail($id);
+        
+        $profile = CompanyProfile::where('employer_id',$employer->id)->first();
+        $totalJobs = Job::where('employer_id',$employer->id)->count();
+        $jobs = Job::where('employer_id',$employer->id)->get();
+
+        return view('admin.employer-jobs',compact('profile','totalJobs','jobs'));
+    }
 }

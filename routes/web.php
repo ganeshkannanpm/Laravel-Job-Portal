@@ -122,4 +122,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/manage-employers', [AdminController::class, 'create'])->name('admin.manage-employers');
     Route::get('/employer-profile/{id}',[ManageEmployersController::class,'index'])->name('admin.employer.profile');
     Route::get('/edit-account-info/{id}',[ManageEmployersController::class,'create'])->name('admin.edit.account.info');
+    Route::get('/employer-jobs/{id}',[ManageEmployersController::class,'show'])->name('admin.employer.jobs');
 });
