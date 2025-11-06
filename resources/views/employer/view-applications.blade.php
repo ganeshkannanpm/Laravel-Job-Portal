@@ -57,8 +57,6 @@
 
               </td>
               <td class="px-6 py-4 text-right space-x-2">
-                {{-- <button class="px-3 py-1 bg-indigo-500 hover:bg-indigo-600 text-white text-xs rounded">View</button>
-                --}}
                 <button onclick="openStatusModal({{ $application->id }}, '{{ addslashes($application->user->name) }}')"
                   class="px-3 py-1 bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs rounded">
                   Update Status

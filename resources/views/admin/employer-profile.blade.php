@@ -35,7 +35,7 @@
         </header>
 
         <!-- Top summary cards -->
-        <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        {{-- <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
           <div class="bg-white p-4 rounded-lg shadow-sm">
             <p class="text-xs text-gray-500">Account Status</p>
             <p class="mt-1 font-medium">{{ $profile->account_status }}</p>
@@ -48,7 +48,7 @@
             <p class="text-xs text-gray-500">Jobs Posted</p>
             <p class="mt-1 font-medium">{{ $totalJobs }}</p>
           </div>
-        </section>
+        </section> --}}
 
         <!-- Main content grid -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">

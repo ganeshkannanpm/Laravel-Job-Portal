@@ -105,7 +105,7 @@
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <p class="text-xs text-gray-500">Employer ID / Registration Date</p>
-                  <p class="mt-1 font-medium">EMP-000123 • 2024-08-15</p>
+                  <p class="mt-1 font-medium">EMP-{{ str_pad($profile->employer_id, 6, '0', STR_PAD_LEFT) }} • {{ $profile->created_at->format('M d, Y') }}</p>
                 </div>
                 <div>
                   <p class="text-xs text-gray-500">Last Login / Activity</p>
