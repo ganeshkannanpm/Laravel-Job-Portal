@@ -119,8 +119,12 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
 //Admin Dashboard
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+
+    //Manage Employers
     Route::get('/manage-employers', [AdminController::class, 'create'])->name('admin.manage-employers');
     Route::get('/employer-profile/{id}',[ManageEmployersController::class,'index'])->name('admin.employer.profile');
     Route::get('/edit-account-info/{id}',[ManageEmployersController::class,'create'])->name('admin.edit.account.info');
     Route::get('/employer-jobs/{id}',[ManageEmployersController::class,'show'])->name('admin.employer.jobs');
+    Route::get('/employer-view-job/{id}',[ManageEmployersController::class,'viewJobs'])->name('admin.employer.view.jobs');
+    
 });

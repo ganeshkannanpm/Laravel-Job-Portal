@@ -21,24 +21,35 @@ class ManageEmployersController extends Controller
             $query->where('employer_id', $employer->id);
         })->count();
 
-        return view('admin.employer-profile',compact('totalJobs','profile','totalApplicants'));
+        return view('admin.employer-profile', compact('totalJobs', 'profile', 'totalApplicants'));
     }
 
-    public function create($id){
+    public function create($id)
+    {
 
         $employer = Employer::findOrFail($id);
         $profile = CompanyProfile::where('employer_id', $employer->id)->first();
-        return view('admin.edit-account-info',compact('profile'));
+        return view('admin.edit-account-info', compact('profile'));
     }
 
-    public function show($id){
+    public function show($id)
+    {
 
         $employer = Employer::findOrFail($id);
-        
-        $profile = CompanyProfile::where('employer_id',$employer->id)->first();
-        $totalJobs = Job::where('employer_id',$employer->id)->count();
-        $jobs = Job::where('employer_id',$employer->id)->get();
 
-        return view('admin.employer-jobs',compact('profile','totalJobs','jobs'));
+        $profile = CompanyProfile::where('employer_id', $employer->id)->first();
+        $totalJobs = Job::where('employer_id', $employer->id)->count();
+        $jobs = Job::where('employer_id', $employer->id)->get();
+
+        return view('admin.employer-jobs', compact('profile', 'totalJobs', 'jobs'));
+    }
+
+    public function viewJobs($id)
+    {
+        $job = Job::findOrFail($id);
+        $employer = Employer::findOrFail($job->employer_id);
+        $profile = CompanyProfile::where('employer_id', $employer->id)->first();
+        
+        return view('admin.employer-view-job', compact('job','profile'));
     }
 }

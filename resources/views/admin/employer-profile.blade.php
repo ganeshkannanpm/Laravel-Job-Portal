@@ -23,6 +23,10 @@
           </div>
 
           <div class="flex items-center gap-3">
+            <a href="{{ route('admin.manage-employers') }}"
+              class=" mt-3 px-4 py-2 bg-gray-300 text-gray-700 rounded-lg text-sm hover:bg-gray-300 transition">
+              ← Back
+            </a>
             <a href="{{ route('admin.edit.account.info',$profile->id) }}"
               class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
             Update Account Info
@@ -33,22 +37,6 @@
             </a>
           </div>
         </header>
-
-        <!-- Top summary cards -->
-        {{-- <section class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-          <div class="bg-white p-4 rounded-lg shadow-sm">
-            <p class="text-xs text-gray-500">Account Status</p>
-            <p class="mt-1 font-medium">{{ $profile->account_status }}</p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow-sm">
-            <p class="text-xs text-gray-500">Verified</p>
-            <p class="mt-1 font-medium">{{ $profile->verified }}</p>
-          </div>
-          <div class="bg-white p-4 rounded-lg shadow-sm">
-            <p class="text-xs text-gray-500">Jobs Posted</p>
-            <p class="mt-1 font-medium">{{ $totalJobs }}</p>
-          </div>
-        </section> --}}
 
         <!-- Main content grid -->
         <section class="grid grid-cols-1 lg:grid-cols-3 gap-6">

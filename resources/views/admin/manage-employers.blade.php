@@ -45,9 +45,6 @@
                                 <td class="px-6 py-3 text-center">
                                     <a href="{{ route('admin.employer.profile',$employer->id) }}" 
                                     class="inline-block px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg">View</a>
-                                    {{-- <button class="text-blue-600 hover:underline mr-3">View</button> --}}
-                                    {{-- <button class="text-yellow-600 hover:underline mr-3">Edit</button>
-                                    <button class="text-red-600 hover:underline">Delete</button> --}}
                                 </td>
                             </tr>
                         @endforeach

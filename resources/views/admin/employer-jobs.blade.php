@@ -6,8 +6,9 @@
         <header class="bg-white shadow-sm mt-10">
             <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
                 <h1 class="text-2xl font-semibold">Employer Jobs</h1>
-                <a href="{{ route('admin.manage-employers') }}" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
-                    Back to Employers
+                <a href="{{ route('admin.employer.profile',$profile->employer_id) }}"
+                    class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+                    Back to Profile
                 </a>
             </div>
         </header>
@@ -60,7 +61,6 @@
                             <tr>
                                 <th class="px-4 py-2 text-left border">Job ID</th>
                                 <th class="px-4 py-2 text-left border">Title</th>
-                                {{-- <th class="px-4 py-2 text-left border">Category</th> --}}
                                 <th class="px-4 py-2 text-left border">Location</th>
                                 <th class="px-4 py-2 text-left border">Salary</th>
                                 <th class="px-4 py-2 text-left border">Status</th>
@@ -70,74 +70,27 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($jobs as $job )
+                            @foreach ($jobs as $job)
                                 <tr class="hover:bg-gray-50">
-                                <td class="px-4 py-2 border">JOB{{ str_pad($job->id,4,'0',STR_PAD_LEFT) }}</td>
-                                <td class="px-4 py-2 border font-medium">{{ $job->title }}</td>
-                                {{-- <td class="px-4 py-2 border">Web Development</td> --}}
-                                <td class="px-4 py-2 border">{{ $job->location }}</td>
-                                <td class="px-4 py-2 border">{{ $job->salary_min  }} - {{ $job->salary_max }}</td>
-                                <td class="px-4 py-2 border">
-                                    <span
-                                        class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">{{ $job->status }}</span>
-                                </td>
-                                <td class="px-4 py-2 border">{{ $job->created_at->format('M d, Y') }}</td>
-                                <td class="px-4 py-2 border text-center space-x-2">
-                                    <button
-                                        class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200">View</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Suspend</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
-                                </td>
-                            </tr>
+                                    <td class="px-4 py-2 border">JOB{{ str_pad($job->id, 4, '0', STR_PAD_LEFT) }}</td>
+                                    <td class="px-4 py-2 border font-medium">{{ $job->title }}</td>
+                                    <td class="px-4 py-2 border">{{ $job->location }}</td>
+                                    <td class="px-4 py-2 border">{{ $job->salary_min  }} - {{ $job->salary_max }}</td>
+                                    <td class="px-4 py-2 border">
+                                        <span
+                                            class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-full">{{ $job->status }}</span>
+                                    </td>
+                                    <td class="px-4 py-2 border">{{ $job->created_at->format('M d, Y') }}</td>
+                                    <td class="px-4 py-2 border text-center space-x-2">
+                                        <a href="{{ route('admin.employer.view.jobs', $job->id) }}"
+                                            class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200">View</a>
+                                        <button
+                                            class="px-2 py-1 text-xs bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Suspend</button>
+                                        <button
+                                            class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
+                                    </td>
+                                </tr>
                             @endforeach
-                            
-
-                            <!-- Pending Job -->
-                            {{-- <tr class="hover:bg-gray-50">
-                                <td class="px-4 py-2 border">JOB-1002</td>
-                                <td class="px-4 py-2 border font-medium">Backend Engineer</td>
-                                <td class="px-4 py-2 border">Software Development</td>
-                                <td class="px-4 py-2 border">Bangalore, India</td>
-                                <td class="px-4 py-2 border">₹50,000 - ₹80,000</td>
-                                <td class="px-4 py-2 border">
-                                    <span
-                                        class="px-2 py-1 bg-yellow-100 text-yellow-700 text-xs rounded-full">Pending</span>
-                                </td>
-                                <td class="px-4 py-2 border">2025-02-02</td>
-                                <td class="px-4 py-2 border text-center space-x-2">
-                                    <button
-                                        class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200">View</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded hover:bg-green-200">Approve</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
-                                </td>
-                            </tr> --}}
-
-                            <!-- Suspended Job -->
-                            {{-- <tr class="hover:bg-gray-50">
-                                <td class="px-4 py-2 border">JOB-1003</td>
-                                <td class="px-4 py-2 border font-medium">UI/UX Designer</td>
-                                <td class="px-4 py-2 border">Design</td>
-                                <td class="px-4 py-2 border">Remote</td>
-                                <td class="px-4 py-2 border">₹35,000 - ₹55,000</td>
-                                <td class="px-4 py-2 border">
-                                    <span
-                                        class="px-2 py-1 bg-red-100 text-red-700 text-xs rounded-full">Suspended</span>
-                                </td>
-                                <td class="px-4 py-2 border">2025-01-10</td>
-                                <td class="px-4 py-2 border text-center space-x-2">
-                                    <button
-                                        class="px-2 py-1 text-xs bg-blue-100 text-blue-700 rounded hover:bg-blue-200">View</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-green-100 text-green-700 rounded hover:bg-green-200">Approve</button>
-                                    <button
-                                        class="px-2 py-1 text-xs bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
-                                </td>
-                            </tr> --}}
-
                         </tbody>
                     </table>
                 </div>

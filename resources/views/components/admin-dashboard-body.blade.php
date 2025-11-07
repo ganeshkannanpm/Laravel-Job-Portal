@@ -35,7 +35,7 @@
                     </li>
                     <li>
                         <a href="{{ route('admin.manage-employers') }}" 
-                        class="{{ request()->routeIs('admin.manage-employers','admin.employer.profile','admin.edit.account.info','admin.employer.jobs')
+                        class="{{ request()->routeIs('admin.manage-employers','admin.employer.profile','admin.edit.account.info','admin.employer.jobs','admin.employer.view.jobs')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                         Manage Employers
