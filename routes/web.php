@@ -9,6 +9,7 @@ use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
+use App\Http\Controllers\ManageCandidatesController;
 use App\Http\Controllers\ManageEmployersController;
 use App\Http\Controllers\ManageJobsController;
 use App\Http\Controllers\PersonalInfoController;
@@ -128,4 +129,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/employer-view-job/{id}',[ManageEmployersController::class,'viewJobs'])->name('admin.employer.view.jobs');
     Route::put('/employer-account-info/update/{id}',[ManageEmployersController::class,'update'])->name('admin.employer.account-info.update');
     Route::delete('/employer-job-delete/{id}',[ManageEmployersController::class,'destroy'])->name('admin.employer.job.delete');
+
+    //Manage Candidates
+    Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
 });
