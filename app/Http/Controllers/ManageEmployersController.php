@@ -77,4 +77,13 @@ class ManageEmployersController extends Controller
         return redirect()->route('admin.employer.profile', $profile->id)->with('success', 'Account Info updated successfully');
 
     }
+
+    public function destroy($id){
+
+        $job = Job::findOrFail($id);
+        $employerId = $job->employer_id;
+        $job->delete();
+
+        return redirect()->route('admin.employer.jobs', $employerId)->with('success','Job deleted successfully');
+    }
 }

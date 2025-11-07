@@ -25,7 +25,7 @@
             </a>
 
             <!-- Delete Button -->
-            <form action="{{ route('employer.jobs.delete', $job->id) }}" method="POST"
+            <form action="{{ route('admin.employer.job.delete', $job->id) }}" method="POST"
               onsubmit="return confirm('Are you sure you want to delete this job?');">
               @csrf
               @method('DELETE')

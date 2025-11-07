@@ -127,5 +127,5 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/employer-jobs/{id}',[ManageEmployersController::class,'show'])->name('admin.employer.jobs');
     Route::get('/employer-view-job/{id}',[ManageEmployersController::class,'viewJobs'])->name('admin.employer.view.jobs');
     Route::put('/employer-account-info/update/{id}',[ManageEmployersController::class,'update'])->name('admin.employer.account-info.update');
-    
+    Route::delete('/employer-job-delete/{id}',[ManageEmployersController::class,'destroy'])->name('admin.employer.job.delete');
 });
