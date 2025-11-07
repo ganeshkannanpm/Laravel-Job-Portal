@@ -16,30 +16,38 @@
     <main class="max-w-7xl mx-auto px-6 py-6">
 
       <!-- Search & Filter -->
-<form method="GET" action="{{ route('admin.manage-candidates') }}" class="bg-white shadow rounded-lg p-4 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+      <form method="GET" action="{{ route('admin.manage-candidates') }}"
+        class="bg-white shadow rounded-lg p-4 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
-  <!-- Search -->
-  <input type="text"
-         name="search"
-         value="{{ request('search') }}"
-         placeholder="Search candidates..."
-         class="w-full md:w-1/3 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none" 
-         oninput="this.form.submit()"
-  />
+        <!-- Search -->
+        <div class="flex w-full md:w-1/2 items-center gap-2">
+          <input type="text" name="search" value="{{ request('search') }}" placeholder="Search candidates..."
+            class="flex-1 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none" />
 
-  <!-- Filter -->
-  <select name="status"
+          <button type="submit" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+            Search
+          </button>
+
+          @if(request('search') || request('status'))
+            <a href="{{ route('admin.manage-candidates') }}"
+              class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 transition">
+              Clear
+            </a>
+          @endif
+        </div>
+
+        <!-- Filter -->
+        <select name="status"
           class="w-full md:w-1/4 border border-gray-300 rounded-lg px-3 py-2 focus:ring-2 focus:ring-indigo-500 outline-none"
           onchange="this.form.submit()">
-      <option value="">All</option>
-      <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
-      <option value="Reviewed" {{ request('status') == 'Reviewed' ? 'selected' : '' }}>Reviewed</option>
-      <option value="Shortlisted" {{ request('status') == 'Shortlisted' ? 'selected' : '' }}>Shortlisted</option>
-      <option value="Hired" {{ request('status') == 'Hired' ? 'selected' : '' }}>Hired</option>
-      <option value="Rejected" {{ request('status') == 'Rejected' ? 'selected' : '' }}>Rejected</option>
-  </select>
-</form>
-
+          <option value="">All</option>
+          <option value="Pending" {{ request('status') == 'Pending' ? 'selected' : '' }}>Pending</option>
+          <option value="Reviewed" {{ request('status') == 'Reviewed' ? 'selected' : '' }}>Reviewed</option>
+          <option value="Shortlisted" {{ request('status') == 'Shortlisted' ? 'selected' : '' }}>Shortlisted</option>
+          <option value="Hired" {{ request('status') == 'Hired' ? 'selected' : '' }}>Hired</option>
+          <option value="Rejected" {{ request('status') == 'Rejected' ? 'selected' : '' }}>Rejected</option>
+        </select>
+      </form>
 
       <!-- Candidates Table -->
       <div class="bg-white shadow rounded-lg overflow-x-auto">
@@ -59,7 +67,7 @@
 
             @foreach ($applications as $application)
               <tr>
-                <td class="px-6 py-4 text-sm text-gray-700">{{ $application->id }}</td>
+                <td class="px-6 py-4 text-sm text-gray-700">{{ $loop->iteration }}</td>
                 <td class="px-6 py-4 text-sm font-medium text-gray-900">{{ $application->name }}</td>
                 <td class="px-6 py-4 text-sm text-gray-700">{{ $application->email }}</td>
                 <td class="px-6 py-4 text-sm text-gray-700">{{ $application->job->title }}</td>
@@ -91,11 +99,10 @@
 
           </tbody>
         </table>
+      </div>
 
-        <div class="mt-6">
-          {{ $applications->links() }}
-        </div>
-
+      <div class="mt-6 flex justify-center">
+        {{ $applications->links('pagination::tailwind') }}
       </div>
 
     </main>
