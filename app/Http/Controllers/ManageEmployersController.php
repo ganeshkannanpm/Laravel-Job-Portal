@@ -49,7 +49,32 @@ class ManageEmployersController extends Controller
         $job = Job::findOrFail($id);
         $employer = Employer::findOrFail($job->employer_id);
         $profile = CompanyProfile::where('employer_id', $employer->id)->first();
-        
-        return view('admin.employer-view-job', compact('job','profile'));
+
+        return view('admin.employer-view-job', compact('job', 'profile'));
+    }
+
+    public function update(Request $request, $id)
+    {
+
+        $request->validate([
+            'account_status' => 'required|string',
+            'verified' => 'required|string',
+        ]);
+
+        $profile = CompanyProfile::where('employer_id', $id)->firstOrFail();
+        $profile->account_status = $request->account_status;
+        $profile->verified = $request->verified;
+        $profile->save();
+
+        //update account status in employers table
+        $employers = Employer::find($id);
+
+        if ($employers) {
+            $employers->status = $request->account_status;
+            $employers->save();
+        }
+
+        return redirect()->route('admin.employer.profile', $profile->id)->with('success', 'Account Info updated successfully');
+
     }
 }

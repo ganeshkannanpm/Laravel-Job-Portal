@@ -33,14 +33,14 @@
                                 <td class="px-6 py-3">
 
                                     @if ($employer->status === 'Active')
-                                        <span class="text-green-600 font-medium">{{ $employer->status }}</span>
+                                        <span class="text-green-500 font-medium">{{ $employer->status }}</span>
                                     @elseif ($employer->status === 'Suspended')
                                         <span class="text-red-600 font-medium">{{ $employer->status }}</span>
-                                    @elseif ($employer->status === 'Closed')
-                                        <span class="text-gray-500 font-medium">{{ $employer->status }}</span>
+                                    @elseif ($employer->status === 'Pending Approval')
+                                        <span class="text-blue-500 font-medium">{{ $employer->status }}</span>
                                     @else
-                                        <span class="text-yellow-600 font-medium">{{ $employer->status }}</span>
                                     @endif
+                                    
                                 </td>
                                 <td class="px-6 py-3 text-center">
                                     <a href="{{ route('admin.employer.profile',$employer->id) }}" 

@@ -31,10 +31,6 @@
               class="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-indigo-700 transition">
             Update Account Info
             </a>
-            <a href=""
-              class="mt-3 bg-red-600 text-white px-4 py-2 rounded-lg text-sm hover:bg-red-700 transition">
-              Suspend
-            </a>
           </div>
         </header>
 
@@ -105,11 +101,11 @@
                 </div>
                 <div>
                   <p class="text-xs text-gray-500">Account Status</p>
-                  <p class="mt-1 font-medium">Active</p>
+                  <p class="mt-1 font-medium">{{ $profile->account_status }}</p>
                 </div>
                 <div>
                   <p class="text-xs text-gray-500">Verified Status</p>
-                  <p class="mt-1 font-medium">Yes</p>
+                  <p class="mt-1 font-medium">{{ $profile->verified }}</p>
                 </div>
               </div>
             </article>
