@@ -251,12 +251,12 @@
               <a href="" id="openModalBtn" class="px-3 py-2 bg-indigo-600 text-white rounded-md text-center">Schedule
                 Interview</a>
               <button id="shortlistBtn" class="px-3 py-2 border rounded-md">Shortlist</button>
-              <a href="add-note.html" class="px-3 py-2 border rounded-md text-center">Add Note</a>
+              <a href="" id="openAddNoteModalBtn" class="px-3 py-2 border rounded-md text-center">Add Note</a>
             </div>
             <p id="status" class="mt-3 text-sm text-gray-600">Status: <span class="font-medium">Pending</span></p>
           </div>
 
-          <!-- Modal -->
+          <!-- Modal Interview -->
           <div id="interviewModal"
             class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
 
@@ -302,32 +302,63 @@
             </div>
           </div>
 
+          <!-- Modal Add Note -->
+          <div id="addNoteModal"
+            class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+
+            <!-- Modal Content -->
+            <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md relative">
+              <!-- Close Button -->
+              <button id="closeAddNoteModalBtn"
+                class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
+
+              <h2 class="text-xl font-semibold mb-4">Add Note</h2>
+              <form>
+                <div class="mb-3">
+                  <label class="block text-gray-700 mb-1">Candidate Name</label>
+                  <input type="text" class="border w-full p-2 rounded-md" placeholder="John Doe">
+                </div>
+
+                <div class="mb-3">
+                  <label class="block text-gray-700 mb-1">Note</label>
+                  <textarea class="border w-full p-2 rounded-md" rows="4"
+                    placeholder="Type your note here..."></textarea>
+                </div>
+
+                <button class="bg-indigo-600 text-white w-full py-2 rounded-md">Save Note</button>
+              </form>
+            </div>
+          </div>
+
         </aside>
       </div>
     </div>
 
     <script>
-      
-      //modal for Interview Schedule
-      const openModalBtn = document.getElementById('openModalBtn');
-      const closeModalBtn = document.getElementById('closeModalBtn');
-      const interviewModal = document.getElementById('interviewModal');
+      //Modal for Interview & Add Note
+      function setupModal(openBtnId, modalId, closeBtnId) {
+        const openBtn = document.getElementById(openBtnId);
+        const modal = document.getElementById(modalId);
+        const closeBtn = document.getElementById(closeBtnId);
 
-      openModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        interviewModal.classList.remove('hidden');
-      });
+        openBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          modal.classList.remove('hidden');
+        });
 
-      closeModalBtn.addEventListener('click', () => {
-        interviewModal.classList.add('hidden');
-      });
+        closeBtn.addEventListener('click', () => {
+          modal.classList.add('hidden');
+        });
 
-      // Close modal if user clicks outside
-      window.addEventListener('click', (e) => {
-        if (e.target === interviewModal) {
-          interviewModal.classList.add('hidden');
-        }
-      });
+        window.addEventListener('click', (e) => {
+          if (e.target === modal) modal.classList.add('hidden');
+        });
+      }
+
+      // Apply to both modals
+      setupModal('openModalBtn', 'interviewModal', 'closeModalBtn');
+      setupModal('openAddNoteModalBtn', 'addNoteModal', 'closeAddNoteModalBtn');
+
 
       // shortlist
       document.getElementById('shortlistBtn').addEventListener('click', function () {
