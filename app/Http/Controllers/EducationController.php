@@ -10,7 +10,7 @@ class EducationController extends Controller
     public function index()
     {
 
-        $educations = Education::latest()->get();
+        $educations = Education::where('user_id',auth()->id())->get();
         return view('user.education', compact(['educations']));
     }
 

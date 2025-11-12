@@ -7,6 +7,7 @@ use App\Http\Controllers\EmployerController;
 use App\Http\Controllers\EmployerJobController;
 use App\Http\Controllers\EmployerRegisterController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\InterviewController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\ManageCandidatesController;
@@ -108,6 +109,11 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::put('/employer/jobs-details/update/{id}', [EmployerJobController::class, 'update'])->name('employer.jobs.update');
     Route::delete('/employer/jobs-details/{id}/delete', [EmployerJobController::class, 'destroy'])->name('employer.jobs.delete');
 
+    //Manage Candidates
+    Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('employer.manage.candidates');
+    Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('employer.view-candidates');
+    Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('employer.resume.download');
+
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
     Route::get('/employer/create-profile', [CompanyProfileController::class, 'create'])->name('employer.create.profile');
@@ -130,6 +136,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::put('/employer-account-info/update/{id}',[ManageEmployersController::class,'update'])->name('admin.employer.account-info.update');
     Route::delete('/employer-job-delete/{id}',[ManageEmployersController::class,'destroy'])->name('admin.employer.job.delete');
 
-    //Manage Candidates
-    Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
+    // //Manage Candidates
+    // Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
+    // Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('admin.view-candidates');
+    // Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('admin.resume.download');
+
+    //Schedule Interview
+    
+
 });

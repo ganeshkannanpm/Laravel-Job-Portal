@@ -10,7 +10,7 @@ class SkillController extends Controller
 {
     public function index() {
 
-        $skills = Skill::all();
+        $skills = Skill::where('user_id',auth()->id())->get();
         return view('user.skills', compact(['skills']));
     }
 

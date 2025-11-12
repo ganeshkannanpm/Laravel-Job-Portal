@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Experience;
 use App\Models\JobApplication;
+use App\Models\PersonalInfo;
+use App\Models\Skill;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ManageCandidatesController extends Controller
@@ -32,7 +36,39 @@ class ManageCandidatesController extends Controller
         $applications = $query->orderBy('id', 'desc')->paginate(5);
         $applications->appends($request->only(['search', 'status']));
 
-        return view('admin.candidates', compact('applications'));
+        return view('employer.manage-candidates', compact('applications'));
+    }
+
+    public function create($id)
+    {
+
+        $application = JobApplication::findOrFail($id);
+        $userId = $application->user_id;
+
+        $candidate = User::findOrFail($userId);
+        $personalInfo = PersonalInfo::where('user_id', $userId)->first();
+        $experience = Experience::where('user_id', $userId)->get();
+        $skills = Skill::where('user_id', $userId)->get();
+
+        return view('employer.view-candidate' , compact(
+            [
+                'candidate',
+                'personalInfo',
+                'application',
+                'experience',
+                'skills'
+            ]
+        ));
+    }
+
+    public function downloadResume($id)
+    {
+        $user = User::findOrFail($id);
+        if (!$user->resume) {
+            return back()->with('error', 'No resume uploaded yet!');
+        }
+
+        return response()->download(storage_path('app/public/resumes/' . $user->resume));
     }
 
 }

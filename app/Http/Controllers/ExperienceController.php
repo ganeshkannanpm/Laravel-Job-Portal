@@ -9,7 +9,7 @@ class ExperienceController extends Controller
 {
     public function index(){
 
-        $experiences = Experience::latest()->get();
+        $experiences = Experience::where('user_id',auth()->id())->get();
         return view('user.experience',compact(['experiences']));
     }
 
