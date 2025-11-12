@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Experience;
+use App\Models\Interview;
 use App\Models\JobApplication;
 use App\Models\PersonalInfo;
 use App\Models\Skill;
@@ -50,13 +51,16 @@ class ManageCandidatesController extends Controller
         $experience = Experience::where('user_id', $userId)->get();
         $skills = Skill::where('user_id', $userId)->get();
 
+        $interview = Interview::where('candidate_id',$candidate->id)->first();
+
         return view('employer.view-candidate' , compact(
             [
                 'candidate',
                 'personalInfo',
                 'application',
                 'experience',
-                'skills'
+                'skills',
+                'interview'
             ]
         ));
     }

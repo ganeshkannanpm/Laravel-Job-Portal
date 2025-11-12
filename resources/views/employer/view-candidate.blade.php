@@ -213,9 +213,33 @@
           </div> --}}
 
           <div class="bg-white border rounded-lg p-4 mt-4">
-            <h3 class="text-lg font-semibold mb-3">Contact</h3>
-            <p class="text-sm">{{ $personalInfo->phone }}</p>
-            <p class="text-sm text-gray-500">{{ $personalInfo->email }}</p>
+            @if($interview)
+              <div class="bg-green-50 border border-green-300 rounded-lg p-4 mt-4">
+                <h3 class="text-lg font-semibold text-green-700 mb-2">Interview Details</h3>
+                <div class="space-y-2 text-gray-700">
+                  <p><strong>Date:</strong> {{ \Carbon\Carbon::parse($interview->interview_date)->format('d M Y') }}</p>
+                  <p><strong>Time:</strong> {{ \Carbon\Carbon::parse($interview->interview_time)->format('h:i A') }}</p>
+                  <p><strong>Location:</strong> {{ $interview->location ?? 'Not specified' }}</p>
+                  <p><strong>Mode:</strong> {{ $interview->mode }}</p>
+                </div>
+                <div class="mt-3 flex gap-2">
+                  <!-- Optional: Reschedule or Cancel buttons -->
+                  <button id="rescheduleBtn"
+                    class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md">Reschedule</button>
+                  <form action="" method="POST"
+                    onsubmit="return confirm('Are you sure you want to cancel this interview?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-3 py-1 text-sm bg-red-600 text-white rounded-md">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            @else
+              <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4 mt-4">
+                <h3 class="text-lg font-semibold text-yellow-700 mb-2">Interview not scheduled yet</h3>
+                <p class="text-gray-600">Click the “Schedule Interview” button to plan one.</p>
+              </div>
+            @endif
           </div>
 
         </main>
@@ -248,12 +272,23 @@
           <div class="bg-white border rounded-lg p-4">
             <h3 class="text-lg font-semibold mb-3">Actions</h3>
             <div class="flex flex-col gap-2">
-              <a href="" id="openModalBtn" class="px-3 py-2 bg-indigo-600 text-white rounded-md text-center">Schedule
-                Interview</a>
-              <button id="shortlistBtn" class="px-3 py-2 border rounded-md">Shortlist</button>
+
+              @if($interview)
+                <!-- Disable if interview exists -->
+                <button disabled class="px-3 py-2 bg-gray-400 text-white rounded-md text-center cursor-not-allowed">
+                  Interview Scheduled
+                </button>
+              @else
+                <!-- Enable if no interview -->
+                <a href="#" id="openModalBtn" class="px-3 py-2 bg-indigo-600 text-white rounded-md text-center">
+                  Schedule Interview
+                </a>
+              @endif
+              {{-- <button id="shortlistBtn" class="px-3 py-2 border rounded-md">Shortlist</button> --}}
               <a href="" id="openAddNoteModalBtn" class="px-3 py-2 border rounded-md text-center">Add Note</a>
             </div>
-            <p id="status" class="mt-3 text-sm text-gray-600">Status: <span class="font-medium">Pending</span></p>
+            {{-- <p id="status" class="mt-3 text-sm text-gray-600">Status: <span class="font-medium">Pending</span></p>
+            --}}
           </div>
 
           <!-- Modal Interview -->
@@ -267,37 +302,65 @@
                 <button id="closeModalBtn"
                   class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
               </div>
+              <!-- Success or Error Messages -->
+              @if (session('success'))
+                <div class="mb-3 p-2 text-green-700 bg-green-100 border border-green-300 rounded-md">
+                  {{ session('success') }}
+                </div>
+              @endif
 
-              <form action="" method="POST">
+              @if (session('error'))
+                <div class="mb-3 p-2 text-red-700 bg-red-100 border border-red-300 rounded-md">
+                  {{ session('error') }}
+                </div>
+              @endif
+
+              @if ($errors->any())
+                <div class="mb-3 p-2 text-red-700 bg-red-100 border border-red-300 rounded-md">
+                  <ul class="list-disc list-inside">
+                    @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                    @endforeach
+                  </ul>
+                </div>
+              @endif
+
+              <form action="{{ route('employer.schedule.interview') }}" method="POST">
+                @csrf
+                <!-- Hidden fields for candidate_id and job_id -->
+                <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
+                <input type="hidden" name="job_id" value="{{ $application->job_id }}">
+
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Candidate Name</label>
-                  <input type="text" class="border w-full p-2 rounded-md" placeholder="John Doe">
+                  <input type="text" name="name" class="border w-full p-2 rounded-md" value="{{ $candidate->name }}"
+                    readonly>
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Interview Date</label>
-                  <input type="date" class="border w-full p-2 rounded-md">
+                  <input type="date" name="interview_date" class="border w-full p-2 rounded-md">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Interview Time</label>
-                  <input type="time" class="border w-full p-2 rounded-md">
+                  <input type="time" name="interview_time" class="border w-full p-2 rounded-md">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Location</label>
-                  <input type="text" class="border w-full p-2 rounded-md">
+                  <input type="text" name="location" class="border w-full p-2 rounded-md">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Mode</label>
-                  <select class="border w-full p-2 rounded-md">
+                  <select name="mode" class="border w-full p-2 rounded-md">
                     <option>Online</option>
                     <option>In-Person</option>
                   </select>
                 </div>
 
-                <button class="bg-indigo-600 text-white w-full py-2 rounded-md">Save</button>
+                <button type="submit" class="bg-indigo-600 text-white w-full py-2 rounded-md">Save</button>
               </form>
             </div>
           </div>
@@ -341,6 +404,8 @@
         const modal = document.getElementById(modalId);
         const closeBtn = document.getElementById(closeBtnId);
 
+        if (!openBtn || !modal || !closeBtn) return; // Prevent JS errors if element missing
+
         openBtn.addEventListener('click', (e) => {
           e.preventDefault();
           modal.classList.remove('hidden');
@@ -357,8 +422,8 @@
 
       // Apply to both modals
       setupModal('openModalBtn', 'interviewModal', 'closeModalBtn');
+      setupModal('rescheduleBtn', 'interviewModal', 'closeModalBtn');
       setupModal('openAddNoteModalBtn', 'addNoteModal', 'closeAddNoteModalBtn');
-
 
       // shortlist
       document.getElementById('shortlistBtn').addEventListener('click', function () {
@@ -397,6 +462,13 @@
           badge.classList.add('bg-yellow-100', 'text-yellow-800');
         }
       }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // If Laravel flashed a success or error message, show the modal
+        @if(session('success') || session('error') || $errors->any())
+          document.getElementById('interviewModal').classList.remove('hidden');
+        @endif
+});
     </script>
   </body>
 </x-employer-dashboard-body>

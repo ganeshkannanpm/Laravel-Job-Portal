@@ -113,6 +113,8 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('employer.manage.candidates');
     Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('employer.view-candidates');
     Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('employer.resume.download');
+    Route::post('/employer/schedule-interview',[InterviewController::class,'store'])->name('employer.schedule.interview');
+
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
