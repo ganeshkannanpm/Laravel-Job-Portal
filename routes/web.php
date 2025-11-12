@@ -113,8 +113,11 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('employer.manage.candidates');
     Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('employer.view-candidates');
     Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('employer.resume.download');
-    Route::post('/employer/schedule-interview',[InterviewController::class,'store'])->name('employer.schedule.interview');
 
+    //Interview
+    Route::post('/employer/schedule-interview', [InterviewController::class, 'store'])->name('employer.schedule.interview');
+    Route::put('/employer/reschedule-interview/{id}', [InterviewController::class, 'update'])->name('employer.reschedule.interview');
+    Route::delete('/employer/interview/{id}', [InterviewController::class, 'destroy'])->name('employer.cancel.interview');
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
@@ -131,12 +134,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Manage Employers
     Route::get('/manage-employers', [AdminController::class, 'create'])->name('admin.manage-employers');
-    Route::get('/employer-profile/{id}',[ManageEmployersController::class,'index'])->name('admin.employer.profile');
-    Route::get('/edit-account-info/{id}',[ManageEmployersController::class,'create'])->name('admin.edit.account.info');
-    Route::get('/employer-jobs/{id}',[ManageEmployersController::class,'show'])->name('admin.employer.jobs');
-    Route::get('/employer-view-job/{id}',[ManageEmployersController::class,'viewJobs'])->name('admin.employer.view.jobs');
-    Route::put('/employer-account-info/update/{id}',[ManageEmployersController::class,'update'])->name('admin.employer.account-info.update');
-    Route::delete('/employer-job-delete/{id}',[ManageEmployersController::class,'destroy'])->name('admin.employer.job.delete');
+    Route::get('/employer-profile/{id}', [ManageEmployersController::class, 'index'])->name('admin.employer.profile');
+    Route::get('/edit-account-info/{id}', [ManageEmployersController::class, 'create'])->name('admin.edit.account.info');
+    Route::get('/employer-jobs/{id}', [ManageEmployersController::class, 'show'])->name('admin.employer.jobs');
+    Route::get('/employer-view-job/{id}', [ManageEmployersController::class, 'viewJobs'])->name('admin.employer.view.jobs');
+    Route::put('/employer-account-info/update/{id}', [ManageEmployersController::class, 'update'])->name('admin.employer.account-info.update');
+    Route::delete('/employer-job-delete/{id}', [ManageEmployersController::class, 'destroy'])->name('admin.employer.job.delete');
 
     // //Manage Candidates
     // Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
@@ -144,6 +147,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('admin.resume.download');
 
     //Schedule Interview
-    
+
 
 });

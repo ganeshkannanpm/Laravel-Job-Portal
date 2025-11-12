@@ -226,7 +226,7 @@
                   <!-- Optional: Reschedule or Cancel buttons -->
                   <button id="rescheduleBtn"
                     class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md">Reschedule</button>
-                  <form action="" method="POST"
+                  <form action="{{ route('employer.cancel.interview', $interview->id) }}" method="POST"
                     onsubmit="return confirm('Are you sure you want to cancel this interview?')">
                     @csrf
                     @method('DELETE')
@@ -284,11 +284,8 @@
                   Schedule Interview
                 </a>
               @endif
-              {{-- <button id="shortlistBtn" class="px-3 py-2 border rounded-md">Shortlist</button> --}}
               <a href="" id="openAddNoteModalBtn" class="px-3 py-2 border rounded-md text-center">Add Note</a>
             </div>
-            {{-- <p id="status" class="mt-3 text-sm text-gray-600">Status: <span class="font-medium">Pending</span></p>
-            --}}
           </div>
 
           <!-- Modal Interview -->
@@ -325,42 +322,54 @@
                 </div>
               @endif
 
-              <form action="{{ route('employer.schedule.interview') }}" method="POST">
+              <form action=" {{ $interview
+  ? route('employer.reschedule.interview', $interview->id)
+  : route('employer.schedule.interview') }}" method="POST">
+
                 @csrf
+                @if($interview)
+                  @method('PUT')
+                @endif
+
                 <!-- Hidden fields for candidate_id and job_id -->
                 <input type="hidden" name="candidate_id" value="{{ $candidate->id }}">
                 <input type="hidden" name="job_id" value="{{ $application->job_id }}">
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Candidate Name</label>
-                  <input type="text" name="name" class="border w-full p-2 rounded-md" value="{{ $candidate->name }}"
-                    readonly>
+                  <input type="text" class="border w-full p-2 rounded-md" value="{{ $candidate->name }}" readonly>
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Interview Date</label>
-                  <input type="date" name="interview_date" class="border w-full p-2 rounded-md">
+                  <input type="date" name="interview_date" class="border w-full p-2 rounded-md"
+                    value="{{ $interview->interview_date ?? '' }}">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Interview Time</label>
-                  <input type="time" name="interview_time" class="border w-full p-2 rounded-md">
+                  <input type="time" name="interview_time" class="border w-full p-2 rounded-md"
+                    value="{{ $interview->interview_time ?? '' }}">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Location</label>
-                  <input type="text" name="location" class="border w-full p-2 rounded-md">
+                  <input type="text" name="location" class="border w-full p-2 rounded-md"
+                    value="{{ $interview->location ?? '' }}">
                 </div>
 
                 <div class="mb-3">
                   <label class="block text-gray-700 mb-1">Mode</label>
                   <select name="mode" class="border w-full p-2 rounded-md">
-                    <option>Online</option>
-                    <option>In-Person</option>
+                    <option value="Online" {{ isset($interview) && $interview->mode === 'Online' ? 'selected' : '' }}>
+                      Online</option>
+                    <option value="In-Person" {{ isset($interview) && $interview->mode === 'In-Person' ? 'selected' : '' }}>In-Person</option>
                   </select>
                 </div>
 
-                <button type="submit" class="bg-indigo-600 text-white w-full py-2 rounded-md">Save</button>
+                <button type="submit" class="bg-indigo-600 text-white w-full py-2 rounded-md">
+                  {{ $interview ? 'Reschedule Interview' : 'Save' }}
+                </button>
               </form>
             </div>
           </div>

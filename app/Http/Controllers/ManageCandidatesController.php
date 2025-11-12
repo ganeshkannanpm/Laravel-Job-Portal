@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Experience;
 use App\Models\Interview;
+use App\Models\Job;
 use App\Models\JobApplication;
 use App\Models\PersonalInfo;
 use App\Models\Skill;
@@ -46,14 +47,17 @@ class ManageCandidatesController extends Controller
         $application = JobApplication::findOrFail($id);
         $userId = $application->user_id;
 
+        $job = Job::findOrFail($application->job_id);
         $candidate = User::findOrFail($userId);
         $personalInfo = PersonalInfo::where('user_id', $userId)->first();
         $experience = Experience::where('user_id', $userId)->get();
         $skills = Skill::where('user_id', $userId)->get();
 
-        $interview = Interview::where('candidate_id',$candidate->id)->first();
+        $interview = Interview::where('candidate_id', $candidate->id)
+            ->where('job_id', $job->id)
+            ->first();
 
-        return view('employer.view-candidate' , compact(
+        return view('employer.view-candidate', compact(
             [
                 'candidate',
                 'personalInfo',
