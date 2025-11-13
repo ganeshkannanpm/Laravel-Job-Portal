@@ -60,6 +60,7 @@ class ManageCandidatesController extends Controller
 
         $notes = Note::where('candidate_id', $candidate->id)
             ->where('job_id', $job->id)
+            ->orderBy('created_at', 'desc')
             ->get();
 
         return view('employer.view-candidate', compact(

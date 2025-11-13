@@ -121,8 +121,9 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::delete('/employer/interview/{id}', [InterviewController::class, 'destroy'])->name('employer.cancel.interview');
 
     //Note
-     Route::post('/employer/note-store', [NoteController::class, 'store'])->name('employer.note.store');
-     Route::delete('/employer/note/{id}', [NoteController::class, 'destroy'])->name('employer.note.delete');
+    Route::post('/employer/note-store', [NoteController::class, 'store'])->name('employer.note.store');
+    Route::put('/employer/note-update/{id}', [NoteController::class, 'update'])->name('employer.note.update');
+    Route::delete('/employer/note/{id}', [NoteController::class, 'destroy'])->name('employer.note.delete');
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');

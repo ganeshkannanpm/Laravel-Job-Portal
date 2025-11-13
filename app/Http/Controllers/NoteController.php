@@ -35,12 +35,41 @@ class NoteController extends Controller
         return redirect()->back()->with('success', 'Note added successfully!');
     }
 
-    public function destroy($id){
+    public function update(Request $request, $id)
+    {
+
+        $note = Note::findOrFail($id);
+
+        if ($note->employer_id !== auth('employer')->id()) {
+            abort(403, 'Unauthorized action');
+        }
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'note' => 'required|string',
+            'mode' => 'required|in:General,Feedback,Reminder,Follow-up',
+            'reminder_date' => 'nullable|date',
+            'status' => 'nullable|in:Pending,Completed',
+        ]);
+
+        $note->update([
+            'title' => $request->title,
+            'note' => $request->note,
+            'mode' => $request->mode,
+            'reminder_date' => $request->reminder_date,
+            'status' => $request->status,
+        ]);
+
+        return redirect()->back()->with('success', 'Note updated successfully!');
+    }
+
+    public function destroy($id)
+    {
 
         $notes = Note::findOrFail($id);
 
-        if($notes->employer_id !== auth('employer')->id()){
-           return redirect()->back()->with('error', 'Unauthorized action.');
+        if ($notes->employer_id !== auth('employer')->id()) {
+            return redirect()->back()->with('error', 'Unauthorized action.');
         }
 
         $notes->delete();

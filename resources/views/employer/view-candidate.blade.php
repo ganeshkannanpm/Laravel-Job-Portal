@@ -37,9 +37,9 @@
               class="bg-indigo-600 text-white text-sm px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
               ← Back
             </a>
-            <button
+            {{-- <button
               class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 text-white rounded-md text-sm hover:bg-indigo-700">
-              Message</button>
+              Message</button> --}}
           </div>
         </div>
       </header>
@@ -48,22 +48,30 @@
         <!-- Left column: Profile / Resume / Tabs -->
         <main class="lg:col-span-8 space-y-6">
 
+          <!-- Success or Error Messages -->
+          @if (session('success'))
+            <div class="mb-3 p-2 text-green-700 bg-green-100 border border-green-300 rounded-md">
+              {{ session('success') }}
+            </div>
+          @endif
+
+          @if (session('error'))
+            <div class="mb-3 p-2 text-red-700 bg-red-100 border border-red-300 rounded-md">
+              {{ session('error') }}
+            </div>
+          @endif
+
           <!-- Tabs -->
           <div class="bg-white shadow sm:rounded-lg p-4">
             <div class="flex items-center justify-between">
-              <nav class="flex space-x-2" aria-label="Tabs">
-                <button class="tab-btn px-3 py-2 text-sm font-medium rounded-md bg-gray-100"
-                  data-target="profileTab">Profile</button>
-                {{-- <button class="tab-btn px-3 py-2 text-sm font-medium rounded-md text-gray-600"
-                  data-target="resumeTab">Resume</button> --}}
-                <button class="tab-btn px-3 py-2 text-sm font-medium rounded-md text-gray-600"
-                  data-target="activityTab">Activity Log</button>
+              <nav class="flex space-x-2">
+                <h4 class="text-lg font-semibold mb-3">Candidate Profile</h4>
               </nav>
 
               <!-- Download Resume -->
               <div>
                 <a href="{{ route('employer.resume.download', $candidate->id) }}"
-                  class="inline-flex items-center mt-4 text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out">
+                  class="inline-flex items-center  text-sm bg-indigo-600 hover:bg-indigo-700 text-white px-3 py-2 rounded-lg shadow-lg transition duration-300 ease-in-out">
                   Download Resume
                 </a>
               </div>
@@ -126,106 +134,46 @@
                   </div>
                 </div>
               </section>
+            </div>
+          </div>
 
-              <!-- Activity Log Tab -->
-              <section id="activityTab" class="tab-panel hidden">
-                <div class="space-y-4">
-                  <div class="border rounded-lg p-4 bg-gray-50">
-                    <h3 class="text-lg font-semibold mb-3">Timeline</h3>
-                    <div class="relative timeline pl-8">
-                      <div class="mb-6 relative">
-                        <div class="absolute left-0 top-0 w-3 h-3 rounded-full bg-indigo-600"></div>
-                        <p class="text-sm text-gray-600">2025-10-21 — Application received</p>
-                        <p class="text-sm">System: Candidate applied through portal</p>
+          <!-- Activity Log -->
+          <div class="bg-white rounded-lg p-4 mt-6 shadow-sm">
+            <h3 class="text-lg font-semibold text-indigo-700 mb-4">Activity Log</h3>
+
+            @if($notes->isEmpty())
+              <p class="text-gray-500 text-sm">No notes added yet.</p>
+            @else
+              <div class="relative border-l border-gray-300 pl-6 space-y-6">
+                @foreach($notes as $note)
+                  <div class="relative">
+                    <!-- Timeline dot -->
+                    <div class="absolute -left-3 top-2 w-3 h-3 bg-indigo-600 rounded-full border-2 border-white"></div>
+                    
+
+                    <div class="bg-gray-50 p-4 rounded-md shadow-sm hover:shadow-md transition">
+                      <div class="flex justify-between items-center mb-1">
+                        <h4 class="font-semibold text-gray-900">{{ $note->title }}</h4>
+                        <span class="text-xs text-gray-500">
+                          {{ $note->created_at->format('d M Y, h:i A') }}
+                        </span>
                       </div>
 
-                      <div class="mb-6 relative">
-                        <div class="absolute left-0 top-0 w-3 h-3 rounded-full bg-yellow-500"></div>
-                        <p class="text-sm text-gray-600">2025-10-28 — Shortlisted</p>
-                        <p class="text-sm">HR: Shortlisted for technical interview</p>
-                      </div>
+                      <p class="text-gray-700 text-sm mb-2">{{ $note->note }}</p>
 
-                      <div class="mb-2 relative">
-                        <div class="absolute left-0 top-0 w-3 h-3 rounded-full bg-green-600"></div>
-                        <p class="text-sm text-gray-600">2025-11-05 — Interview scheduled</p>
-                        <p class="text-sm">Interviewer: Interview set for 2025-11-10</p>
+                      <div class="flex justify-between items-center text-xs text-gray-500">
+                        <span>
+                          Mode: <span class="font-medium text-indigo-700">{{ $note->mode }}</span> •
+                          Added by: {{ $note->creator->name ?? 'Unknown' }}
+                        </span>
+
                       </div>
                     </div>
                   </div>
-
-                  <!-- Admin Notes -->
-                  <div class="border rounded-lg p-4 bg-gray-50">
-                    <h3 class="text-lg font-semibold mb-3">Admin Notes / History</h3>
-                    <ul class="text-sm space-y-2">
-                      <li><strong>2025-11-01:</strong> Candidate asked for time change; rescheduled.</li>
-                      <li><strong>2025-10-29:</strong> Resume updated in system by candidate.</li>
-                      <li><strong>2025-10-22:</strong> Initial screening pass by HR.</li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-            </div>
+                @endforeach
+              </div>
+            @endif
           </div>
-
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-            <!-- Interview Section -->
-            <div class="bg-white border rounded-lg p-4">
-              @if($interview)
-                <div class="bg-gray-50 border rounded-lg p-4">
-                  <h3 class="text-lg font-semibold text-green-700 mb-2">Interview Details</h3>
-                  <div class="space-y-2 text-gray-700">
-                    <p><strong>Date:</strong> {{ \Carbon\Carbon::parse($interview->interview_date)->format('d M Y') }}</p>
-                    <p><strong>Time:</strong> {{ \Carbon\Carbon::parse($interview->interview_time)->format('h:i A') }}</p>
-                    <p><strong>Location:</strong> {{ $interview->location ?? 'Not specified' }}</p>
-                    <p><strong>Mode:</strong> {{ $interview->mode }}</p>
-                  </div>
-                  <div class="mt-3 flex gap-2">
-                    <button id="rescheduleBtn" class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md">
-                      Reschedule
-                    </button>
-                    <form action="{{ route('employer.cancel.interview', $interview->id) }}" method="POST"
-                      onsubmit="return confirm('Are you sure you want to cancel this interview?')">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="px-3 py-1 text-sm bg-red-600 text-white rounded-md">Cancel</button>
-                    </form>
-                  </div>
-                </div>
-              @else
-                <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4">
-                  <h3 class="text-lg font-semibold text-yellow-700 mb-2">Interview not scheduled yet</h3>
-                  <p class="text-gray-600">Click the “Schedule Interview” button to plan one.</p>
-                </div>
-              @endif
-            </div>
-
-            <!-- Notes Section -->
-            <aside class="bg-white border rounded-lg p-4">
-              <h3 class="text-lg font-semibold text-green-700 mb-4">Notes</h3>
-              @forelse($notes as $note)
-                <div class="border rounded-md p-3 mb-3">
-                  <h4 class="font-semibold">{{ $note->title }}</h4>
-                  <p class="text-gray-700">{{ $note->note }}</p>
-                  <p class="text-sm text-gray-500 mt-1">
-                    Added by: {{ $note->creator->name ?? 'Unknown' }}
-                    • {{ $note->created_at->format('d M Y, h:i A') }}
-                  </p>
-                  <div class="mt-2 flex gap-2">
-                    {{-- <button id="editNoteBtn" class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md">Edit</button> --}}
-                    <form action="{{ route('employer.note.delete', $note->id) }}" method="POST"
-                      onsubmit="return confirm('Are you sure you want to delete this note?')">
-                      @csrf
-                      @method('DELETE')
-                      <button type="submit" class="px-3 py-1 text-sm bg-red-600 text-white rounded-md">Delete</button>
-                    </form>
-                  </div>
-                </div>
-              @empty
-                <p class="text-gray-600">No notes added yet.</p>
-              @endforelse
-            </aside>
-          </div>
-
         </main>
 
         <!-- Right column: Quick details, timeline, actions -->
@@ -272,6 +220,36 @@
             </div>
           </div>
 
+          <!-- Interview Section -->
+          <div class="bg-white border rounded-lg p-4">
+            @if($interview)
+              <div class="bg-gray-50 border rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-green-700 mb-2">Interview Details</h3>
+                <div class="space-y-2 text-gray-700">
+                  <p><strong>Date:</strong> {{ \Carbon\Carbon::parse($interview->interview_date)->format('d M Y') }}</p>
+                  <p><strong>Time:</strong> {{ \Carbon\Carbon::parse($interview->interview_time)->format('h:i A') }}</p>
+                  <p><strong>Location:</strong> {{ $interview->location ?? 'Not specified' }}</p>
+                  <p><strong>Mode:</strong> {{ $interview->mode }}</p>
+                </div>
+                <div class="mt-3 flex gap-2">
+                  <button id="rescheduleBtn" class="px-3 py-1 text-sm bg-indigo-600 text-white rounded-md">
+                    Reschedule
+                  </button>
+                  <form action="{{ route('employer.cancel.interview', $interview->id) }}" method="POST"
+                    onsubmit="return confirm('Are you sure you want to cancel this interview?')">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="px-3 py-1 text-sm bg-red-600 text-white rounded-md">Cancel</button>
+                  </form>
+                </div>
+              </div>
+            @else
+              <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4">
+                <h3 class="text-lg font-semibold text-yellow-700 mb-2">Interview not scheduled yet</h3>
+                <p class="text-gray-600">Click the “Schedule Interview” button to plan one.</p>
+              </div>
+            @endif
+          </div>
 
           <!-- Modal Interview -->
           <div id="interviewModal"
@@ -284,18 +262,6 @@
                 <button id="closeModalBtn"
                   class="text-gray-500 hover:text-gray-700 text-2xl leading-none">&times;</button>
               </div>
-              <!-- Success or Error Messages -->
-              @if (session('success'))
-                <div class="mb-3 p-2 text-green-700 bg-green-100 border border-green-300 rounded-md">
-                  {{ session('success') }}
-                </div>
-              @endif
-
-              @if (session('error'))
-                <div class="mb-3 p-2 text-red-700 bg-red-100 border border-red-300 rounded-md">
-                  {{ session('error') }}
-                </div>
-              @endif
 
               @if ($errors->any())
                 <div class="mb-3 p-2 text-red-700 bg-red-100 border border-red-300 rounded-md">
@@ -453,7 +419,6 @@
       setupModal('openModalBtn', 'interviewModal', 'closeModalBtn');
       setupModal('rescheduleBtn', 'interviewModal', 'closeModalBtn');
       setupModal('openAddNoteModalBtn', 'addNoteModal', 'closeAddNoteModalBtn');
-      // setupModal('editNoteBtn','addNoteModal','closeAddNoteModalBtn')
 
       //show reminder date & status dynamically for add note modal
       const modeSelect = document.getElementById('modeSelect');
