@@ -55,7 +55,7 @@
 
           <!-- Profile Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('profile-desktop')" class="{{ request()->routeIs('user.personal-info', 'user.skill-index', 'user.experience', 'user.education', 'user.resume','user.show-personal-info')
+            <button onclick="toggleDropdown('profile-desktop')" class="{{ request()->routeIs('user.personal-info', 'user.create-experience', 'user.create-education', 'user.edit-education', 'user.edit-experience', 'user.skill-index', 'user.experience', 'user.education', 'user.resume', 'user.show-personal-info')
   ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
   : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
               Profile

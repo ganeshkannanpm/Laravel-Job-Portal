@@ -94,8 +94,8 @@
                     class=" mt-3 px-4 py-2 bg-indigo-600 text-indigo-100 rounded-lg text-sm hover:bg-indigo-800 transition">
                     View
                   </a>
-                  <button class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Edit</button>
-                  <button class="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
+                  {{-- <button class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Edit</button>
+                  <button class="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button> --}}
                 </td>
               </tr>
             @endforeach
