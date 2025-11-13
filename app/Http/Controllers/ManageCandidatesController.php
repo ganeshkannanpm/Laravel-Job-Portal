@@ -6,6 +6,7 @@ use App\Models\Experience;
 use App\Models\Interview;
 use App\Models\Job;
 use App\Models\JobApplication;
+use App\Models\Note;
 use App\Models\PersonalInfo;
 use App\Models\Skill;
 use App\Models\User;
@@ -57,6 +58,10 @@ class ManageCandidatesController extends Controller
             ->where('job_id', $job->id)
             ->first();
 
+        $notes = Note::where('candidate_id', $candidate->id)
+            ->where('job_id', $job->id)
+            ->get();
+
         return view('employer.view-candidate', compact(
             [
                 'candidate',
@@ -64,7 +69,8 @@ class ManageCandidatesController extends Controller
                 'application',
                 'experience',
                 'skills',
-                'interview'
+                'interview',
+                'notes'
             ]
         ));
     }

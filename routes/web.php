@@ -13,6 +13,7 @@ use App\Http\Controllers\JobManagementController;
 use App\Http\Controllers\ManageCandidatesController;
 use App\Http\Controllers\ManageEmployersController;
 use App\Http\Controllers\ManageJobsController;
+use App\Http\Controllers\NoteController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -118,6 +119,10 @@ Route::middleware(['auth:employer', 'role:employer,employer'])->group(function (
     Route::post('/employer/schedule-interview', [InterviewController::class, 'store'])->name('employer.schedule.interview');
     Route::put('/employer/reschedule-interview/{id}', [InterviewController::class, 'update'])->name('employer.reschedule.interview');
     Route::delete('/employer/interview/{id}', [InterviewController::class, 'destroy'])->name('employer.cancel.interview');
+
+    //Note
+     Route::post('/employer/note-store', [NoteController::class, 'store'])->name('employer.note.store');
+     Route::delete('/employer/note/{id}', [NoteController::class, 'destroy'])->name('employer.note.delete');
 
     //Company Profile
     Route::get('/employer/company-profile', [CompanyProfileController::class, 'index'])->name('employer.company.profile');
