@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Job;
 use App\Models\JobApplication;
+use App\Models\Note;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,6 +17,10 @@ class UserController extends Controller
 
         $user = Auth::user();
 
+        $latestNote = Note::where('candidate_id', auth('web')->id())
+            ->latest('created_at')
+            ->first();
+
         $totalApplications = JobApplication::where('user_id', $user->id)->count();
 
         //Recent job application of user
@@ -24,7 +29,7 @@ class UserController extends Controller
             ->latest()
             ->take(5)
             ->get();
-            
+
 
         // Recommended jobs for user
         $recommendedJobs = Job::whereNotIn('id', $applications->pluck('job_id'))
@@ -40,11 +45,13 @@ class UserController extends Controller
             'applications',
             'totalApplications',
             'recommendedJobs',
-            'savedJobs'
+            'savedJobs',
+            'latestNote',
         ));
     }
 
-    public function create(){
+    public function create()
+    {
 
         return view('user.resume');
     }
@@ -67,7 +74,8 @@ class UserController extends Controller
             //Delete old resume if exists
             if ($user->resume && \Storage::disk('public')->exists('resumes/' . $user->resume)) {
                 \Storage::disk('public')->delete('resumes/' . $user->resume);
-            };
+            }
+            ;
 
             // Save new resume
             $user->resume = $filename;

@@ -126,13 +126,51 @@
 
       <!-- Notifications -->
       <div class="bg-white p-6 rounded-lg shadow mt-5">
-        <h3 class="text-lg font-semibold mb-4">Notifications</h3>
-        <ul class="space-y-3 text-sm text-gray-600">
-          <li>✅ Your application for Backend Engineer is shortlisted.</li>
-          <li>📢 5 new Laravel jobs available in Chennai.</li>
-          <li>💬 Employer viewed your profile.</li>
-        </ul>
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg font-semibold text-gray-900">Notifications</h3>
+          <a href="{{ route('user.notifications') }}" class="text-sm text-indigo-600 hover:text-indigo-800 font-medium">
+            View All
+          </a>
+        </div>
+
+        @if ($latestNote)
+          <div class="border-b border-gray-200 pb-3 mb-3">
+            <div class="flex justify-between items-center mb-1">
+              <h4 class="font-semibold text-gray-900">
+                {{ $latestNote->job->title }}
+              </h4>
+              <span class="text-xs text-gray-500">
+                {{ $latestNote->created_at->format('d M Y, h:i A') }}
+              </span>
+            </div>
+
+            <p class="text-gray-700 text-sm mb-2 line-clamp-3">
+              {{ $latestNote->note }}
+            </p>
+
+            <div class="flex justify-between items-center text-xs text-gray-500">
+              <div class="flex items-center gap-2">
+                @if($latestNote->mode === 'Reminder')
+                  <i class="fa-regular fa-bell text-indigo-600"></i>
+                @elseif($latestNote->mode === 'Feedback')
+                  <i class="fa-regular fa-comment-dots text-indigo-600"></i>
+                @elseif($latestNote->mode === 'Follow-up')
+                  <i class="fa-solid fa-reply text-indigo-600"></i>
+                @else
+                  <i class="fa-regular fa-note-sticky text-indigo-600"></i>
+                @endif
+                <span class="font-medium text-indigo-700">{{ $latestNote->mode }}</span>
+              </div>
+              <span>
+                Added by: <span class="font-medium">{{ $latestNote->creator->name ?? 'Unknown' }}</span>
+              </span>
+            </div>
+          </div>
+        @else
+          <p class="text-gray-500 text-sm text-center">No new notifications.</p>
+        @endif
       </div>
+
 
       <!-- Analytics -->
       <div class="bg-white p-6 rounded-lg shadow">

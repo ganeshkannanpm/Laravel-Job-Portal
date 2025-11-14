@@ -7,6 +7,9 @@
   <title>User Dashboard</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/alpinejs" defer></script>
+  <!-- Font Awesome (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 
 <body class="bg-gray-100 font-sans">
@@ -74,17 +77,24 @@
 
           <!-- Notifications Dropdown -->
           <li class="relative">
-            <button onclick="toggleDropdown('notifications-desktop')"
-              class="text-gray-700 hover:text-indigo-700 hover:underline">
+          <li>
+            <a href="{{ route('user.notifications') }}" class="{{ request()->routeIs('user.notifications')
+  ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
+  : 'text-gray-900 hover:text-indigo-700 hover:underline' }}">
               Notifications
-            </button>
-            <ul id="notifications-desktop"
-              class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">All Notifications</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Unread</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Job Alerts</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Application Updates</a></li>
-            </ul>
+            </a>
+          </li>
+          {{-- <button onclick="toggleDropdown('notifications-desktop')"
+            class="text-gray-700 hover:text-indigo-700 hover:underline">
+            Notifications
+          </button>
+          <ul id="notifications-desktop"
+            class="absolute left-0 mt-2 w-48 bg-white shadow-lg rounded-md hidden transition-all duration-200 z-50">
+            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">All Notifications</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Unread</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Job Alerts</a></li>
+            <li><a href="#" class="block px-4 py-2 hover:bg-gray-100">Application Updates</a></li>
+          </ul> --}}
           </li>
 
           <!-- Help -->
@@ -125,7 +135,7 @@
           <span class="font-semibold text-gray-700">{{ Auth::user()->name }}</span>
           <button class="relative">
             <span class="material-icons">🔔</span>
-            <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span>
+            {{-- <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs px-1 rounded-full">3</span> --}}
           </button>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
@@ -231,6 +241,7 @@
 
   <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </body>
 
 </html>

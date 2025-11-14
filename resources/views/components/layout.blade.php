@@ -14,7 +14,7 @@
     <main class="mt-10 mx-auto">
         {{ $slot }}
     </main>
-   
+    
     <script>
         document.getElementById('menu-btn').addEventListener('click', function () {
             document.getElementById('mobile-menu').classList.toggle('hidden');

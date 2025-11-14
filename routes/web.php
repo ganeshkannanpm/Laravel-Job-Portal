@@ -14,6 +14,7 @@ use App\Http\Controllers\ManageCandidatesController;
 use App\Http\Controllers\ManageEmployersController;
 use App\Http\Controllers\ManageJobsController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
@@ -86,6 +87,12 @@ Route::middleware(['auth:web', 'role:user,web'])->group(function () {
     Route::get('/resume', [UserController::class, 'create'])->name('user.resume');
     Route::post('/resume/upload', [UserController::class, 'uploadResume'])->name('resume.upload');
     Route::get('/resume/download', [UserController::class, 'downloadResume'])->name('resume.download');
+
+    //Notifications
+    Route::get('/notifications', [NotificationController::class, 'index'])->name('user.notifications');
+    Route::delete('/notifications/{note}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
+Route::delete('/notifications/clear', [NotificationController::class, 'clearAll'])->name('notifications.clear');
+
 });
 
 
