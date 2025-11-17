@@ -52,6 +52,9 @@ class JobManagementController extends Controller
             'email' => 'required|email',
             'cover_letter' => 'required|string',
             'resume' => 'required|mimes:pdf,doc,docx|max:5120', // 5MB
+            'notice_period' => 'required|string',
+            'experience' => 'required|string',
+            'source' => 'required|string',
         ]);
 
         // store resume
@@ -64,6 +67,9 @@ class JobManagementController extends Controller
             'email' => $request->email,
             'cover_letter' => $request->cover_letter,
             'resume' => $resumePath,
+            'notice_period' => $request->notice_period,
+            'experience' => $request->experience,
+            'source' => $request->source,
         ]);
 
         return redirect()->back()->with('success', 'Your application for "' . $job->title . '" has been submitted!');

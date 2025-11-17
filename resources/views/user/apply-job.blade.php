@@ -42,6 +42,36 @@
                     @enderror
                 </div>
 
+                <!-- Total Experience -->
+                <div>
+                    <label for="experience" class="block text-sm font-medium text-gray-700">Total Experience</label>
+                    <input type="text" name="experience" id="experience" value="{{ old('experience') }}" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none @error('experience') border-red-500 @enderror">
+                    @error('experience')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Notice Period -->
+                <div>
+                    <label for="notice_period" class="block text-sm font-medium text-gray-700">Notice Period</label>
+                    <input type="text" name="notice_period" id="notice_period" value="{{ old('notice_period') }}" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none @error('notice_period') border-red-500 @enderror">
+                    @error('notice_period')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                <!-- Source -->
+                <div>
+                    <label for="source" class="block text-sm font-medium text-gray-700">Source</label>
+                    <input type="text" name="source" id="source" value="{{ old('source') }}" required
+                        class="mt-1 w-full px-4 py-2 border rounded-lg shadow-sm focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none @error('source') border-red-500 @enderror">
+                    @error('source')
+                        <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
+
                 <!-- Cover Letter -->
                 <div>
                     <label for="cover_letter" class="block text-sm font-medium text-gray-700">Cover
