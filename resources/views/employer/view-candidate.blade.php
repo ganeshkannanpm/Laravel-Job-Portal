@@ -124,7 +124,7 @@
                       </div>
                       <div class="flex justify-between">
                         <dt class="text-gray-500">Experience</dt>
-                        <dd> Make dynamic 6 years</dd>
+                        <dd>{{ $application->experience }}</dd>
                       </div>
                       <div class="flex justify-between">
                         <dt class="text-gray-500">Current Status</dt>
@@ -188,7 +188,7 @@
               </div>
               <div class="flex justify-between py-1">
                 <dt class="text-gray-500">Source</dt>
-                <dd>Company Careers</dd>
+                <dd>{{ $application->source }}</dd>
               </div>
               <div class="flex justify-between py-1">
                 <dt class="text-gray-500">Location</dt>
@@ -196,7 +196,7 @@
               </div>
               <div class="flex justify-between py-1">
                 <dt class="text-gray-500">Notice Period</dt>
-                <dd>2 months</dd>
+                <dd>{{ $application->notice_period }}</dd>
               </div>
             </dl>
           </div>
