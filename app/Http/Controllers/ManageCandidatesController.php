@@ -17,7 +17,10 @@ class ManageCandidatesController extends Controller
     public function index(Request $request)
     {
 
-        $query = JobApplication::query()->with('job');
+         $query = JobApplication::with('job')
+        ->whereHas('job', function ($q) {
+            $q->where('employer_id', auth()->id()); // filter by logged-in employer
+        });
 
         // Apply search filter
         if ($request->filled('search')) {
