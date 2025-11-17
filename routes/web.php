@@ -155,9 +155,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::delete('/employer-job-delete/{id}', [ManageEmployersController::class, 'destroy'])->name('admin.employer.job.delete');
 
     // //Manage Candidates
-    // Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
-    // Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('admin.view-candidates');
-    // Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('admin.resume.download');
+    Route::get('/candidates', [ManageCandidatesController::class, 'index'])->name('admin.manage-candidates');
+    Route::get('/view-candidates/{id}', [ManageCandidatesController::class, 'create'])->name('admin.view-candidates');
+    Route::get('/download-resume/{id}', [ManageCandidatesController::class, 'downloadResume'])->name('admin.resume.download');
 
     //Schedule Interview
 
