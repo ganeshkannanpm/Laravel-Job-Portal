@@ -31,7 +31,7 @@
             <!-- Starting -->
             <div>
                 <label for="start_date" class="block text-sm font-medium text-gray-700">Start</label>
-                <input type="text" name="start_date" id="start_date" value="{{ old('start_date') }}"
+                <input type="date" name="start_date" id="start_date" value="{{ old('start_date') }}"
                     placeholder="Jan 2023 - Present"
                     class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
@@ -39,8 +39,15 @@
             <!-- Ending -->
             <div>
                 <label for="end_date" class="block text-sm font-medium text-gray-700">End</label>
-                <input type="text" name="end_date" id="end_date" value="{{ old('end_date') }}"
+                <input type="date" name="end_date" id="end_date" value="{{ old('end_date') }}"
                     placeholder="Jan 2023 - Present"
+                    class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+            </div>
+
+            <!-- Total Experience -->
+            <div>
+                <label for="total_experience" class="block text-sm font-medium text-gray-700">Total Experience</label>
+                <input type="text" name="total_exp" id="total_exp" value="{{ old('total_exp') }}"
                     class="mt-1 block w-full  py-2 border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
             </div>
 

@@ -13,10 +13,17 @@ class Experience extends Model
         'company_name',
         'start_date',
         'end_date',
+        'total_exp',
         'description',
     ];
 
-    public function user(){
+    protected $casts = [
+        'start_date' => 'date',
+        'end_date' => 'date',
+    ];
+
+    public function user()
+    {
 
         return $this->belongsTo(User::class);
     }

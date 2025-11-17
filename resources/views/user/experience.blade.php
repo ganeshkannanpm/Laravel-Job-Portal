@@ -51,9 +51,16 @@
                 <div class="border-l-4 border-indigo-600 pl-4 flex justify-between items-start">
                     <div>
                         <h4 class="text-xl font-semibold">{{ $experience->job_title }}</h4>
-                        <p class="text-gray-900 text-md">
-                            {{ $experience->company_name }} • {{ $experience->start_date }} –
-                            {{ $experience->end_date ?? 'Present' }}
+                        <p class="text-gray-900 text-md flex justify-between items-center">
+                            <span>
+                                {{ $experience->company_name }} •
+                                {{ $experience->start_date->format('M d, Y') }} –
+                                {{ $experience->end_date ? $experience->end_date->format('M d, Y') : 'Present' }}
+                            </span>
+
+                            <span class="text-gray-900 ml-4">
+                                {{ $experience->total_exp }} years
+                            </span>
                         </p>
                         <p class="text-gray-600 text-sm mt-1">
                             {{ $experience->description }}

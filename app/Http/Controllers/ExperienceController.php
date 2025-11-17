@@ -25,6 +25,7 @@ class ExperienceController extends Controller
             'company_name'=>'required|string|max:255',
             'start_date' => 'required|date',
             'end_date'=>'required|date',
+            'total_exp' => 'required|string',
             'description'=>'required|string'
         ]);
 
@@ -33,6 +34,7 @@ class ExperienceController extends Controller
             'company_name'=> $request->company_name,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'total_exp'=> $request->total_exp,
             'description'=> $request->description,
             'user_id'=> auth()->id()
         ]);
@@ -54,6 +56,7 @@ class ExperienceController extends Controller
             'company_name'=>'required|string|max:255',
             'start_date' => 'required|date',
             'end_date'=>'required|date',
+            'total_exp' => 'required|string',
             'description'=>'required|string'
         ]);
 
@@ -64,8 +67,9 @@ class ExperienceController extends Controller
             'company_name'=> $request->company_name,
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
+            'total_exp'=> $request->total_exp,
             'description'=> $request->description,
-            // 'user_id'=> auth()->id()
+            
         ]);
 
         return redirect()->route('user.experience')->with('message', 'Experience updated successfully');
