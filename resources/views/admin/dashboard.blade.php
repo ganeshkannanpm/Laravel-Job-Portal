@@ -14,19 +14,19 @@
       <section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Employers</h3>
-          <p class="text-2xl font-bold text-indigo-600">45</p>
+          <p class="text-2xl font-bold text-indigo-600">{{ $totalEmployers }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Job Seekers</h3>
-          <p class="text-2xl font-bold text-green-600">350</p>
+          <p class="text-2xl font-bold text-green-600">{{ $totalJobSeekers }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Jobs Posted</h3>
-          <p class="text-2xl font-bold text-blue-600">120</p>
+          <p class="text-2xl font-bold text-blue-600">{{ $totalJobs }}</p>
         </div>
         <div class="bg-white p-4 shadow rounded-lg text-center">
           <h3 class="text-lg font-semibold">Applications</h3>
-          <p class="text-2xl font-bold text-yellow-600">950</p>
+          <p class="text-2xl font-bold text-yellow-600">{{ $totalApplications}}</p>
         </div>
       </section>
 
@@ -44,18 +44,14 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="border-t">
-                <td class="px-4 py-2">Rajesh Kumar</td>
-                <td class="px-4 py-2">TechWave Ltd</td>
-                <td class="px-4 py-2">3</td>
-                <td class="px-4 py-2">28 Sep 2025</td>
+              @foreach ($employers as $employer )
+                <tr class="border-t">
+                <td class="px-4 py-2">{{ $employer->name}}</td>
+                <td class="px-4 py-2">{{ $employer->company_name}}</td>
+                <td class="px-4 py-2">{{ $employer->jobs_count }}</td>
+                <td class="px-4 py-2">{{ $employer->created_at->format('M d, Y')}}</td>
               </tr>
-              <tr class="border-t">
-                <td class="px-4 py-2">Sneha Patel</td>
-                <td class="px-4 py-2">DesignHub</td>
-                <td class="px-4 py-2">1</td>
-                <td class="px-4 py-2">25 Sep 2025</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -69,24 +65,22 @@
             <thead class="bg-gray-100">
               <tr>
                 <th class="px-4 py-2">Job Title</th>
+                <th class="px-4 py-2">Company</th>
                 <th class="px-4 py-2">Employer</th>
                 <th class="px-4 py-2">Status</th>
                 <th class="px-4 py-2">Posted On</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="border-t">
-                <td class="px-4 py-2">React Developer</td>
-                <td class="px-4 py-2">TechWave Ltd</td>
-                <td class="px-4 py-2 text-green-600">Active</td>
-                <td class="px-4 py-2">30 Sep 2025</td>
+              @foreach ($latestJobs as $job )
+                <tr class="border-t">
+                <td class="px-4 py-2">{{ $job->title }}</td>
+                <td class="px-4 py-2">{{ $job->company }}</td>
+                <td class="px-4 py-2">{{ $job->employer->name }}</td>
+                <td class="px-4 py-2">{{ $job->status}}</td>
+                <td class="px-4 py-2">{{ $job->created_at->format('M d, Y') }}</td>
               </tr>
-              <tr class="border-t">
-                <td class="px-4 py-2">Data Analyst</td>
-                <td class="px-4 py-2">DesignHub</td>
-                <td class="px-4 py-2 text-yellow-600">Pending</td>
-                <td class="px-4 py-2">27 Sep 2025</td>
-              </tr>
+              @endforeach
             </tbody>
           </table>
         </div>

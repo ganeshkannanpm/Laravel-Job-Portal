@@ -15,14 +15,34 @@ use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        return view('admin.dashboard');
+        $totalEmployers = Employer::count();
+        $totalJobSeekers = JobApplication::distinct('user_id')->count('user_id');
+        $totalJobs = Job::count();
+        $totalApplications = JobApplication::count();
+        $employers = Employer::withCount('jobs')->get();
+
+        $latestJobs = Job::with('employer')
+            ->orderBy('id', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('admin.dashboard', compact([
+            'totalEmployers',
+            'totalJobSeekers',
+            'totalJobs',
+            'totalApplications',
+            'employers',
+            'latestJobs'
+        ]));
     }
-    public function create(){
+    public function create()
+    {
 
         $employers = Employer::all();
-        return view('admin.manage-employers',compact(['employers']));
+        return view('admin.manage-employers', compact(['employers']));
     }
 
     public function candidates(Request $request)

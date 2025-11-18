@@ -49,8 +49,8 @@
                         Manage Candidates
                         </a>
                     </li>
-                    <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Jobs
-                            Approval</a></li>
+                    {{-- <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Jobs
+                            Approval</a></li> --}}
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Reports</a>
                     </li>
                     <li><a href="#"
