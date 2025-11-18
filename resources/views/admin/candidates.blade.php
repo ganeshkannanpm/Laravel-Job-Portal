@@ -6,9 +6,9 @@
     <header class="bg-white shadow mt-10">
       <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <h1 class="text-2xl font-semibold text-gray-700">Manage Candidates</h1>
-        <a href="#add-candidate" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
+        {{-- <a href="#add-candidate" class="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition">
           + Add Candidate
-        </a>
+        </a> --}}
       </div>
     </header>
 
@@ -16,7 +16,7 @@
     <main class="max-w-7xl mx-auto px-6 py-6">
 
       <!-- Search & Filter -->
-      <form method="GET" action="{{ route('admin.manage-candidates') }}"
+      <form method="GET" action="{{ route('admin.candidates') }}"
         class="bg-white shadow rounded-lg p-4 mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
 
         <!-- Search -->
@@ -29,7 +29,7 @@
           </button>
 
           @if(request('search') || request('status'))
-            <a href="{{ route('admin.manage-candidates') }}"
+            <a href="{{ route('admin.candidates') }}"
               class="bg-gray-200 text-gray-700 px-3 py-2 rounded-lg hover:bg-gray-300 transition">
               Clear
             </a>
@@ -94,8 +94,8 @@
                     class=" mt-3 px-4 py-2 bg-indigo-600 text-indigo-100 rounded-lg text-sm hover:bg-indigo-800 transition">
                     View
                   </a>
-                  <button class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Edit</button>
-                  <button class="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button>
+                  {{-- <button class="px-3 py-1 bg-yellow-100 text-yellow-700 rounded hover:bg-yellow-200">Edit</button>
+                  <button class="px-3 py-1 bg-red-100 text-red-700 rounded hover:bg-red-200">Delete</button> --}}
                 </td>
               </tr>
             @endforeach

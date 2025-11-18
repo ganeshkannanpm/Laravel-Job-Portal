@@ -42,8 +42,8 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.manage-candidates') }}" 
-                        class="{{ request()->routeIs('admin.manage-candidates','admin.view-candidates')
+                        <a href="{{ route('admin.candidates') }}" 
+                        class="{{ request()->routeIs('admin.candidates','admin.view-candidates')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                         Manage Candidates
