@@ -20,6 +20,8 @@ use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [JobController::class, 'index']);
@@ -91,7 +93,7 @@ Route::middleware(['auth:web', 'role:user,web'])->group(function () {
     //Notifications
     Route::get('/notifications', [NotificationController::class, 'index'])->name('user.notifications');
     Route::delete('/notifications/{note}', [NotificationController::class, 'destroy'])->name('notifications.destroy');
-Route::delete('/notifications/clear', [NotificationController::class, 'clearAll'])->name('notifications.clear');
+    Route::delete('/notifications/clear', [NotificationController::class, 'clearAll'])->name('notifications.clear');
 
 });
 
@@ -159,7 +161,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/view-candidates/{id}', [AdminController::class, 'viewCandidate'])->name('admin.view-candidates');
     Route::get('/download-resume/{id}', [AdminController::class, 'downloadResume'])->name('admin.resume.download');
 
-    //Schedule Interview
-
-
 });
+
+// Show password request form 
+Route::get('/forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+
+// Handle sending reset link email
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+// Show reset password form (token comes from URL)
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+// Handle reset password
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
