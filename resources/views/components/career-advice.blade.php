@@ -1,109 +1,71 @@
-<style>
-    .scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
+<section class="relative py-20 bg-gradient-to-b from-indigo-50 to-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12">
 
-</style>
-<section class="bg-gradient-to-r from-indigo-500 to-indigo-600 py-12 relative">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <!-- Section Header -->
-    <div class="text-center mb-8 text-white">
-      <h2 class="text-3xl font-bold">Career Advice</h2>
-      <p class="mt-2 text-indigo-100">
-        Expert tips to grow your career and stand out in the job market
-      </p>
+        <!-- Header -->
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">
+                Career Advice & Guidance
+            </h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">
+                Smart tips and expert insights to help you land your next big opportunity.
+            </p>
+        </div>
+
+        <!-- Grid -->
+        <div class="grid gap-10 md:grid-cols-2 lg:grid-cols-3">
+
+            <!-- Card 1 -->
+            <div class="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+                <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 text-indigo-600 rounded-xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 14l9-5-9-5-9 5 9 5z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M12 14l6.16-3.422A12.083 12.083 0 0112 21 12.083 12.083 0 015.84 10.578L12 14z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-900">Resume & CV Tips</h3>
+                <p class="text-gray-600 mb-4">
+                    Learn how to build a powerful resume that stands out to top employers.
+                </p>
+                <a href="#" class="text-indigo-600 font-medium hover:underline">Read More →</a>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+                <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 text-indigo-600 rounded-xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M16.862 4.487l1.687-1.688a2.25 2.25 0 013.182 3.183l-9.193 9.193a4.5 4.5 0 01-1.897 1.13l-4.527 1.36 1.36-4.527a4.5 4.5 0 011.13-1.897l9.193-9.193z" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-900">Interview Preparation</h3>
+                <p class="text-gray-600 mb-4">
+                    Master HR, technical, and behavioral questions with confidence.
+                </p>
+                <a href="#" class="text-indigo-600 font-medium hover:underline">Read More →</a>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="group bg-white p-6 rounded-2xl shadow-md hover:shadow-xl transition duration-300 border border-gray-100">
+                <div class="flex items-center justify-center h-16 w-16 bg-indigo-100 text-indigo-600 rounded-xl mb-6 group-hover:bg-indigo-600 group-hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M3 7.5A4.5 4.5 0 017.5 3h9A4.5 4.5 0 0121 7.5v9a4.5 4.5 0 01-4.5 4.5h-9A4.5 4.5 0 013 16.5v-9z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                            d="M8 10h8M8 14h5" />
+                    </svg>
+                </div>
+                <h3 class="text-xl font-semibold mb-3 text-gray-900">Career Growth</h3>
+                <p class="text-gray-600 mb-4">
+                    Learn how to upgrade your skills and move to the next level in your career.
+                </p>
+                <a href="#" class="text-indigo-600 font-medium hover:underline">Read More →</a>
+            </div>
+
+        </div>
     </div>
-
-    <!-- Carousel -->
-    <div class="relative">
-      <!-- Left Arrow -->
-      <button id="scroll-left" class="absolute left-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:bg-gray-100">
-        &#8592;
-      </button>
-
-      <!-- Cards Container -->
-      <div id="career-cards" class="flex space-x-6 overflow-x-hidden scrollbar-hide">
-        <!-- We'll duplicate cards for infinite effect -->
-      </div>
-
-      <!-- Right Arrow -->
-      <button id="scroll-right" class="absolute right-0 top-1/2 transform -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:bg-gray-100">
-        &#8594;
-      </button>
-    </div>
-  </div>
 </section>
-<script>
-  const container = document.getElementById("career-cards");
-
-  // Card data
-  const cards = [
-    {
-      title: "Resume Building Tips",
-      desc: "Learn how to create an impactful resume that gets noticed by recruiters.",
-      icon: `<svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 20h9"></path><path stroke-linecap="round" stroke-linejoin="round" d="M4 4h16"></path></svg>`
-    },
-    {
-      title: "Interview Preparation",
-      desc: "Discover essential tips to ace your interviews and land your dream job.",
-      icon: `<svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2l4-4"></path><path stroke-linecap="round" stroke-linejoin="round" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>`
-    },
-    {
-      title: "Skill Development",
-      desc: "Upgrade your skills with trending technologies to stay ahead in your career.",
-      icon: `<svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>`
-    },
-    {
-      title: "Networking Strategies",
-      desc: "Learn how to network effectively and open doors to new opportunities.",
-      icon: `<svg class="w-8 h-8 text-indigo-500 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7l4-4l4 4"></path><path stroke-linecap="round" stroke-linejoin="round" d="M20 21v-2a9 9 0 00-18 0v2"></path></svg>`
-    }
-  ];
-
-  // Create cards
-  function createCard(card) {
-    const cardDiv = document.createElement("div");
-    cardDiv.className = "min-w-[300px] bg-white rounded-lg shadow-md p-6 flex flex-col flex-shrink-0";
-    cardDiv.innerHTML = `
-      <div class="flex items-center mb-4">${card.icon}<h3 class="text-xl font-semibold text-gray-800">${card.title}</h3></div>
-      <p class="text-gray-600 mb-4 flex-grow">${card.desc}</p>
-      <a href="#" class="text-indigo-600 font-medium hover:underline mt-auto">Read More →</a>
-    `;
-    return cardDiv;
-  }
-
-  // Append two sets of cards for looping effect
-  cards.concat(cards).forEach(card => {
-    container.appendChild(createCard(card));
-  });
-
-  let scrollAmount = 0;
-  const scrollStep = 2; // speed of sliding
-
-  function autoSlide() {
-    scrollAmount += scrollStep;
-    container.scrollLeft = scrollAmount;
-
-    // If reached end of first set, reset scroll
-    if (scrollAmount >= container.scrollWidth / 2) {
-      scrollAmount = 0;
-    }
-    requestAnimationFrame(autoSlide);
-  }
-
-  autoSlide();
-
-  // Arrow buttons
-  document.getElementById("scroll-left").addEventListener("click", () => {
-    scrollAmount -= 300;
-    container.scrollLeft = scrollAmount;
-  });
-  document.getElementById("scroll-right").addEventListener("click", () => {
-    scrollAmount += 300;
-    container.scrollLeft = scrollAmount;
-  });
-</script>
