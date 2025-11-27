@@ -27,30 +27,26 @@
                 <!-- Center Nav Links -->
                 <ul class="hidden md:flex space-x-6">
                     <li>
-                        <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') 
+                        <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                        Dashboard
+                            Dashboard
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.manage-employers') }}" 
-                        class="{{ request()->routeIs('admin.manage-employers','admin.employer.profile','admin.edit.account.info','admin.employer.jobs','admin.employer.view.jobs')
+                        <a href="{{ route('admin.manage-employers') }}" class="{{ request()->routeIs('admin.manage-employers', 'admin.employer.profile', 'admin.edit.account.info', 'admin.employer.jobs', 'admin.employer.view.jobs')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                        Manage Employers
+                            Manage Employers
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('admin.candidates') }}" 
-                        class="{{ request()->routeIs('admin.candidates','admin.view-candidates')
+                        <a href="{{ route('admin.candidates') }}" class="{{ request()->routeIs('admin.candidates', 'admin.view-candidates')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                        Manage Candidates
+                            Manage Candidates
                         </a>
                     </li>
-                    {{-- <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Jobs
-                            Approval</a></li> --}}
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Reports</a>
                     </li>
                     <li><a href="#"
@@ -86,11 +82,35 @@
             </nav>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden bg-gray-800 text-white">
+            <div id="mobile-menu" class="md:hidden hidden mt-20 bg-gray-800 text-white">
                 <ul class="p-4 space-y-2">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Manage Employers</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Manage Candidates</a></li>
+                    <li>
+                        <a href="{{ route('admin.dashboard') }}" class="block px-4 py-2 
+       {{ request()->routeIs('admin.dashboard')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Dashboard
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.manage-employers') }}" class="block px-4 py-2 
+       {{ request()->routeIs('admin.manage-employers', 'admin.employer.profile', 'admin.edit.account.info', 'admin.employer.jobs', 'admin.employer.view.jobs')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Manage Employers
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('admin.candidates') }}" class="block px-4 py-2 
+       {{ request()->routeIs('admin.candidates', 'admin.view-candidates')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Manage Candidates
+                        </a>
+                    </li>
+
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Jobs Approval</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Reports</a></li>
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Settings</a></li>

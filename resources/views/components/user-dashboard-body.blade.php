@@ -157,33 +157,82 @@
       </nav>
 
       <!-- Mobile Menu -->
-      <div id="mobile-menu" class="md:hidden hidden bg-gray-800 text-white">
+      <div id="mobile-menu" class="md:hidden hidden mt-20 bg-gray-800 text-white">
         <ul class="p-4 space-y-2">
-          <li><a href="{{ route('user.dashboard') }}" class="block px-4 py-2 hover:bg-gray-700">Dashboard</a></li>
+          <!-- Dashboard -->
           <li>
-            <button onclick="toggleDropdown('jobs-mobile')" class="w-full text-left px-4 py-2 hover:bg-gray-700">
+            <a href="{{ route('user.dashboard') }}" class="block px-4 py-2
+     {{ request()->routeIs('user.dashboard')
+  ? 'bg-indigo-600 text-white font-bold'
+  : 'hover:bg-gray-700 text-gray-200' }}">
+              Dashboard
+            </a>
+          </li>
+
+          <!-- Jobs -->
+          <li>
+            <button onclick="toggleDropdown('jobs-mobile')" class="w-full text-left px-4 py-2
+          {{ request()->routeIs('user.joblist', 'user.applied-jobs', 'user.saved-jobs')
+  ? 'bg-indigo-600 text-white font-bold'
+  : 'hover:bg-gray-700 text-gray-200' }}">
               Jobs
             </button>
+
             <ul id="jobs-mobile" class="hidden pl-4 mt-1 space-y-1">
-              <li><a href="{{ route('user.joblist') }}" class="block px-4 py-2 hover:bg-gray-700">Job List</a></li>
-              <li><a href="{{ route('user.applied-jobs') }}" class="block px-4 py-2 hover:bg-gray-700">Job
-                  Applications</a></li>
-              <li><a href="{{ route('user.saved-jobs') }}" class="block px-4 py-2 hover:bg-gray-700">My Jobs</a></li>
+              <li>
+                <a href="{{ route('user.joblist') }}" class="block px-4 py-2 hover:bg-gray-700">Job List</a>
+              </li>
+              <li>
+                <a href="{{ route('user.applied-jobs') }}" class="block px-4 py-2 hover:bg-gray-700">Job
+                  Applications</a>
+              </li>
+              <li>
+                <a href="{{ route('user.saved-jobs') }}" class="block px-4 py-2 hover:bg-gray-700">My Jobs</a>
+              </li>
             </ul>
           </li>
+
+          <!-- Profile -->
           <li>
-            <button onclick="toggleDropdown('profile-mobile')" class="w-full text-left px-4 py-2 hover:bg-gray-700">
+            <button onclick="toggleDropdown('profile-mobile')" class="w-full text-left px-4 py-2
+          {{ request()->routeIs(
+  'user.personal-info',
+  'user.skill-index',
+  'user.experience',
+  'user.education',
+  'user.resume',
+  'user.create-experience',
+  'user.create-education',
+  'user.edit-experience',
+  'user.edit-education',
+  'user.show-personal-info'
+)
+  ? 'bg-indigo-600 text-white font-bold'
+  : 'hover:bg-gray-700 text-gray-200' }}">
               Profile
             </button>
+
             <ul id="profile-mobile" class="hidden pl-4 mt-1 space-y-1">
               <li><a href="{{ route('user.personal-info') }}" class="block px-4 py-2 hover:bg-gray-700">Personal
                   Info</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Skills</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Experiences</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Resume Upload</a></li>
-              <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Education</a></li>
+              <li><a href="{{ route('user.skill-index') }}" class="block px-4 py-2 hover:bg-gray-700">Skills</a></li>
+              <li><a href="{{ route('user.experience') }}" class="block px-4 py-2 hover:bg-gray-700">Experiences</a>
+              </li>
+              <li><a href="{{ route('user.education') }}" class="block px-4 py-2 hover:bg-gray-700">Education</a></li>
+              <li><a href="{{ route('user.resume') }}" class="block px-4 py-2 hover:bg-gray-700">Resume Upload</a></li>
             </ul>
           </li>
+
+          <!-- Notifications -->
+          <li>
+            <a href="{{ route('user.notifications') }}" class="block px-4 py-2
+     {{ request()->routeIs('user.notifications')
+  ? 'bg-indigo-600 text-white font-bold'
+  : 'hover:bg-gray-700 text-gray-200' }}">
+              Notifications
+            </a>
+          </li>
+
           <!-- Repeat for Profile, Notifications, Help, Settings -->
           <li class="flex items-center space-x-3 pt-4 border-t border-gray-700">
             <img src="https://i.pravatar.cc/40" class="w-10 h-10 rounded-full" alt="User profile picture">

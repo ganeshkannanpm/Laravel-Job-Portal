@@ -42,26 +42,24 @@
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employer.manage.jobs') }}" 
-        class="{{ request()->routeIs('employer.manage.jobs','employer.view.jobs','employer.view.applications','employer.jobs.details','employer.jobs.edit')
+                        <a href="{{ route('employer.manage.jobs') }}" class="{{ request()->routeIs('employer.manage.jobs', 'employer.view.jobs', 'employer.view.applications', 'employer.jobs.details', 'employer.jobs.edit')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                             Manage Jobs
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employer.manage.candidates') }}" 
-        class="{{ request()->routeIs('employer.manage.candidates','employer.view-candidates')
+                        <a href="{{ route('employer.manage.candidates') }}" class="{{ request()->routeIs('employer.manage.candidates', 'employer.view-candidates')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
                             Manage Candidates
                         </a>
                     </li>
                     <li>
-                        <a href="{{ route('employer.company.profile') }}" class="{{ request()->routeIs('employer.company.profile','employer.edit.profile')
+                        <a href="{{ route('employer.company.profile') }}" class="{{ request()->routeIs('employer.company.profile', 'employer.edit.profile')
     ? 'text-gray-100 font-bold bg-indigo-600 px-4 py-2 rounded'
     : 'text-gray-700 hover:text-indigo-700 hover:underline' }}">
-                          Company Profile
+                            Company Profile
                         </a>
                     </li>
                     <li><a href="#" class="text-gray-700 hover:text-indigo-800 no-underline hover:underline">Billing</a>
@@ -97,13 +95,53 @@
             </nav>
 
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden bg-gray-800 text-white">
+            <div id="mobile-menu" class="md:hidden hidden mt-20 bg-gray-800 text-white">
                 <ul class="p-4 space-y-2">
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Overview</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Post a Job</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Manage Jobs</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Applicants</a></li>
-                    <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Company Profile</a></li>
+                    <li>
+                        <a href="{{ route('employer.dashboard') }}" class="block px-4 py-2 
+       {{ request()->routeIs('employer.dashboard')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Overview
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('employer.jobs.create') }}" class="block px-4 py-2 
+       {{ request()->routeIs('employer.jobs.create')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Post a Job
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('employer.manage.jobs') }}" class="block px-4 py-2 
+       {{ request()->routeIs('employer.manage.jobs', 'employer.view.jobs', 'employer.jobs.details', 'employer.view.applications', 'employer.jobs.edit')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Manage Jobs
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('employer.manage.candidates') }}" class="block px-4 py-2 
+       {{ request()->routeIs('employer.manage.candidates', 'employer.view-candidates')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Applicants
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="{{ route('employer.company.profile') }}" class="block px-4 py-2 
+       {{ request()->routeIs('employer.company.profile', 'employer.edit.profile')
+    ? 'bg-indigo-600 text-white font-bold'
+    : 'hover:bg-gray-700 text-gray-200' }}">
+                            Company Profile
+                        </a>
+                    </li>
+
                     <li><a href="#" class="block px-4 py-2 hover:bg-gray-700">Billing</a></li>
 
                     <li class="flex items-center space-x-3 pt-4 border-t border-gray-700">

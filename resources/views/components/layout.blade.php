@@ -8,6 +8,7 @@
     <title>Workly</title>
     @vite(['resources/css/app.css', 'resources/css/app.js'])
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 
 <body class="bg-gray-100 pb-10">
