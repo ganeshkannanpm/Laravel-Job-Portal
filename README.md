@@ -42,21 +42,21 @@ A fully functional Job Portal built with **Laravel**, designed for both **employ
 | Page               | Preview                                                   |
 | ------------------ | --------------------------------------------------------- |
 | Home Page          | ![Home Page](screenshots/Home.png)                        |
-| Job Listings       | ![Jobs](screenshots/Job List.png)                         |
-| Job Details        | ![Job Details](screenshots/Job Details.png)               |
-| User Dashboard     | ![User Dashboard](screenshots/User Dashboard.png)         |
-| Employer Dashboard | ![Employer Dashboard](screenshots/Employer Dashboard.png) |
-| Admin Dashboard    | ![Admin Dashboard](screenshots/Admin Dashboard.png)       |
-| User Dashboard     | ![User Dashboard](screenshots/User Dashboard.png)         |
-| Candidate Profile  | ![Candidate Profile](screenshots/Candidate Profile.png)   |
-| Company Profile    | ![Company Profile](screenshots/Company Profile.png)       |
-| Employer Jobs      | ![Employer Jobs](screenshots/Employer Jobs.png)           |
-| Job Applications   | ![Job Applications](screenshots/Job Applications.png)     |
+| Job Listings       | ![Jobs](screenshots/Job-List.png)                         |
+| Job Details        | ![Job Details](screenshots/Job-Details.png)               |
+| User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
+| Employer Dashboard | ![Employer Dashboard](screenshots/Employer-Dashboard.png) |
+| Admin Dashboard    | ![Admin Dashboard](screenshots/Admin-Dashboard.png)       |
+| User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
+| Candidate Profile  | ![Candidate Profile](screenshots/Candidate-Profile.png)   |
+| Company Profile    | ![Company Profile](screenshots/Company-Profile.png)       |
+| Employer Jobs      | ![Employer Jobs](screenshots/Employer-Jobs.png)           |
+| Job Applications   | ![Job Applications](screenshots/Job-Applications.png)     |
 | Login              | ![Login](screenshots/Login.png)                           |
-| Manage Candidates  | ![Manage Candidates](screenshots/Manage Candidates.png)   |
-| Manage Jobs        | ![Manage Jobs](screenshots/Manage Jobs.png)               |
-| Post Job           | ![Post Job](screenshots/Post Job.png)                     |
-| Posted Jobs        | ![Posted Jobs](screenshots/Posted Jobs.png)               |
+| Manage Candidates  | ![Manage Candidates](screenshots/Manage-Candidates.png)   |
+| Manage Jobs        | ![Manage Jobs](screenshots/Manage-Jobs.png)               |
+| Post Job           | ![Post Job](screenshots/Post-Job.png)                     |
+| Posted Jobs        | ![Posted Jobs](screenshots/Posted-Jobs.png)               |
 | Register           | ![Register](screenshots/Register.png)                     |
 
 ---
