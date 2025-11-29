@@ -71,7 +71,7 @@
         <div class="bg-white shadow-md rounded-2xl p-6 mb-6">
           <h2 class="text-xl font-semibold mb-3">Skills Required</h2>
           <div class="flex flex-wrap gap-2">
-            @foreach(explode(',', $job->skills_required) as $skill)
+            @foreach( $job->skills_required as $skill)
               <span class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-lg text-sm font-medium">
                 {{ trim($skill) }}
               </span>
