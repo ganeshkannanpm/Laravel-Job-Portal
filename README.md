@@ -47,7 +47,6 @@ A fully functional Job Portal built with **Laravel**, designed for both **employ
 | User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
 | Employer Dashboard | ![Employer Dashboard](screenshots/Employer-Dashboard.png) |
 | Admin Dashboard    | ![Admin Dashboard](screenshots/Admin-Dashboard.png)       |
-| User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
 | Candidate Profile  | ![Candidate Profile](screenshots/Candidate-Profile.png)   |
 | Company Profile    | ![Company Profile](screenshots/Company-Profile.png)       |
 | Employer Jobs      | ![Employer Jobs](screenshots/Employer-Jobs.png)           |
