@@ -26,12 +26,13 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [JobController::class, 'index']);
+Route::get('/', [JobController::class, 'index'])->name('job.index');
 Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.latest');
+Route::get('/search-page', [JobController::class, 'searchJobs'])->name('job.search-page');
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
-Route::get('/companies',[CompaniesController::class,'index'])->name('jobs.companies');
-Route::get('/companies-view/{employer_id}/',[CompaniesController::class,'viewCompany'])->name('jobs.companies-view');
-Route::get('/services',[ServicesController::class,'index'])->name('jobs.services');
+Route::get('/companies', [CompaniesController::class, 'index'])->name('jobs.companies');
+Route::get('/companies-view/{employer_id}/', [CompaniesController::class, 'viewCompany'])->name('jobs.companies-view');
+Route::get('/services', [ServicesController::class, 'index'])->name('jobs.services');
 
 // User registration
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');

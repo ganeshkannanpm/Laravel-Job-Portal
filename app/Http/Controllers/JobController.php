@@ -6,6 +6,7 @@ use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
 use App\Models\JobApplication;
+use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
@@ -43,6 +44,25 @@ class JobController extends Controller
             'totalApplicants'
         ));
 
+    }
+
+    public function searchJobs(Request $request)
+    {
+
+        $query = Job::query();
+
+        if ($request->keyword) {
+            $query->where('title', 'like', '%' . $request->keyword . '%')
+                ->orWhere('description', 'like', '%' . $request->keyword . '%');
+        }
+
+        if ($request->location) {
+            $query->where('location', 'like', '%' . $request->location . '%');
+        }
+
+        $jobs = $query->latest()->paginate(10);
+
+        return view('jobs.search-page', compact('jobs'));
     }
 
     /**
