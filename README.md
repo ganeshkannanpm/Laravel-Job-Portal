@@ -30,7 +30,7 @@ A fully functional Job Portal built with **Laravel**, designed for both **employ
 | ------------ | -------------------------------------------------- |
 | **Backend**  | Laravel 12                                         |
 | **Frontend** | Blade Templates + Tailwind CSS                     |
-| **Database** | MySQL
+| **Database** | PostgreSQL                                         |
 | **Auth**     | Custom Authentication                              |
 | **ORM**      | Laravel Eloquent                                   |
 | **Storage**  | Laravel File Storage                               |
