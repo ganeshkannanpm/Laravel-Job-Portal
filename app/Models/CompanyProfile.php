@@ -30,9 +30,15 @@ class CompanyProfile extends Model
         'feedback',
     ];
 
-    public function employer(){
+    public function employer()
+    {
 
         return $this->belongsTo(Employer::class);
+    }
+
+    public function jobs()
+    {
+        return $this->hasMany(Job::class, 'employer_id', 'employer_id');
     }
 
 }
