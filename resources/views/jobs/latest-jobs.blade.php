@@ -93,9 +93,7 @@
         </div>
 
         {{-- Footer --}}
-        <div class="bg-gray-100 border-t border-gray-300 p-8 text-center text-gray-900">
-            <p>&copy; {{ date('Y') }} Workly. All rights reserved.</p>
-        </div>
+       <x-footer />
 
     </section>
 </x-layout>

@@ -27,5 +27,17 @@ class CompaniesController extends Controller
         return view('jobs.companies', compact('companies'));
     }
 
+    public function viewCompany($employer_id)
+{
+    // Fetch the company profile using employer_id
+    $profile = CompanyProfile::where('employer_id', $employer_id)->first();
+
+    // If no profile found (optional handling)
+    if (!$profile) {
+        abort(404, 'Company not found');
+    }
+
+    return view('jobs.company-view', compact('profile'));
+}
 
 }

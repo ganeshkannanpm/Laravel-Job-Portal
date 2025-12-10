@@ -29,6 +29,7 @@ Route::get('/', [JobController::class, 'index']);
 Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.latest');
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
 Route::get('/companies',[CompaniesController::class,'index'])->name('jobs.companies');
+Route::get('/companies-view/{employer_id}/',[CompaniesController::class,'viewCompany'])->name('jobs.companies-view');
 
 // User registration
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');

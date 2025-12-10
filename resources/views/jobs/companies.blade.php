@@ -74,7 +74,7 @@
                     <p class="mt-4 text-gray-600 text-sm">{{ $company->description }}</p>
                     <div class="mt-4 flex justify-between items-center">
                         <span class="text-sm text-gray-700">{{ $company->jobs_count }} Open Positions</span>
-                        <a href="#" class="text-blue-600 font-medium hover:underline">View</a>
+                        <a href="{{route('jobs.companies-view',$company->employer_id)}}" class="text-blue-600 font-medium hover:underline">View</a>
                     </div>
                 </div>
             @endforeach

@@ -95,7 +95,7 @@
 
         <!-- View All Button -->
         <div class="text-center mt-10">
-            <a href="#" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-transform transform hover:scale-105">
+            <a href="{{ route('jobs.companies') }}" class="inline-block px-8 py-3 bg-indigo-600 text-white font-semibold rounded-full hover:bg-indigo-700 transition-transform transform hover:scale-105">
                 View All Companies →
             </a>
         </div>

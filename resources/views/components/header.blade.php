@@ -15,7 +15,7 @@
             </a>
             <a href="{{ route('jobs.companies') }}"
                 class="block px-5 py-2 rounded-full transition duration-300 
-                  {{ request()->routeIs('jobs.companies') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                  {{ request()->routeIs('jobs.companies','jobs.companies-view') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
                 Companies
             </a>
          
@@ -52,7 +52,7 @@
             </a>
             <a href="{{ route('jobs.companies') }}"
                 class="mb-2 px-3 py-2 rounded-full transition duration-300 
-                  {{ request()->routeIs('jobs.companies') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                  {{ request()->routeIs('jobs.companies','jobs.companies-view') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
                 Companies
             </a>
         
