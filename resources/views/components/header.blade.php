@@ -8,14 +8,11 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-6">
-            {{-- <a href="/"
-                class="px-3 py-2 font-semibold rounded text-gray-900 hover:bg-gray-200 hover:text-gray-900">Home</a>
-            --}}
-            {{-- <a href="#"
-                class="px-3 py-2 font-semibold rounded text-gray-900 hover:bg-gray-200 hover:text-gray-900">About Us</a>
-            --}}
-            <a href="#"
-                class="px-3 py-2 font-semibold rounded text-gray-900 no-underline hover:underline hover:text-indigo-600">Jobs</a>
+            <a href="{{ route('jobs.latest') }}"
+                class="block px-5 py-2 rounded-full transition duration-300 
+                  {{ request()->routeIs('jobs.latest') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                Jobs
+            </a>
             <a href="#"
                 class="px-3 py-2 font-semibold rounded text-gray-900 no-underline hover:underline hover:text-indigo-600">Companies</a>
             <a href="#"
@@ -44,20 +41,21 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden  flex-col space-y-4 pb-4 text-gray-900 md:hidden">
-        {{-- <a href="/"
-            class="px-3 py-2 font-semibold rounded text-gray-100 hover:bg-gray-200 hover:text-gray-900">Home</a> --}}
-        {{-- <a href="#"
-            class="px-3 py-2 font-semibold rounded text-gray-100 hover:bg-gray-200 hover:text-gray-900">About Us</a>
-        --}}
-        <a href="#" class="px-3 py-2 font-semibold rounded text-gray-900 hover:text-indigo-600">Jobs</a>
+        <a href="{{ route('jobs.latest') }}"
+                class="block px-5 py-2 rounded-full transition duration-300 
+                  {{ request()->routeIs('jobs.latest') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                Jobs
+            </a>
+        {{-- <a href="#" class="px-3 py-2 font-semibold rounded text-gray-900 hover:text-indigo-600">Jobs</a> --}}
         <a href="#" class="px-3 py-2 font-semibold rounded text-gray-900 hover:text-indigo-600">Companies</a>
         <a href="#" class="px-3 py-2 font-semibold rounded text-gray-900 hover:text-indigo-600">Services</a>
         <hr class="border-gray-600">
 
         <a href="{{ route('register.create') }}"
             class="px-3 py-2 text-gray-900 rounded hover:bg-gray-200 hover:text-gray-900">Sign Up</a>
-        <a href="{{ route('login') }}"
-            class="px-3 py-2 text-gray-900 rounded hover:bg-gray-200 hover:text-gray-900">Log In</a>
-        <a href="{{ route('employer-register.create') }}" class="px-3 py-2 text-gray-900 rounded hover:bg-gray-200 hover:text-gray-900">Employer</a>
+        <a href="{{ route('login') }}" class="px-3 py-2 text-gray-900 rounded hover:bg-gray-200 hover:text-gray-900">Log
+            In</a>
+        <a href="{{ route('employer-register.create') }}"
+            class="px-3 py-2 text-gray-900 rounded hover:bg-gray-200 hover:text-gray-900">Employer</a>
     </div>
 </div>
