@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CompaniesController;
 use App\Http\Controllers\CompanyProfileController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\EmployerController;
@@ -27,6 +28,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [JobController::class, 'index']);
 Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.latest');
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
+Route::get('/companies',[CompaniesController::class,'index'])->name('jobs.companies');
 
 // User registration
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');
