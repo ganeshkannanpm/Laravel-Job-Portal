@@ -18,6 +18,7 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\PersonalInfoController;
 use App\Http\Controllers\RegisteredUserController;
+use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
@@ -30,6 +31,7 @@ Route::get('/latest-jobs', [JobController::class, 'latestJobs'])->name('jobs.lat
 Route::get('/job-view/{job}', [JobController::class, 'show'])->name('jobs.view');
 Route::get('/companies',[CompaniesController::class,'index'])->name('jobs.companies');
 Route::get('/companies-view/{employer_id}/',[CompaniesController::class,'viewCompany'])->name('jobs.companies-view');
+Route::get('/services',[ServicesController::class,'index'])->name('jobs.services');
 
 // User registration
 Route::get('/register', [RegisteredUserController::class, 'create'])->name('register.create');

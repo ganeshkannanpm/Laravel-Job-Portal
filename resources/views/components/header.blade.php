@@ -19,8 +19,11 @@
                 Companies
             </a>
          
-            <a href="#"
-                class="px-3 py-2 font-semibold rounded text-gray-900 no-underline hover:underline hover:text-indigo-600">Services</a>
+            <a href="{{ route('jobs.services') }}"
+                class="block px-5 py-2 rounded-full transition duration-300 
+                  {{ request()->routeIs('jobs.services') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                Services
+            </a>
         </div>
 
         <!-- Desktop Auth Buttons -->
@@ -55,8 +58,11 @@
                   {{ request()->routeIs('jobs.companies','jobs.companies-view') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
                 Companies
             </a>
-        
-        <a href="#" class="px-3 py-2 font-semibold rounded text-gray-900 hover:text-indigo-600">Services</a>
+        <a href="{{ route('jobs.services') }}"
+                class="mb-2 px-3 py-2 rounded-full transition duration-300 
+                  {{ request()->routeIs('jobs.services') ? 'bg-indigo-600 text-white shadow-lg' : 'hover:bg-indigo-600 hover:text-white' }}">
+                Services
+            </a>
         <hr class="border-gray-300">
 
         <a href="{{ route('register.create') }}"
