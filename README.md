@@ -42,6 +42,9 @@ A fully functional Job Portal built with **Laravel**, designed for both **employ
 | Page               | Preview                                                   |
 | ------------------ | --------------------------------------------------------- |
 | Home Page          | ![Home Page](screenshots/Home.png)                        |
+| Jobs Page          | ![Jobs Page](screenshots/Jobs.png)                        |
+| Companies Page     | ![Companies Page](screenshots/Companies.png)              |
+| Services Page      | ![Services Page](screenshots/Services.png)                |
 | Job List           | ![Jobs](screenshots/Job-List.png)                         |
 | Job Details        | ![Job Details](screenshots/Job-Details.png)               |
 | User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
