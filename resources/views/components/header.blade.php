@@ -36,9 +36,9 @@
 
         <!-- Mobile Menu Button -->
         <button id="menu-btn" class="md:hidden flex flex-col space-y-1 focus:outline-none">
-            <span class="block w-6 h-0.5 bg-gray-300"></span>
-            <span class="block w-6 h-0.5 bg-gray-300"></span>
-            <span class="block w-6 h-0.5 bg-gray-300"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
+            <span class="block w-6 h-0.5 bg-gray-800"></span>
         </button>
     </nav>
 

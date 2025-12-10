@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Job;
 use App\Http\Requests\StoreJobRequest;
 use App\Http\Requests\UpdateJobRequest;
+use App\Models\JobApplication;
 
 class JobController extends Controller
 {
@@ -26,12 +27,22 @@ class JobController extends Controller
      */
     public function latestJobs()
     {
-        $jobs = Job::all()->groupBy('featured');
 
-        return view('jobs.latest-jobs', [
-            'featuredJobs' => $jobs->get(1, collect()),
-            'jobs' => $jobs->get(0, collect())
-        ]);
+        $totalJobs = Job::count();
+        $totalCompanies = Job::distinct('company')->count('company');
+        $totalApplicants = JobApplication::distinct('name')->count('name');
+
+        $featuredJobs = Job::where('featured', 1)->paginate(9, ['*'], 'featured_page');
+        $jobs = Job::where('featured', 0)->paginate(9, ['*'], 'jobs_page');
+
+        return view('jobs.latest-jobs', compact(
+            'featuredJobs',
+            'jobs',
+            'totalJobs',
+            'totalCompanies',
+            'totalApplicants'
+        ));
+
     }
 
     /**
