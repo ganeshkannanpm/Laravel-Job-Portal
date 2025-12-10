@@ -42,6 +42,9 @@ A fully functional Job Portal built with **Laravel**, designed for both **employ
 | Page               | Preview                                                   |
 | ------------------ | --------------------------------------------------------- |
 | Home Page          | ![Home Page](screenshots/Home.png)                        |
+| Jobs Page          | ![Jobs Page](screenshots/Jobs.png)                        |
+| Companies Page     | ![Companies Page](screenshots/Companies.png)              |
+| Services Page      | ![Services Page](screenshots/Services.png)                |
 | Job List           | ![Jobs](screenshots/Job-List.png)                         |
 | Job Details        | ![Job Details](screenshots/Job-Details.png)               |
 | User Dashboard     | ![User Dashboard](screenshots/User-Dashboard.png)         |
@@ -85,16 +88,16 @@ php artisan key:generate
 
 ### 4️⃣ Configure database
 
-For SQLite:
-
-```bash
-touch database/database.sqlite
-```
-
-Update `.env`:
+For PostgreSQL, update your .env:
 
 ```
-DB_CONNECTION=sqlite
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=your_database_name
+DB_USERNAME=your_username
+DB_PASSWORD=your_password
+
 ```
 
 ### 5️⃣ Run migrations
