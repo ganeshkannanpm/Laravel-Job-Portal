@@ -1,5 +1,5 @@
 # PHP base image
-FROM php:8.2-fpm
+FROM php:8.2-cli
 
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
@@ -9,32 +9,32 @@ RUN apt-get update && apt-get install -y \
     unzip \
     libpq-dev \
     libpng-dev \
-    libonig-dev \
-    libxml2-dev \
-    nginx
+    nodejs \
+    npm
 
-# Install PHP extensions
-RUN docker-php-ext-install pdo pdo_mysql mbstring exif pcntl bcmath gd
+# Install PHP extensions (PostgreSQL!)
+RUN docker-php-ext-install pdo pdo_pgsql gd
+
+# Install Composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
 # Set working directory
 WORKDIR /var/www/html
 
-# Copy app source
+# Copy project files
 COPY . .
 
-# Install composer inside container
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Install dependencies
+# Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Laravel optimize
-RUN php artisan config:cache && \
-    php artisan route:cache && \
-    php artisan view:cache
+# Build frontend assets (if using Vite)
+RUN npm install && npm run build
 
-# Expose port 80
-EXPOSE 80
+# Set permissions
+RUN chmod -R 775 storage bootstrap/cache
 
-# Start PHP + Nginx
-CMD service nginx start && php-fpm
+# Expose Render port
+EXPOSE 10000
+
+# Start Laravel
+CMD php artisan serve --host=0.0.0.0 --port=10000
