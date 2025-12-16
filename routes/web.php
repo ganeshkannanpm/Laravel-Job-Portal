@@ -186,12 +186,13 @@ use Illuminate\Support\Facades\Artisan;
 Route::get('/seed-fake-data', function () {
     if (app()->environment('production')) {  
         Artisan::call('db:seed', [
-            '--class' => 'EmployerJobSeeder',
+            '--class' => 'DatabaseSeeder',
             '--force' => true
         ]);
 
-        return "✅ Fake employer, company, and job data seeded successfully!";
+        return "All fake data seeded successfully!";
     }
 
-    return "❌ Seeder only allowed in production.";
+    return "Seeder only allowed in production.";
 });
+
