@@ -180,3 +180,18 @@ Route::get('reset-password/{token}', [ResetPasswordController::class, 'showReset
 
 // Handle reset password
 Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
+
+use Illuminate\Support\Facades\Artisan;
+
+Route::get('/seed-fake-data', function () {
+    if (app()->environment('production')) {  
+        Artisan::call('db:seed', [
+            '--class' => 'EmployerJobSeeder',
+            '--force' => true
+        ]);
+
+        return "✅ Fake employer, company, and job data seeded successfully!";
+    }
+
+    return "❌ Seeder only allowed in production.";
+});
