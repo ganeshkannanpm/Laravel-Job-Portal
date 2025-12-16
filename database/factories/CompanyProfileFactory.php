@@ -63,38 +63,38 @@ class CompanyProfileFactory extends Factory
             'employer_id' => $employer->id,
             'company_name' => $employer->company_name,
 
-            'industry' => $this->faker->randomElement($industries),
-            'company_size' => $this->faker->randomElement($companySizes),
+            'industry' => $this->fake()->randomElement($industries),
+            'company_size' => $this->fake()->randomElement($companySizes),
 
             'website' => 'https://www.' . \Str::slug($employer->company_name) . '.com',
 
-            'description' => $this->faker->randomElement($companyDescriptions),
+            'description' => $this->fake()->randomElement($companyDescriptions),
 
-            'recruiter_name' => $this->faker->randomElement($recruiterNames),
+            'recruiter_name' => $this->fake()->randomElement($recruiterNames),
 
-            'contact_phone' => '+91 ' . $this->faker->numberBetween(6000000000, 9999999999),
+            'contact_phone' => '+91 ' . $this->fake()->numberBetween(6000000000, 9999999999),
 
-            'address' => $this->faker->randomElement($addresses),
+            'address' => $this->fake()->randomElement($addresses),
 
-            'recruiter_email' => $this->faker->unique()->safeEmail(),
+            'recruiter_email' => $this->fake()->unique()->safeEmail(),
 
             'logo' => 'images/company-placeholder.png',
 
-            'account_status' => $this->faker->randomElement([
+            'account_status' => $this->fake()->randomElement([
                 'Active',
                 'Pending Approval',
             ]),
 
-            'verified' => $this->faker->boolean(40) ? 'Yes' : 'No',
+            'verified' => $this->fake()->boolean(40) ? 'Yes' : 'No',
 
-            'jobs_posted' => $this->faker->numberBetween(1, 25),
-            'applicants_received' => $this->faker->numberBetween(10, 200),
+            'jobs_posted' => $this->fake()->numberBetween(1, 25),
+            'applicants_received' => $this->fake()->numberBetween(10, 200),
 
-            'last_login' => $this->faker->optional()->dateTimeBetween('-30 days', 'now'),
+            'last_login' => $this->fake()->optional()->dateTimeBetween('-30 days', 'now'),
 
-            'downloads' => $this->faker->numberBetween(0, 100),
+            'downloads' => $this->fake()->numberBetween(0, 100),
 
-            'feedback' => $this->faker->optional()->sentence(),
+            'feedback' => $this->fake()->optional()->sentence(),
         ];
     }
 }

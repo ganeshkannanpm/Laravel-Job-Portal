@@ -42,12 +42,12 @@ class EmployerFactory extends Factory
             'Zomato',
         ];
 
-        $company = $this->faker->randomElement($companies);
+        $company = $this->fake()->randomElement($companies);
 
         return [
-            'name' => $this->faker->randomElement($indianNames),
+            'name' => $this->fake()->randomElement($indianNames),
 
-            'email' => $this->faker->unique()->safeEmail(),
+            'email' => $this->fake()->unique()->safeEmail(),
 
             'company_name' => $company,
             

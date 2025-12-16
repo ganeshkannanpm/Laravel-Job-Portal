@@ -13,7 +13,7 @@ class JobFactory extends Factory
 
     public function definition(): array
     {
-        $faker = FakerFactory::create('en_IN');
+        fake() = FakerFactory::create('en_IN');
 
         $companies = [
             'Tata Consultancy Services',
@@ -108,46 +108,46 @@ class JobFactory extends Factory
             'Participate in code reviews and team discussions',
         ];
 
-        $role = $faker->randomElement($roles);
-        [$salaryMin, $salaryMax] = $faker->randomElement($salaryRanges);
+        $role = fake()->randomElement($roles);
+        [$salaryMin, $salaryMax] = fake()->randomElement($salaryRanges);
 
         return [
             'employer_id' => Employer::inRandomOrder()->first()->id,
 
             'title'   => $role,
-            'company' => $faker->randomElement($companies),
-            'location'=> $faker->randomElement($locations),
+            'company' => fake()->randomElement($companies),
+            'location'=> fake()->randomElement($locations),
 
             'salary_min' => $salaryMin,
             'salary_max' => $salaryMax,
 
-            'experience_level' => $faker->randomElement($experienceLevels),
+            'experience_level' => fake()->randomElement($experienceLevels),
 
             'description' => sprintf(
-                $faker->randomElement($descriptions),
+                fake()->randomElement($descriptions),
                 $role
             ),
 
-            'responsibilities' => implode("\n", $faker->randomElements($responsibilities, 4)),
+            'responsibilities' => implode("\n", fake()->randomElements($responsibilities, 4)),
 
             'skills_required' => implode(', ', $skillsByRole[$role]),
 
-            'about_company' => $faker->randomElement($aboutCompanies),
+            'about_company' => fake()->randomElement($aboutCompanies),
 
-            'schedule' => $faker->randomElement([
+            'schedule' => fake()->randomElement([
                 'Full Time', 'Part Time', 'Contract'
             ]),
 
-            'apply_type' => $faker->randomElement(['email', 'external']),
-            'apply_link' => $faker->url(),
+            'apply_type' => fake()->randomElement(['email', 'external']),
+            'apply_link' => fake()->url(),
 
             'deadline' => now()->addDays(rand(7, 45)),
-            'posted' => $faker->randomElement([
+            'posted' => fake()->randomElement([
                 'Today', '1 day ago', '3 days ago', '1 week ago'
             ]),
 
             'status' => 'Active',
-            'featured' => $faker->boolean(20),
+            'featured' => fake()->boolean(20),
         ];
     }
 }
