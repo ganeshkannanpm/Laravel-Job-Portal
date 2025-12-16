@@ -18,18 +18,19 @@
                     <!-- Search -->
                     <input type="text" name="search" placeholder="Search companies..." value="{{ request('search') }}"
                         class="w-full md:w-1/3 p-3 border rounded-xl focus:ring focus:border-blue-500" />
-
+                   
                     <!-- Filter -->
                     <select name="industry"
                         class="p-3 border rounded-xl w-full md:w-1/4 focus:ring focus:border-blue-500">
                         <option value="All">All Industries</option>
-                        <option value="IT & Software" {{ request('industry') == 'IT & Software' ? 'selected' : '' }}>IT &
-                            Software</option>
+                        <option value="IT Services" {{ request('industry') == 'IT Services' ? 'selected' : '' }}>IT Services</option>
                         <option value="Finance" {{ request('industry') == 'Finance' ? 'selected' : '' }}>Finance</option>
-                        <option value="Healthcare" {{ request('industry') == 'Healthcare' ? 'selected' : '' }}>Healthcare
-                        </option>
-                        <option value="Marketing" {{ request('industry') == 'Marketing' ? 'selected' : '' }}>Marketing
-                        </option>
+                        <option value="Healthcare" {{ request('industry') == 'Healthcare' ? 'selected' : '' }}>Healthcare</option>
+                        <option value="Marketing" {{ request('industry') == 'Marketing' ? 'selected' : '' }}>Marketing</option>
+                        <option value="Software Development" {{ request('industry') == 'Software Development' ? 'selected' : '' }}>Software Development</option>
+                        <option value="E-commerce" {{ request('industry') == 'E-commerce' ? 'selected' : '' }}>E-commerce</option>
+                        <option value="Telecommunications" {{ request('industry') == 'Telecommunications' ? 'selected' : '' }}>Telecommunications</option>
+                        <option value="Cloud Computing" {{ request('industry') == 'Cloud Computing' ? 'selected' : '' }}>Cloud Computing</option>
                     </select>
 
                     <!-- Buttons -->
@@ -65,7 +66,7 @@
             @foreach ($companies as $company)
                 <div class="bg-white shadow-md rounded-2xl p-6 hover:shadow-lg transition">
                     <div class="flex items-center space-x-4">
-                        <img src="{{ asset('storage/' . $company->logo) }}" class="w-16 h-16 rounded-full" />
+                       <img src="{{ asset($company->logo) }}" class="w-16 h-16 rounded-full" />
                         <div>
                             <h3 class="text-lg font-semibold text-gray-800">{{ $company->company_name }}</h3>
                             <p class="text-gray-500 text-sm">{{ $company->industry }}</p>

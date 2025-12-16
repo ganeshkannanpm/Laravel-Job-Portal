@@ -11,6 +11,8 @@ class Employer extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\EmployerFactory> */
 
+    use HasFactory;
+    
     use Notifiable;
     protected $fillable = [
         'name',

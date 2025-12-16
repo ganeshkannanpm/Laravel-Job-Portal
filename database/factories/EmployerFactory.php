@@ -2,25 +2,60 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Employer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Employer>
- */
 class EmployerFactory extends Factory
 {
-    /**
-     * Define the model's default state.
-     *
-     * @return array<string, mixed>
-     */
+    protected $model = Employer::class;
+
     public function definition(): array
     {
+        
+        $indianNames = [
+            'Amit Sharma',
+            'Rohit Verma',
+            'Suresh Kumar',
+            'Ankit Gupta',
+            'Vikram Singh',
+            'Neha Agarwal',
+            'Pooja Mehta',
+            'Kavya Nair',
+            'Ananya Iyer',
+            'Sneha Patil',
+        ];
+
+        
+        $companies = [
+            'Tata Consultancy Services',
+            'Infosys',
+            'Wipro',
+            'HCL Technologies',
+            'Tech Mahindra',
+            'Zoho Corporation',
+            'Freshworks',
+            'Flipkart',
+            'Paytm',
+            'PhonePe',
+            'Reliance Jio',
+            'Swiggy',
+            'Zomato',
+        ];
+
+        $company = $this->faker->randomElement($companies);
+
         return [
-            "name" => fake()->name,
-            "logo" => fake()->imageUrl(),
-            "user_id" => User::factory()
+            'name' => $this->faker->randomElement($indianNames),
+
+            'email' => $this->faker->unique()->safeEmail(),
+
+            'company_name' => $company,
+            
+            'password' => bcrypt('password123'),
+
+            'company_logo' => 'logos/' . \Str::slug($company) . '.png',
+
+            'status' => 'Active',
         ];
     }
 }

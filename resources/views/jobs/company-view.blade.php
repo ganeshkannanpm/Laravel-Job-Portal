@@ -8,7 +8,7 @@
           <div class="flex items-center gap-4">
             <!-- Company Logo -->
             <div class="w-20 h-20 bg-white rounded-lg shadow flex items-center justify-center overflow-hidden">
-              <img src="{{ asset('storage/' . $profile->logo) }}" alt="Company Logo" class="object-contain w-full h-full">
+              <img src="{{ asset( $profile->logo) }}" alt="Company Logo" class="object-contain w-full h-full">
             </div>
             <div>
               <h1 class="text-2xl sm:text-3xl font-semibold">{{ $profile->company_name }}</h1>
