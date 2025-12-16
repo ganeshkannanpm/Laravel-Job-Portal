@@ -111,16 +111,6 @@ php artisan migrate
 ```bash
 php artisan serve
 ```
----
-## 📦 Future Enhancements
-
-* Email notifications
-* Resume parsing
-* Role-based permissions (Spatie)
-* API support (Laravel API resources)
-* Company pages & reviews
-
----
 
 ## 🤝 Contributing
 
